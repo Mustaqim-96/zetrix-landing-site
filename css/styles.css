@@ -1668,6 +1668,9 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
   overflow: hidden;
 }
 .ai-layer__backdrop {
+  /* Hidden per request: removes the decorative dots (.ai-layer__particles) and
+     frame (.ai-layer__frame) so only the ribbon shows behind this section. */
+  display: none;
   position: absolute;
   inset: 0;
   z-index: 0;
