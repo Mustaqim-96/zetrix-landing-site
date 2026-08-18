@@ -459,9 +459,14 @@
     pointUniforms.uAssembly.value = state.assembly;
     pointUniforms.uParticleOpacity.value = state.particleOpacity;
     pointUniforms.uCoreEnergy.value = state.coreEnergy;
-    var responsiveScale = explosion.mobileScale(
-      window.innerWidth || container.clientWidth || 1024
-    );
+    // In light theme use the full (desktop) dot arrangement on every viewport.
+    // The tighter mobile arrangement left more of the near-white base sphere
+    // showing, so the globe's ocean read white on phones instead of the same
+    // grey as the web. Dark theme keeps its per-width arrangement.
+    var responsiveScale =
+      document.documentElement.getAttribute("data-theme") === "light"
+        ? 1
+        : explosion.mobileScale(window.innerWidth || container.clientWidth || 1024);
     if (!Number.isFinite(responsiveScale) || responsiveScale < 0 || responsiveScale > 1) {
       throw new Error("Invalid globe mobile scale");
     }
