@@ -571,9 +571,12 @@
 
   (function animate() {
     requestAnimationFrame(animate);
+    // Keep theme materials (e.g. the light-mode ocean colour) in sync every
+    // frame — cheap and guarded — even while the render is paused off-screen,
+    // so the globe never gets stuck on the wrong theme colour.
+    applyThemeMaterials();
     if (!globeOnScreen && !entranceActive) return; // off-screen: skip render work
     var now = (window.performance && performance.now) ? performance.now() : t0;
-    applyThemeMaterials();
     if (entranceActive) {
       try {
         if (explosion.stateAt(now - entranceStartedAt, entranceState) !== entranceState ||
