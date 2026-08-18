@@ -249,9 +249,12 @@
         "if(dot.a<0.25)discard;float fieldFade=mix(1.0,mix(0.5,1.0,vWeight),vCloud*vLayer);" +
         "float energy=1.0+uCoreEnergy*(1.0-vLayer)*0.6;" +
         "float mobileField=mix(0.72,1.0,uMobileScale);" +
+        /* Don't dim the dot field on phones in light theme, so the globe reads
+           the same colour on mobile/tablet as it does on the web. */
+        "mobileField=mix(mobileField,1.0,uLightTheme);" +
         "vec3 particleColor=vColor;" + /* keep exploding particles the grey dot colour (no red) */
         "float lightEnergy=1.0;" +
-        "gl_FragColor=vec4(particleColor*energy*lightEnergy,dot.a*uParticleOpacity*fieldFade*mix(1.0,mobileField,vLayer*vCloud)*(1.0+uLightTheme*vCloud*1.4));}" 
+        "gl_FragColor=vec4(particleColor*energy*lightEnergy,dot.a*uParticleOpacity*fieldFade*mix(1.0,mobileField,vLayer*vCloud)*(1.0+uLightTheme*vCloud*1.4));}"
     });
   }
   var continentPoints = new THREE.Points(cGeo, pointFallback);
