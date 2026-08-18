@@ -3342,8 +3342,10 @@ html[data-theme="light"] .footer__wordmark-art .footer__wordmark--light { displa
     border-radius: 12px;
   }
   /* Smaller illustration on phones so the panel + its bottom padding fit
-     inside the card without being clipped. */
-  .node-illus { max-width: 210px; }
+     inside the card without being clipped. Center it within the full-width
+     <picture> (which would otherwise leave the capped image left-aligned). */
+  .node-panel picture { display: flex; justify-content: center; }
+  .node-illus { max-width: 210px; margin-inline: auto; }
 
   /* Tools */
   .tools,
