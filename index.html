@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zetrix — From Trusted Infrastructure to Intelligent Machines</title>
+  <script>
+    (function () {
+      document.documentElement.classList.add('site-intro-pending');
+      window.__zetrixIntroFailsafe = setTimeout(function () {
+        document.documentElement.classList.remove('site-intro-pending');
+      }, 4200);
+    })();
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <div class="site-intro" data-site-intro aria-hidden="true">
+    <div class="site-intro__canvas site-intro__canvas--brand"></div>
+    <div class="site-intro__canvas site-intro__canvas--dark"></div>
+    <div class="site-intro__logo" data-site-intro-logo>
+      <img class="site-intro__mark site-intro__mark--light" src="assets/img/logo-zetrix-intro.svg" alt="" />
+      <img class="site-intro__mark site-intro__mark--white" src="assets/img/logo-zetrix-intro.svg" alt="" />
+      <img class="site-intro__mark site-intro__mark--nav" src="assets/img/logo-zetrix.svg" alt="" />
+    </div>
+  </div>
+
+  <!-- ============================= NAV ============================= -->
+  <header class="nav-wrap">
+    <button class="nav__backdrop" type="button" data-nav-backdrop hidden aria-label="Close navigation menu"></button>
+
+    <nav class="nav" data-nav aria-label="Primary">
+      <a class="nav__logo" href="#" aria-label="Zetrix home">
+        <img src="assets/img/logo-zetrix.svg" alt="Zetrix" />
+      </a>
+
+      <ul class="nav__menu">
+        <li><button class="nav__link" type="button" data-nav-trigger="developers" aria-controls="nav-group-developers" aria-expanded="false">Developers <span class="caret" aria-hidden="true"></span></button></li>
+        <li><button class="nav__link" type="button" data-nav-trigger="individuals" aria-controls="nav-group-individuals" aria-expanded="false">Individuals <span class="caret" aria-hidden="true"></span></button></li>
+        <li><button class="nav__link" type="button" data-nav-trigger="ecosystem" aria-controls="nav-group-ecosystem" aria-expanded="false">Ecosystem <span class="caret" aria-hidden="true"></span></button></li>
+        <li><button class="nav__link" type="button" data-nav-trigger="tools" aria-controls="nav-group-tools" aria-expanded="false">Tools <span class="caret" aria-hidden="true"></span></button></li>
+        <li><button class="nav__link" type="button" data-nav-trigger="discover" aria-controls="nav-group-discover" aria-expanded="false">Discover <span class="caret" aria-hidden="true"></span></button></li>
+        <li><button class="nav__link" type="button" data-nav-trigger="investors" aria-controls="nav-group-investors" aria-expanded="false">Investors <span class="caret" aria-hidden="true"></span></button></li>
+      </ul>
+
+      <a class="btn btn--red nav__cta" href="#">BUIDL Now</a>
+
+      <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light mode" title="Switch to light mode">
+        <span class="theme-toggle__track" aria-hidden="true">
+          <span class="theme-toggle__orb"></span>
+        </span>
+      </button>
+
+      <button class="nav__mobile-toggle" type="button" data-nav-mobile-toggle aria-label="Open navigation menu" aria-controls="nav-dropdown" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+
+      <div class="nav-dropdown" data-nav-panel id="nav-dropdown" role="navigation" aria-label="Navigation menu">
+        <div class="nav-dropdown__surface">
+          <section class="nav-panel__group" id="nav-group-developers" data-nav-group="developers" data-nav-count="2">
+            <button class="nav-panel__accordion" type="button" data-nav-accordion-trigger="developers" aria-controls="nav-group-developers-content" aria-expanded="false"><span>Developers</span><span class="caret" aria-hidden="true"></span></button>
+            <div class="nav-panel__content" id="nav-group-developers-content" data-nav-group-content>
+              <a class="nav-card" href="https://www.zetrix.com/buidl-zetrix/"><span class="nav-card__icon"><img src="assets/icons/lucide/code-2.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">#BUIDL With Zetrix</span><span class="nav-card__desc">Start building on the Zetrix network.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+              <a class="nav-card" href="https://www.zetrix.com/bug-bounty-programme/"><span class="nav-card__icon"><img src="assets/icons/lucide/bug.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">Bug Bounty Programme</span><span class="nav-card__desc">Help strengthen Zetrix and earn rewards.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+            </div>
+          </section>
+
+          <section class="nav-panel__group" id="nav-group-individuals" data-nav-group="individuals" data-nav-count="1">
+            <button class="nav-panel__accordion" type="button" data-nav-accordion-trigger="individuals" aria-controls="nav-group-individuals-content" aria-expanded="false"><span>Individuals</span><span class="caret" aria-hidden="true"></span></button>
+            <div class="nav-panel__content" id="nav-group-individuals-content" data-nav-group-content>
+              <a class="nav-card" href="https://www.zetrix.com/zetrix-wallet/"><span class="nav-card__icon"><img src="assets/icons/lucide/wallet-cards.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">Zetrix Wallet</span><span class="nav-card__desc">Manage assets and access the Zetrix ecosystem.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+            </div>
+          </section>
+
+          <section class="nav-panel__group" id="nav-group-ecosystem" data-nav-group="ecosystem" data-nav-count="6">
+            <button class="nav-panel__accordion" type="button" data-nav-accordion-trigger="ecosystem" aria-controls="nav-group-ecosystem-content" aria-expanded="false"><span>Ecosystem</span><span class="caret" aria-hidden="true"></span></button>
+            <div class="nav-panel__content" id="nav-group-ecosystem-content" data-nav-group-content>
+              <a class="nav-card" href="https://www.zetrix.com/zetrix-ecosystems/"><span class="nav-card__icon"><img src="assets/icons/lucide/blocks.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">Zetrix Ecosystem</span><span class="nav-card__desc">Explore applications and partners built on Zetrix.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+              <a class="nav-card" href="https://www.zetrix.com/robotics/"><span class="nav-card__icon"><img src="assets/icons/lucide/bot.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">Zetrix Robotics</span><span class="nav-card__desc">Discover intelligent automation solutions.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+              <a class="nav-card" href="https://www.zetrix.com/zetrix-avatar/"><span class="nav-card__icon"><img src="assets/icons/lucide/scan-face.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">Zetrix Avatar</span><span class="nav-card__desc">Explore Zetrix-powered digital identity experiences.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+              <a class="nav-card" href="https://www.zetrix.com/asean-china-ai-lab/"><span class="nav-card__icon"><img src="assets/icons/lucide/brain-circuit.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">AI</span><span class="nav-card__desc">Discover the ASEAN–China AI Lab.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+              <a class="nav-card" href="https://www.zetrix.com/global-accelerator-programme/"><span class="nav-card__icon"><img src="assets/icons/lucide/rocket.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">Accelerator</span><span class="nav-card__desc">Grow Web3 ideas with global support.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+              <a class="nav-card" href="https://www.zetrix.com/miss-universe-voting/"><span class="nav-card__icon"><img src="assets/icons/lucide/vote.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">Use Case: Voting</span><span class="nav-card__desc">See blockchain-powered transparent voting.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+            </div>
+          </section>
+
+          <section class="nav-panel__group" id="nav-group-tools" data-nav-group="tools" data-nav-count="3">
+            <button class="nav-panel__accordion" type="button" data-nav-accordion-trigger="tools" aria-controls="nav-group-tools-content" aria-expanded="false"><span>Tools</span><span class="caret" aria-hidden="true"></span></button>
+            <div class="nav-panel__content" id="nav-group-tools-content" data-nav-group-content>
+              <a class="nav-card" href="https://explorer.zetrix.com/"><span class="nav-card__icon"><img src="assets/icons/lucide/search-code.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">Block Explorer</span><span class="nav-card__desc">Inspect blocks, transactions, and accounts.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+              <a class="nav-card" href="https://ds.zetrix.com/"><span class="nav-card__icon"><img src="assets/icons/lucide/activity.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">Node Monitor</span><span class="nav-card__desc">Monitor Zetrix network node performance.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+              <a class="nav-card" href="https://ide.zetrix.com/"><span class="nav-card__icon"><img src="assets/icons/lucide/file-code-2.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">Smart Contract</span><span class="nav-card__desc">Build and deploy smart contracts.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+            </div>
+          </section>
+
+          <section class="nav-panel__group" id="nav-group-discover" data-nav-group="discover" data-nav-count="4">
+            <button class="nav-panel__accordion" type="button" data-nav-accordion-trigger="discover" aria-controls="nav-group-discover-content" aria-expanded="false"><span>Discover</span><span class="caret" aria-hidden="true"></span></button>
+            <div class="nav-panel__content" id="nav-group-discover-content" data-nav-group-content>
+              <a class="nav-card" href="https://www.zetrix.com/about-zetrix/"><span class="nav-card__icon"><img src="assets/icons/lucide/badge-info.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">About Zetrix</span><span class="nav-card__desc">Learn about the Zetrix public blockchain.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+              <a class="nav-card" href="https://www.zetrix.com/media-and-community/"><span class="nav-card__icon"><img src="assets/icons/lucide/users-round.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">Media and community</span><span class="nav-card__desc">Connect with Zetrix news and communities.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+              <a class="nav-card" href="https://www.zetrix.com/blog/"><span class="nav-card__icon"><img src="assets/icons/lucide/newspaper.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">Blog</span><span class="nav-card__desc">Read insights, updates, and announcements.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+              <a class="nav-card" href="https://www.zetrix.com/jobs/"><span class="nav-card__icon"><img src="assets/icons/lucide/briefcase-business.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">Careers</span><span class="nav-card__desc">Build the future of trust with Zetrix.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+            </div>
+          </section>
+
+          <section class="nav-panel__group" id="nav-group-investors" data-nav-group="investors" data-nav-count="9">
+            <button class="nav-panel__accordion" type="button" data-nav-accordion-trigger="investors" aria-controls="nav-group-investors-content" aria-expanded="false"><span>Investors</span><span class="caret" aria-hidden="true"></span></button>
+            <div class="nav-panel__content" id="nav-group-investors-content" data-nav-group-content>
+              <a class="nav-card" href="https://www.zetrix.com/investor-relations/"><span class="nav-card__icon"><img src="assets/icons/lucide/landmark.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">Investor Relations</span><span class="nav-card__desc">Access the investor information centre.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+              <a class="nav-card" href="https://www.zetrix.com/investor-relations/corporate-information/"><span class="nav-card__icon"><img src="assets/icons/lucide/building-2.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">Corporate Information</span><span class="nav-card__desc">Review company and leadership information.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+              <a class="nav-card" href="https://www.zetrix.com/investor-relations/financials/"><span class="nav-card__icon"><img src="assets/icons/lucide/chart-no-axes-combined.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">Financials</span><span class="nav-card__desc">View financial results and disclosures.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+              <a class="nav-card" href="https://www.zetrix.com/investor-relations/stock-info/"><span class="nav-card__icon"><img src="assets/icons/lucide/chart-candlestick.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">Stock Information</span><span class="nav-card__desc">Review current stock-related information.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+              <a class="nav-card" href="https://www.zetrix.com/investor-relations/governance/"><span class="nav-card__icon"><img src="assets/icons/lucide/scale.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">Corporate Governance</span><span class="nav-card__desc">Explore governance policies and practices.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+              <a class="nav-card" href="https://www.zetrix.com/investor-relations/general-meetings/"><span class="nav-card__icon"><img src="assets/icons/lucide/users-round.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">General Meetings</span><span class="nav-card__desc">Find notices and meeting materials.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+              <a class="nav-card" href="https://www.zetrix.com/investor-relations/news/"><span class="nav-card__icon"><img src="assets/icons/lucide/newspaper.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">News</span><span class="nav-card__desc">Read the latest investor news.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+              <a class="nav-card" href="https://www.zetrix.com/investor-relations/reports-presentations/"><span class="nav-card__icon"><img src="assets/icons/lucide/presentation.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">Reports &amp; Presentations</span><span class="nav-card__desc">Access reports and presentation materials.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+              <a class="nav-card" href="https://www.zetrix.com/investor-relations/news-alerts/"><span class="nav-card__icon"><img src="assets/icons/lucide/bell-ring.svg" alt="" aria-hidden="true" /></span><span class="nav-card__copy"><span class="nav-card__title">News Alerts</span><span class="nav-card__desc">Subscribe to investor news alerts.</span></span><span class="nav-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span></a>
+            </div>
+          </section>
+
+          <div class="nav-dropdown__theme">
+            <span class="nav-dropdown__theme-label">Appearance</span>
+            <button class="theme-toggle nav-dropdown__theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light mode" title="Switch to light mode">
+              <span class="theme-toggle__track" aria-hidden="true"><span class="theme-toggle__orb"></span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <noscript>
+        <style>
+          .nav-dropdown { opacity: 1 !important; visibility: visible !important; transform: none !important; pointer-events: auto !important; }
+          .nav-dropdown__surface { height: auto !important; max-height: calc(100svh - 112px); overflow-y: auto; }
+          .nav-panel__group { display: block !important; margin-bottom: 12px; }
+          .nav-panel__accordion { display: flex !important; }
+        </style>
+      </noscript>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============================= HERO ============================= -->
+    <section class="hero">
+      <div class="hero__aurora" aria-hidden="true"></div>
+      <div class="hero__content">
+        <h1 class="hero__title hero__reveal">From Trusted<br />Infrastructure to<br />Intelligent Machines</h1>
+        <p class="hero__subtitle hero__reveal">Build trust and transparency with a scalable public blockchain designed for Public Sectors, Enterprises and Financial institutions.</p>
+        <a class="btn btn--red hero__cta hero__reveal" href="#">Get Started</a>
+      </div>
+      <div class="hero__globe" id="hero-globe" aria-hidden="true">
+        <!-- Three.js globe renders here -->
+      </div>
+    </section>
+
+    <div class="ribbon-story" data-ribbon-story>
+    <!-- ===================== ONE ECOSYSTEM ===================== -->
+    <section class="ecosystem">
+     <div class="eco-track" id="eco-track">
+      <div class="eco-pin">
+      <div class="eco-card">
+        <img class="eco-card__bg" src="assets/img/ecosystem-card-bg.webp" alt="" aria-hidden="true" />
+        <div class="eco-card__left">
+          <h2 class="section-heading">One ecosystem.<br />Built on open standards.</h2>
+          <p class="eco-card__sub">The core primitives for building trusted, decentralised applications on Zetrix.</p>
+        </div>
+
+        <div class="eco-stack" id="eco-stack">
+          <article class="eco-fcard" data-eco-card>
+            <button class="eco-fcard__head" type="button" aria-expanded="false">
+              <h3 class="eco-fcard__title">Smart Contract Integrated Development Environment (IDE)</h3>
+              <p class="eco-fcard__desc">Create, execute and manage smart contracts seamlessly with Node.JS, Java and GO.</p>
+            </button>
+            <div class="eco-fcard__panel">
+              <div class="node-panel node-panel--smart-contract">
+                <picture class="node-illus-theme node-illus-theme--dark">
+                  <source media="(prefers-reduced-motion: reduce)" srcset="assets/img/IDE-reduced-motion.webp" />
+                  <img class="node-illus node-illus--smart-contract" src="assets/img/IDE.webp" width="480" height="270" alt="" aria-hidden="true" />
+                </picture>
+                <picture class="node-illus-theme node-illus-theme--light">
+                  <source media="(prefers-reduced-motion: reduce)" srcset="assets/img/IDE-reduced-motion-light.webp" />
+                  <img class="node-illus node-illus--smart-contract" src="assets/img/IDE-light.webp" width="480" height="270" alt="" aria-hidden="true" />
+                </picture>
+              </div>
+            </div>
+          </article>
+
+          <article class="eco-fcard" data-eco-card>
+            <button class="eco-fcard__head" type="button" aria-expanded="false">
+              <h3 class="eco-fcard__title">Decentralised Identifiers based on W3C standards</h3>
+              <p class="eco-fcard__desc">A secure, privacy-preserving method for managing digital identities with user control, based on W3C standards.</p>
+            </button>
+            <div class="eco-fcard__panel">
+              <div class="node-panel node-panel--w3c-identifiers">
+                <picture class="node-illus-theme node-illus-theme--dark">
+                  <source media="(prefers-reduced-motion: reduce)" srcset="assets/img/decentralised-identifiers-reduced-motion.webp" />
+                  <img class="node-illus node-illus--w3c-identifiers" src="assets/img/decentralised-identifiers.webp" width="480" height="270" alt="" aria-hidden="true" />
+                </picture>
+                <picture class="node-illus-theme node-illus-theme--light">
+                  <source media="(prefers-reduced-motion: reduce)" srcset="assets/img/decentralised-identifiers-reduced-motion-light.webp" />
+                  <img class="node-illus node-illus--w3c-identifiers" src="assets/img/decentralised-identifiers-light.webp" width="480" height="270" alt="" aria-hidden="true" />
+                </picture>
+              </div>
+            </div>
+          </article>
+
+          <article class="eco-fcard" data-eco-card>
+            <button class="eco-fcard__head" type="button" aria-expanded="false">
+              <h3 class="eco-fcard__title">Verifiable Credentials</h3>
+              <p class="eco-fcard__desc">Securely present and verify credentials in an interoperable manner with Self-Sovereign Identity (SSI).</p>
+            </button>
+            <div class="eco-fcard__panel">
+              <div class="node-panel node-panel--verifiable-credential">
+                <picture class="node-illus-theme node-illus-theme--dark">
+                  <source media="(prefers-reduced-motion: reduce)" srcset="assets/img/verifiable-credential-reduced-motion.webp" />
+                  <img class="node-illus node-illus--verifiable-credential" src="assets/img/verifiable-credential.webp" width="480" height="270" alt="" aria-hidden="true" />
+                </picture>
+                <picture class="node-illus-theme node-illus-theme--light">
+                  <source media="(prefers-reduced-motion: reduce)" srcset="assets/img/verifiable-credential-reduced-motion-light.webp" />
+                  <img class="node-illus node-illus--verifiable-credential" src="assets/img/verifiable-credential-light.webp" width="480" height="270" alt="" aria-hidden="true" />
+                </picture>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+      </div>
+     </div>
+    </section>
+
+    <div class="ribbon-flow" data-ribbon-flow>
+      <img class="ribbon-flow__mobile" src="assets/ribbon/zetrix-mobile-ribbon.svg" alt="" aria-hidden="true" />
+      <svg class="ribbon-flow__visual" viewBox="0 0 1185.65 3200.02" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="ribbon-flow-gradient" x1="592.809" y1="100.008" x2="592.809" y2="3100.01" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#E4222E" stop-opacity="0" />
+            <stop offset="0.09" stop-color="#E4222E" stop-opacity="0.95" />
+            <stop offset="0.5" stop-color="#C5242E" />
+            <stop offset="0.91" stop-color="#E4222E" stop-opacity="0.95" />
+            <stop offset="1" stop-color="#E4222E" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="ribbon-flow-head-fade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fff" />
+            <stop offset="1" stop-color="#000" />
+          </linearGradient>
+          <mask id="ribbon-flow-edge-mask" maskUnits="userSpaceOnUse" x="-180" y="0" width="1545.65" height="3200.02" mask-type="luminance">
+            <rect x="-180" y="0" width="1545.65" height="3200.02" fill="#000" />
+            <rect class="ribbon-flow__reveal-body" x="-180" y="0" width="1545.65" height="0" fill="#fff" />
+            <rect class="ribbon-flow__reveal-edge" x="-180" y="0" width="1545.65" height="0" fill="url(#ribbon-flow-head-fade)" />
+          </mask>
+        </defs>
+        <path class="ribbon-flow__path" opacity="1" vector-effect="non-scaling-stroke" stroke-dasharray="none" d="M500.04 100.008C596.64 236.708 1146.64 646.708 1080.04 920.008C1013.34 1193.31 106.64 1503.31 100.04 1740.01C93.3402 1976.71 956.64 2113.31 1040.04 2340.01C1123.34 2566.71 673.34 2973.31 600.04 3100.01" stroke="url(#ribbon-flow-gradient)" stroke-width="360" stroke-linecap="round" stroke-linejoin="round" fill="none" mask="url(#ribbon-flow-edge-mask)" />
+      </svg>
+
+    <!-- ===================== ZETRIX-POWERED TOOLS ===================== -->
+    <section class="tools" data-tools-track>
+      <div class="tools__pin">
+        <img class="tools__section-frame" src="assets/tools-art/tools-section-frame.svg" alt="" aria-hidden="true" />
+        <div class="tools__inner">
+        <div class="tools__left">
+          <h2 class="section-heading">Zetrix-powered tools and services</h2>
+          <p class="tools__sub">Real applications built on Zetrix — for identity, credentials, and cross-border trade.</p>
+
+          <div class="tool-grid">
+            <article class="tool-card">
+              <div class="tool-card__top">
+                <span class="tool-card__icon" aria-hidden="true"><img src="assets/icons/lucide-fingerprint.svg" alt="" /></span>
+                <span class="tool-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span>
+              </div>
+              <div class="tool-card__text">
+                <h3 class="tool-card__title">ZID</h3>
+                <p class="tool-card__desc">Privacy-preserving digital identity.</p>
+              </div>
+            </article>
+
+            <article class="tool-card">
+              <div class="tool-card__top">
+                <span class="tool-card__icon" aria-hidden="true"><img src="assets/icons/lucide-badge-check.svg" alt="" /></span>
+                <span class="tool-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span>
+              </div>
+              <div class="tool-card__text">
+                <h3 class="tool-card__title">ZCert</h3>
+                <p class="tool-card__desc">Issue and verify tamper-evident credentials.</p>
+              </div>
+            </article>
+
+            <article class="tool-card">
+              <div class="tool-card__top">
+                <span class="tool-card__icon" aria-hidden="true"><img src="assets/icons/lucide-scroll-text.svg" alt="" /></span>
+                <span class="tool-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span>
+              </div>
+              <div class="tool-card__text">
+                <h3 class="tool-card__title">ZTrade</h3>
+                <p class="tool-card__desc">Digitise and verify cross-border trade documentation.</p>
+              </div>
+            </article>
+
+            <article class="tool-card">
+              <div class="tool-card__top">
+                <span class="tool-card__icon" aria-hidden="true"><img src="assets/icons/lucide-banknote.svg" alt="" /></span>
+                <span class="tool-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span>
+              </div>
+              <div class="tool-card__text">
+                <h3 class="tool-card__title">ZTradeFi</h3>
+                <p class="tool-card__desc">Connect trusted trade data with financing workflows.</p>
+              </div>
+            </article>
+
+            <article class="tool-card">
+              <div class="tool-card__top">
+                <span class="tool-card__icon" aria-hidden="true"><img src="assets/icons/lucide-coins.svg" alt="" /></span>
+                <span class="tool-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span>
+              </div>
+              <div class="tool-card__text">
+                <h3 class="tool-card__title">ZEFi</h3>
+                <p class="tool-card__desc">Stake ZETRIX and participate in the network.</p>
+              </div>
+            </article>
+
+            <article class="tool-card">
+              <div class="tool-card__top">
+                <span class="tool-card__icon" aria-hidden="true"><img src="assets/icons/lucide-wallet.svg" alt="" /></span>
+                <span class="tool-card__arrow" aria-hidden="true"><img src="assets/icons/arrow-up-right.svg" alt="" /></span>
+              </div>
+              <div class="tool-card__text">
+                <h3 class="tool-card__title">Zetrix Wallet</h3>
+                <p class="tool-card__desc">Manage assets, credentials, and decentralised applications.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="tools__art" data-tools-art aria-hidden="true">
+          <img class="tools__art-layer tools__art-particles" src="assets/tools-art/tools-art-particles.svg" alt="" />
+          <img class="tools__art-layer tools__art-small-cubes" src="assets/tools-art/tools-art-small-cubes.svg" alt="" />
+          <img class="tools__art-layer tools__art-ticks" src="assets/tools-art/tools-art-ticks.svg" alt="" />
+          <img class="tools__art-layer tools__art-connectors" src="assets/tools-art/tools-art-connectors.svg" alt="" />
+
+          <img class="tools__cube tools__cube--bottom" data-tools-cube="bottom" src="assets/tools-art/tools-blockchain-cube.webp" alt="" />
+          <img class="tools__cube tools__cube--centre" data-tools-cube="centre" src="assets/tools-art/tools-blockchain-cube.webp" alt="" />
+          <img class="tools__cube tools__cube--top" data-tools-cube="top" src="assets/tools-art/tools-blockchain-cube.webp" alt="" />
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- ===================== INTELLIGENCE GROUNDED IN IDENTITY ===================== -->
+    <section class="ai-layer" data-ai-ribbon-track>
+      <div class="ai-layer__pin">
+      <div class="ai-layer__backdrop" aria-hidden="true">
+        <img class="ai-layer__frame" src="assets/tools-art/tools-section-frame.svg" alt="" />
+        <img class="ai-layer__particles" src="assets/tools-art/tools-art-particles.svg" alt="" />
+      </div>
+
+      <div class="ai-layer__inner">
+        <h2 class="section-heading section-heading--center"><span class="ai-heading__line">Intelligence grounded in</span><br class="ai-heading__break ai-heading__break--mobile" /> <span class="ai-heading__line">identity</span><br class="ai-heading__break ai-heading__break--desktop" /> <span class="ai-heading__line">and values.</span></h2>
+
+        <div class="ai-cards">
+          <article class="ai-card">
+            <div class="ai-card__media ai-card__media--nurai">
+              <div class="ai-card__media-stage">
+                <img class="ai-card__base-image" src="assets/img/ai-nurai-illustration.webp" width="1080" height="680" alt="NurAI product preview" />
+              </div>
+            </div>
+            <div class="ai-card__body">
+              <h3 class="ai-card__title">The World’s First Shariah-Aligned Intelligence Model</h3>
+              <p class="ai-card__desc">A Shariah-aligned, multilingual AI foundation for culturally , and institutionally relevant services.</p>
+              <a class="btn btn--red ai-card__cta" href="https://nur-ai.ai/" target="_blank" rel="noopener noreferrer" aria-label="Know more about NurAI">Know more <span class="arrow-ext" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+            </div>
+          </article>
+
+          <article class="ai-card">
+            <div class="ai-card__media ai-card__media--avatar">
+              <div class="ai-card__media-stage">
+                <img class="ai-card__base-image" src="assets/img/ai-avatar-illustration.webp" width="1080" height="680" alt="Avatar agent product preview" />
+              </div>
+            </div>
+            <div class="ai-card__body">
+              <h3 class="ai-card__title">Your Agentic Twin</h3>
+              <p class="ai-card__desc">An AI agent with verified identity that can represent users or organisations and execute approved tasks.</p>
+              <a class="btn btn--red ai-card__cta" href="https://avatar.inc/" target="_blank" rel="noopener noreferrer" aria-label="Know more about Avatar">Know more <span class="arrow-ext" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- ===================== INTELLIGENCE MOVES INTO THE REAL WORLD ===================== -->
+    <section class="robotics">
+      <div class="robotics__pin" data-robotics-carousel>
+        <div class="robotics__inner">
+          <header class="robotics__heading">
+            <h2 class="section-heading section-heading--center robotics__title">Intelligence moves into the real world.</h2>
+            <p class="section-sub section-sub--center robotics__subtitle">Humanoid and autonomous robotics bring intelligent automation into research, services, facilities, and industrial operations.</p>
+          </header>
+
+          <div class="robot-cards">
+            <article class="robot-card">
+              <img class="robot-card__image" src="assets/img/robotics-pm01.webp" alt="PM01 humanoid robot" />
+              <div class="robot-card__caption">
+                <div class="robot-card__meta"><span>01</span><img class="robot-card__arrow" src="assets/icons/arrow-up-right.svg" alt="" aria-hidden="true" /></div>
+                <h3 class="robot-card__title">PM01</h3>
+                <p class="robot-card__desc">An agile humanoid platform for development, research, and embodied-AI experiences.</p>
+              </div>
+            </article>
+            <article class="robot-card">
+              <img class="robot-card__image" src="assets/img/robotics-leju-kuavo.webp" alt="Leju Kuavo humanoid robot" />
+              <div class="robot-card__caption">
+                <div class="robot-card__meta"><span>02</span><img class="robot-card__arrow" src="assets/icons/arrow-up-right.svg" alt="" aria-hidden="true" /></div>
+                <h3 class="robot-card__title">Leju Kuavo</h3>
+                <p class="robot-card__desc">A humanoid robotics platform for embodied intelligence and real-world applications.</p>
+              </div>
+            </article>
+            <article class="robot-card">
+              <img class="robot-card__image" src="assets/img/robotics-gausium.webp" alt="Gausium autonomous cleaning robots" />
+              <div class="robot-card__caption">
+                <div class="robot-card__meta"><span>03</span><img class="robot-card__arrow" src="assets/icons/arrow-up-right.svg" alt="" aria-hidden="true" /></div>
+                <h3 class="robot-card__title">Gausium</h3>
+                <p class="robot-card__desc">Autonomous cleaning robots for commercial and industrial facilities.</p>
+              </div>
+            </article>
+          </div>
+          <div class="robotics__controls" aria-label="Robotics products">
+            <button class="robotics__btn" id="robotics-prev" type="button" aria-label="Previous robotics product" disabled>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <span class="robotics__progress" aria-hidden="true"><i class="is-active"></i><i></i><i></i></span>
+            <span class="robotics__status" id="robotics-status" aria-live="polite" aria-atomic="true">01 / 03</span>
+            <button class="robotics__btn" id="robotics-next" type="button" aria-label="Next robotics product">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <p class="fig-note">Fig. 5 — Robotics layer</p>
+    </section>
+    </div>
+    </div>
+
+    <!-- ===================== BLOCKCHAIN PROVES / CTA HANDOFF ===================== -->
+    <div class="layers-cta-handoff" data-layers-handoff>
+    <section class="layers-track" aria-labelledby="layers-title">
+      <div class="layers__pin" id="connected-ecosystem">
+        <div class="layers__inner">
+          <header class="layers__heading">
+            <h2 class="section-heading section-heading--center" id="layers-title"><span class="layers__title-line">Blockchain proves.</span> <span class="layers__title-line">AI decides.</span><br class="layers__title-break" /><span class="layers__title-line">Robotics acts.</span></h2>
+            <p class="section-sub section-sub--center">Three layers of one Zetrix ecosystem—turning trusted data into intelligent decisions and intelligent decisions into measurable action.</p>
+          </header>
+
+          <div class="carousel" data-carousel>
+            <div class="carousel__stack">
+              <article class="carousel__card" data-slide-index="0">
+                <img src="assets/img/connected-ecosystem-blockchain.webp" width="1672" height="941" alt="Blockchain identity and verification layer" />
+              </article>
+              <article class="carousel__card" data-slide-index="1">
+                <img src="assets/img/connected-ecosystem-ai.webp" width="1672" height="941" alt="AI intelligence and decision layer" />
+              </article>
+              <article class="carousel__card" data-slide-index="2">
+                <img src="assets/img/connected-ecosystem-robotics.webp" width="1672" height="941" alt="Robotics execution layer" />
+              </article>
+            </div>
+
+            <div class="carousel__foot">
+              <div class="carousel__text" id="carousel-status" aria-live="polite" aria-atomic="true">
+                <h3 class="carousel__title">Blockchain</h3>
+                <p class="carousel__desc">Verifies identity, credentials, ownership, and transactions.</p>
+              </div>
+              <div class="carousel__controls" aria-label="Ecosystem layers">
+                <button class="carousel__btn" id="carousel-prev" type="button" aria-label="Previous ecosystem layer" disabled>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <span class="carousel__progress" aria-hidden="true"><i class="is-active"></i><i></i><i></i></span>
+                <button class="carousel__btn" id="carousel-next" type="button" aria-label="Next ecosystem layer">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== #BUIDLREAL CTA ===================== -->
+    <section class="cta">
+      <div class="cta__panel">
+        <img class="cta__backdrop" src="assets/img/cta-buidlreal.webp" alt="" aria-hidden="true" />
+        <div class="cta__content">
+          <h2 class="cta__title">#BUIDLREAL on Zetrix</h2>
+          <p class="cta__desc">Explore enterprise solutions or build directly on Zetrix — the network for digital trust, intelligent systems, and real-world automation.</p>
+          <div class="cta__actions">
+            <a class="btn btn--red cta__btn" href="#">Get Started</a>
+            <a class="btn btn--outline cta__btn" href="#">Contact the team</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="partners" aria-label="Partner of our AI Lab">
+        <p class="partners__label">Partner of our AI Lab</p>
+        <div class="partners__marquee">
+          <div class="partners__track">
+            <span class="partner-pill partner-pill--crest"><img src="assets/partners/beihang.webp" alt="Beihang University" /></span>
+            <span class="partner-pill"><img src="assets/partners/alibaba-cloud.svg" alt="Alibaba Cloud" /></span>
+            <span class="partner-pill"><img src="assets/partners/deepseek.svg" alt="DeepSeek" /></span>
+            <span class="partner-pill"><img src="assets/partners/dji.webp" alt="DJI" /></span>
+            <span class="partner-pill"><img src="assets/partners/huawei.svg" alt="Huawei" /></span>
+            <span class="partner-pill"><img src="assets/partners/leju.webp" alt="Leju Robot" /></span>
+            <span class="partner-pill"><img src="assets/partners/raisound.webp" alt="Raisound" /></span>
+            <span class="partner-pill"><img src="assets/partners/speakly-ai.webp" alt="Speakly AI" /></span>
+            <span class="partner-pill partner-pill--crest" aria-hidden="true"><img src="assets/partners/beihang.webp" alt="" /></span>
+            <span class="partner-pill" aria-hidden="true"><img src="assets/partners/alibaba-cloud.svg" alt="" /></span>
+            <span class="partner-pill" aria-hidden="true"><img src="assets/partners/deepseek.svg" alt="" /></span>
+            <span class="partner-pill" aria-hidden="true"><img src="assets/partners/dji.webp" alt="" /></span>
+            <span class="partner-pill" aria-hidden="true"><img src="assets/partners/huawei.svg" alt="" /></span>
+            <span class="partner-pill" aria-hidden="true"><img src="assets/partners/leju.webp" alt="" /></span>
+            <span class="partner-pill" aria-hidden="true"><img src="assets/partners/raisound.webp" alt="" /></span>
+            <span class="partner-pill" aria-hidden="true"><img src="assets/partners/speakly-ai.webp" alt="" /></span>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="footer__top">
+          <nav class="footer__nav" aria-label="Footer">
+            <div class="footer__col">
+              <h4 class="footer__head">Product</h4>
+              <a href="#">#BUIDL With Zetrix</a>
+              <a href="#">Bug Bounty Programme</a>
+            </div>
+            <div class="footer__col">
+              <h4 class="footer__head">Individuals</h4>
+              <a href="#">Zetrix Wallet</a>
+            </div>
+            <div class="footer__col">
+              <h4 class="footer__head">Ecosystem</h4>
+              <a href="#">Zetrix Ecosystem</a>
+              <a href="#">Accelerator</a>
+            </div>
+            <div class="footer__col">
+              <h4 class="footer__head">Tools</h4>
+              <a href="#">Node Monitor</a>
+              <a href="#">Block Explorer</a>
+              <a href="#">Smart Contract</a>
+            </div>
+            <div class="footer__col">
+              <h4 class="footer__head">Discover</h4>
+              <a href="#">About Zetrix</a>
+              <a href="#">Media and community</a>
+              <a href="#">Careers</a>
+            </div>
+          </nav>
+          <div class="footer__socials" aria-label="Zetrix social channels">
+            <a href="#" aria-label="Telegram" class="social"><img src="assets/footer/telegram.svg" alt="" /></a>
+            <a href="#" aria-label="Discord" class="social"><img src="assets/footer/discord.svg" alt="" /></a>
+            <a href="#" aria-label="X" class="social"><img src="assets/footer/x.svg" alt="" /></a>
+            <a href="#" aria-label="TikTok" class="social"><img src="assets/footer/tiktok.svg" alt="" /></a>
+          </div>
+        </div>
+
+        <div class="footer__brand">
+          <div class="footer__wordmark-art" data-footer-spotlight aria-hidden="true">
+            <img class="footer__wordmark-base" src="assets/footer/zetrix-wordmark-fill.svg" alt="" />
+            <img class="footer__wordmark-color-trail footer__wordmark--dark" src="assets/footer/zetrix-wordmark-fill.svg" alt="" />
+            <img class="footer__wordmark-spotlight footer__wordmark--dark" src="assets/footer/zetrix-wordmark-fill.svg" alt="" />
+            <img class="footer__wordmark-color-trail footer__wordmark--light" src="assets/footer/zetrix-wordmark-fill-light.svg" alt="" />
+            <img class="footer__wordmark-spotlight footer__wordmark--light" src="assets/footer/zetrix-wordmark-fill-light.svg" alt="" />
+          </div>
+          <div class="footer__bottom">
+            <p class="footer__copy">© 2026 Zetrix. All rights reserved.</p>
+            <div class="footer__legal">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="vendor/three.min.js"></script>
+  <script src="vendor/OrbitControls.js"></script>
+  <script src="js/globe-data.js"></script>
+  <script src="js/globe-explosion.js" defer></script>
+  <script src="js/globe-network.js" defer></script>
+  <script src="js/globe.js" defer></script>
+  <script src="js/site-intro.js" defer></script>
+  <script src="js/site-reveal.js" defer></script>
+  <script src="js/robotics-carousel.js" defer></script>
+  <script src="js/hero-ecosystem-handoff.js" defer></script>
+  <script src="js/tools-motion.js" defer></script>
+  <script src="js/ribbon-flow-motion.js" defer></script>
+  <script src="js/cards.js" defer></script>
+  <script src="js/layers-carousel.js" defer></script>
+  <script src="js/theme-toggle.js" defer></script>
+  <script src="js/nav-dropdown.js" defer></script>
+  <script src="js/footer-spotlight.js" defer></script>
+</body>
+</html>

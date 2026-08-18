@@ -1,0 +1,11 @@
+/*
+ * The Zetrix landing page is styled entirely by /public/css/styles.css,
+ * which is linked in src/app/layout.tsx. That hand-authored stylesheet owns
+ * the full design system (fonts, colours, layout, animations).
+ *
+ * Tailwind is installed and configured for NEW components your engineers add.
+ * Its preflight/base reset is intentionally NOT imported here, because it would
+ * override the existing design. To use Tailwind on new pages/components, add:
+ *     @import "tailwindcss";
+ * (ideally scoped so it doesn't affect the existing landing page markup).
+ */
