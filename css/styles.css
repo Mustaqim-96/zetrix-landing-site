@@ -3521,8 +3521,8 @@ html[data-theme="light"] .footer__wordmark-art .footer__wordmark--light { displa
   /* Connected ecosystem */
   .layers__pin { padding: 60px 20px; }
   .layers__inner {
-    top: 100px;
-    bottom: 44px;
+    top: 80px;
+    bottom: 32px;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -3530,25 +3530,25 @@ html[data-theme="light"] .footer__wordmark-art .footer__wordmark--light { displa
     transform: translateX(-50%);
   }
   .layers__heading .section-sub { margin-top: 12px; }
-  .carousel { margin-top: 32px; }
+  .carousel { margin-top: 64px; }
   .carousel__stack {
     width: 350px;
     max-width: 100%;
-    height: 220px;
+    height: 168px;
   }
   .carousel__card {
     top: 0;
     left: 0;
     width: 100%;
-    height: 220px;
+    height: 168px;
     padding: 8px;
     border-radius: 12px;
   }
   .carousel__card img { border-radius: 8px; }
   .carousel__foot {
     align-items: center;
-    gap: 20px;
-    margin-top: 16px;
+    gap: 16px;
+    margin-top: 12px;
   }
   .carousel__text { text-align: center; }
   .carousel__title { font-size: 24px; line-height: 30px; }
