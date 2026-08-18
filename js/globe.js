@@ -144,6 +144,11 @@
     controls.autoRotateSpeed = 0.55;
     controls.minPolarAngle = Math.PI * 0.28;
     controls.maxPolarAngle = Math.PI * 0.72;
+    // OrbitControls sets touch-action:none on the canvas, which traps vertical
+    // page scroll on touch devices — a finger drag on the globe rotates instead
+    // of scrolling the page. Re-allow vertical panning: vertical swipes scroll
+    // the page, horizontal drags still rotate the globe.
+    renderer.domElement.style.touchAction = 'pan-y';
   }
 
   var globe = new THREE.Group();

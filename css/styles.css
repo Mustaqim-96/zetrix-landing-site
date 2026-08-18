@@ -3521,8 +3521,8 @@ html[data-theme="light"] .footer__wordmark-art .footer__wordmark--light { displa
   /* Connected ecosystem */
   .layers__pin { padding: 60px 20px; }
   .layers__inner {
-    top: 120px;
-    bottom: 60px;
+    top: 100px;
+    bottom: 44px;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -3530,7 +3530,7 @@ html[data-theme="light"] .footer__wordmark-art .footer__wordmark--light { displa
     transform: translateX(-50%);
   }
   .layers__heading .section-sub { margin-top: 12px; }
-  .carousel { margin-top: 64px; }
+  .carousel { margin-top: 32px; }
   .carousel__stack {
     width: 350px;
     max-width: 100%;
