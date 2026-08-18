@@ -3019,7 +3019,10 @@ html[data-theme="light"] .footer__wordmark-art .footer__wordmark--light { displa
   .tools__sub { margin-inline: auto; }
   .tool-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .tool-card { text-align: left; }
-  .tools__art { display: none; }
+  /* Tablet: drop the blockchain cubes/particles and the section frame so only
+     the ribbon shows behind this section. */
+  .tools__art,
+  .tools__section-frame { display: none; }
 
   .ribbon-flow__visual {
     left: 50%;
@@ -3413,11 +3416,10 @@ html[data-theme="light"] .footer__wordmark-art .footer__wordmark--light { displa
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
   }
-  .tools__art {
-    --tools-art-active-opacity: .17;
-    right: -330px;
-    transform: scale(.62);
-  }
+  /* Mobile: drop the blockchain cubes/particles and the section frame so only
+     the ribbon shows behind this section. */
+  .tools__art,
+  .tools__section-frame { display: none; }
 
   /* Identity-grounded intelligence */
   .ai-layer,
