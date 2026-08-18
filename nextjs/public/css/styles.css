@@ -4071,18 +4071,19 @@ html[data-theme="light"] .eco-progress i { background: rgba(24, 24, 27, .30); }
 html[data-theme="light"] .eco-progress i.is-active { background: #18181b; }
 
 @media (max-width: 767px) {
-  /* Un-pin the section + zero the side padding so the carousel runs full-bleed
-     (each card fills the screen width). The heading keeps its own side padding. */
-  .ecosystem { padding: 0; }
+  /* Outer card (.eco-card) sits inset from the edges like the CTA card — NOT
+     full-bleed. The inner animation cards swipe full-width WITHIN it. */
+  .ecosystem { padding: 0 20px; }
   .eco-track { height: auto; }
   .eco-pin { position: static; min-height: 0; display: block; padding: 0; }
   .eco-card {
     display: block;
     height: auto;
     max-height: none;
-    padding: 32px 0;
+    padding: 24px 16px;
+    overflow: hidden;
   }
-  .eco-card__left { padding: 0 20px; }
+  .eco-card__left { padding: 0; }
   .eco-card__bg { opacity: 1; transform: translate(-50%, -50%); }
 
   /* Horizontal swipe track */
@@ -4095,9 +4096,8 @@ html[data-theme="light"] .eco-progress i.is-active { background: #18181b; }
     max-width: none;
     height: auto;
     margin: 24px 0 0;
-    padding: 0 20px;
-    scroll-padding-inline: 20px;
-    gap: 24px;
+    padding: 0;
+    gap: 20px;
     justify-content: flex-start;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -4111,8 +4111,8 @@ html[data-theme="light"] .eco-progress i.is-active { background: #18181b; }
   .eco-fcard,
   .eco-fcard.is-shown {
     position: static;
-    flex: 0 0 calc(100vw - 40px);
-    width: calc(100vw - 40px);
+    flex: 0 0 100%;
+    width: 100%;
     height: auto;
     opacity: 1;
     transform: none;
