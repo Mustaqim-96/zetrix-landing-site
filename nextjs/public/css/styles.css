@@ -2234,8 +2234,10 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
 .layers-cta-handoff {
   position: relative;
   height: 400vh;
+  /* Stable small-viewport height (matches every other scroll-jacked section).
+     Using dvh here made the container resize as the mobile address bar hid/showed,
+     and at 400x that lurch threw the scroll toward the footer. */
   height: 400svh;
-  height: 400dvh;
 }
 .layers-track {
   position: sticky;
@@ -2243,7 +2245,6 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
   width: 100%;
   height: 100vh;
   height: 100svh;
-  height: 100dvh;
   z-index: 1;
   /* opaque page background so the sticky hero (+ its red aurora) doesn't bleed through */
   background: var(--bg);
@@ -2253,7 +2254,6 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
   width: 100%;
   height: 100vh;
   height: 100svh;
-  height: 100dvh;
   overflow: hidden;
 }
 .layers__inner {
@@ -3976,7 +3976,6 @@ html[data-theme="light"] .social:focus-visible { border-color: rgba(24, 24, 27, 
     height: auto;
     min-height: 100vh;
     min-height: 100svh;
-    min-height: 100dvh;
     overflow: visible;
     padding: 96px 24px 80px;
   }
