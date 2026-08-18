@@ -2325,7 +2325,9 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
   margin: 24px auto 0;
 }
 .carousel__text {
-  width: 438px;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 480px;
 }
 .carousel__title {
   font-family: var(--font-body);
