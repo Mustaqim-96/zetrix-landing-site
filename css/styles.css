@@ -3272,9 +3272,9 @@ html[data-theme="light"] .footer__wordmark-art .footer__wordmark--light { displa
   }
   .eco-card {
     width: 100%;
-    height: min(820px, calc(100svh - 72px));
-    max-height: none;
-    padding: 32px 16px 20px;
+    height: auto;
+    max-height: calc(100svh - 24px);
+    padding: 32px 16px;
     display: grid;
     grid-template-rows: auto minmax(0, 1fr);
     align-content: start;
@@ -3292,11 +3292,22 @@ html[data-theme="light"] .footer__wordmark-art .footer__wordmark--light { displa
     width: 760px;
     opacity: .5;
   }
+  /* Anchor the blockchain-cube backdrop to the bottom of the card on phones. */
+  .eco-card__bg {
+    top: auto;
+    bottom: 0;
+    width: 150%;
+    min-width: 620px;
+    transform: translateX(-50%) translate3d(-32px, 36px, 0) scale(1.06);
+  }
+  .eco-card__bg.is-in {
+    transform: translateX(-50%) translate3d(0, 0, 0) scale(1);
+  }
   .eco-stack {
     position: relative;
     display: block;
     width: min(100%, 523px);
-    height: 460px;
+    height: 436px;
     margin: 0 0 0 auto;
     justify-self: end;
   }
