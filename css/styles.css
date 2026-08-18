@@ -4081,6 +4081,7 @@ html[data-theme="light"] .eco-progress i.is-active { background: #18181b; }
     height: auto;
     max-height: none;
     padding: 24px 16px;
+    overflow: hidden;
   }
   .eco-card__left { padding: 0; }
   .eco-card__bg { opacity: 1; transform: translate(-50%, -50%); }
@@ -4110,11 +4111,8 @@ html[data-theme="light"] .eco-progress i.is-active { background: #18181b; }
   .eco-fcard,
   .eco-fcard.is-shown {
     position: static;
-    /* Fixed width = the card's content area (viewport - 40px outer margin -
-       32px card padding). A fixed basis (like the robotics carousel) snaps
-       cleanly on iOS; flex-basis:100% mis-measured and cropped mid-swipe. */
-    flex: 0 0 calc(100vw - 74px);
-    width: calc(100vw - 74px);
+    flex: 0 0 100%;
+    width: 100%;
     height: auto;
     opacity: 1;
     transform: none;
