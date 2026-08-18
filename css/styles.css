@@ -4097,7 +4097,7 @@ html[data-theme="light"] .eco-progress i.is-active { background: #18181b; }
     margin: 24px 0 0;
     padding: 0 20px;
     scroll-padding-inline: 20px;
-    gap: 16px;
+    gap: 24px;
     justify-content: flex-start;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
