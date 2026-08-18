@@ -3576,35 +3576,35 @@ html[data-theme="light"] .footer__wordmark-art .footer__wordmark--light { displa
     min-height: 0;
     padding: 60px 20px;
   }
+  /* Stacked layout on phones: text/buttons on top, mascot image below — so the
+     mascot can never be covered by the heading or buttons at any screen height. */
   .cta__panel {
-    /* Match the Section 2 card height (.eco-card). */
-    height: min(780px, calc(100svh - 120px));
+    height: auto;
     min-height: 0;
     background: #111216;
     border-radius: 28px;
+    display: flex;
+    flex-direction: column;
   }
-  .cta__panel::after {
-    background: linear-gradient(180deg, #060608 0%, rgba(6, 6, 8, .96) 42%, rgba(6, 6, 8, .38) 72%, rgba(6, 6, 8, .08) 100%);
-    -webkit-mask-image: radial-gradient(ellipse 34% 33% at 74% 78%, transparent 0 48%, rgba(0, 0, 0, .28) 64%, #000 84%);
-    mask-image: radial-gradient(ellipse 34% 33% at 74% 78%, transparent 0 48%, rgba(0, 0, 0, .28) 64%, #000 84%);
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
+  .cta__panel::after { content: none; }
+  .cta__content {
+    position: static;
+    inset: auto;
+    width: 100%;
+    transform: none;
+    padding: 40px 20px 0;
+    text-align: center;
   }
   .cta__backdrop {
+    position: static;
     inset: auto;
-    bottom: 0;
-    left: -40.27%;
-    width: 140.3%;
-    height: auto;
+    order: 2;
+    width: 100%;
+    height: 300px;
     max-width: none;
-    object-fit: contain;
-  }
-  .cta__content {
-    top: 40px;
-    left: 20px;
-    width: calc(100% - 40px);
-    transform: none;
-    text-align: center;
+    margin-top: 24px;
+    object-fit: cover;
+    object-position: 62% center;
   }
   .cta__title { font-size: 32px; line-height: 42px; }
   .cta__desc {
