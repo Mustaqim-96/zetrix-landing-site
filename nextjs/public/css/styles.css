@@ -3581,7 +3581,8 @@ html[data-theme="light"] .footer__wordmark-art .footer__wordmark--light { displa
   .cta__panel {
     height: auto;
     min-height: 0;
-    background: #111216;
+    /* Match the mascot image's backdrop so the card and image blend seamlessly. */
+    background: #0e0f13;
     border-radius: 28px;
     display: flex;
     flex-direction: column;
