@@ -3847,6 +3847,16 @@ html[data-theme="light"] .ai-card__desc,
 html[data-theme="light"] .robotics__subtitle,
 html[data-theme="light"] .robot-card__desc,
 html[data-theme="light"] .carousel__desc { color: var(--theme-text-secondary); }
+/* Light mode: the robotics carousel controls are white by default, which
+   disappears on the light background. Give them dark colours so the
+   prev/next buttons and progress bars are visible. */
+html[data-theme="light"] .robotics__btn {
+  color: #18181b;
+  border-color: rgba(24, 24, 27, .22);
+}
+html[data-theme="light"] .robotics__btn:hover { background: rgba(24, 24, 27, .06); }
+html[data-theme="light"] .robotics__progress i { background: rgba(24, 24, 27, .30); }
+html[data-theme="light"] .robotics__progress i.is-active { background: #18181b; }
 html[data-theme="light"] .fig-note { color: var(--theme-text-tertiary); }
 html[data-theme="light"] .ecosystem::before,
 html[data-theme="light"] .cta::before {
