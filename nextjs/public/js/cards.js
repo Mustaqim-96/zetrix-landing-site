@@ -11,8 +11,25 @@
   if (!cards.length) return;
 
   // Vertical cascade offset between stacked cards (matches Figma spacing).
-  var viewportWidth = window.innerWidth || document.documentElement.clientWidth || 1024;
-  var OFFSET = viewportWidth < 768 ? 56 : (viewportWidth < 1024 ? 72 : 96);
+  // On phones the titles wrap to 2–3 lines, so a fixed peek clips the last line
+  // behind the next card. Size the phone peek to the tallest title (measured
+  // live) so every dealt card shows its full title. Recomputed on resize.
+  function headPadTop(card) {
+    var head = card.querySelector('.eco-fcard__head');
+    return head ? (parseFloat(getComputedStyle(head).paddingTop) || 0) : 0;
+  }
+  function computeOffset() {
+    var vw = window.innerWidth || document.documentElement.clientWidth || 1024;
+    if (vw >= 1024) return 96;
+    if (vw >= 768) return 72;
+    var need = 56; // floor
+    cards.forEach(function (card) {
+      var title = card.querySelector('.eco-fcard__title');
+      if (title) need = Math.max(need, headPadTop(card) + title.offsetHeight + 8);
+    });
+    return Math.ceil(need);
+  }
+  var OFFSET = computeOffset();
 
   // Cards accumulate into a pile: cards before the active one peek above it
   // (already dealt), the active one is expanded on top, later cards stay hidden
@@ -78,6 +95,11 @@
     setActive(cards.length - 1); // show the full stack, no scrubbing
     current = cards.length - 1;
     setCoinVisible(true);
+    window.addEventListener('resize', function () { OFFSET = computeOffset(); setActive(current); });
+    // Titles are measured, so re-run once the web font has settled.
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () { OFFSET = computeOffset(); setActive(current); });
+    }
   } else {
     var ticking = false;
     function update() {
@@ -94,7 +116,11 @@
       if (!ticking) { ticking = true; requestAnimationFrame(update); }
     }
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
+    window.addEventListener('resize', function () { OFFSET = computeOffset(); onScroll(); });
+    // Titles are measured, so re-run once the web font has settled.
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () { OFFSET = computeOffset(); onScroll(); });
+    }
     setActive(-1); current = -1; // start empty
     update();
   }
