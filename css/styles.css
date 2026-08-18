@@ -3278,7 +3278,7 @@ html[data-theme="light"] .footer__wordmark-art .footer__wordmark--light { displa
     display: grid;
     grid-template-rows: auto minmax(0, 1fr);
     align-content: start;
-    gap: 16px;
+    gap: 28px;
     border-radius: 24px;
   }
   .eco-card__sub {
@@ -3321,15 +3321,18 @@ html[data-theme="light"] .footer__wordmark-art .footer__wordmark--light { displa
     opacity: 0;
   }
   .eco-fcard.is-shown .eco-fcard__panel {
-    max-height: 176px;
+    max-height: 200px;
     opacity: 1;
   }
   .node-panel {
-    min-height: 150px;
+    min-height: 0;
     margin: 0 16px 16px;
-    padding: 16px;
+    padding: 14px;
     border-radius: 12px;
   }
+  /* Smaller illustration on phones so the panel + its bottom padding fit
+     inside the card without being clipped. */
+  .node-illus { max-width: 210px; }
 
   /* Tools */
   .tools,
