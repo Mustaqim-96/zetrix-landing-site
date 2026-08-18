@@ -554,8 +554,21 @@
     }, 6000);
   }
 
+  // Pause the WebGL render loop when the globe scrolls out of view. A globe
+  // that keeps rendering at 60fps behind the rest of the page is a major
+  // scroll-jank source on every device; only render while it's on screen
+  // (or mid-entrance). A small rootMargin resumes it just before it reappears.
+  var globeOnScreen = true;
+  if (typeof IntersectionObserver === "function") {
+    var visObserver = new IntersectionObserver(function (entries) {
+      globeOnScreen = entries[entries.length - 1].isIntersecting;
+    }, { rootMargin: "150px" });
+    visObserver.observe(container);
+  }
+
   (function animate() {
     requestAnimationFrame(animate);
+    if (!globeOnScreen && !entranceActive) return; // off-screen: skip render work
     var now = (window.performance && performance.now) ? performance.now() : t0;
     applyThemeMaterials();
     if (entranceActive) {
