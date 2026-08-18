@@ -720,10 +720,10 @@ html[data-theme="light"] .hero__aurora::after {
     background: linear-gradient(to top, #18181b 58%, #c5242e 215%);
   }
   .hero__aurora::before {
-    background: radial-gradient(42% 46% at 50% 50%, rgba(197, 36, 46, .26), transparent 66%);
+    background: radial-gradient(28% 32% at 50% 50%, rgba(197, 36, 46, .26), transparent 62%);
   }
   .hero__aurora::after {
-    background: radial-gradient(48% 44% at 50% 50%, rgba(228, 34, 46, .18), transparent 70%);
+    background: radial-gradient(32% 30% at 50% 50%, rgba(228, 34, 46, .18), transparent 64%);
   }
 }
 .hero__content {
