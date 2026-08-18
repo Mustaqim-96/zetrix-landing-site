@@ -4116,26 +4116,16 @@ html[data-theme="light"] .eco-progress i.is-active { background: #18181b; }
     height: auto;
     opacity: 1;
     transform: none;
-    overflow: hidden;              /* clip the full-width panel to the card's rounded corners */
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }
-  /* Illustration always visible (no deal-in collapse) */
+  /* Illustration always visible (no deal-in collapse); animation box keeps its
+     inset/web-like look (the earlier .node-panel/.node-illus rules apply). */
   .eco-fcard__panel,
   .eco-fcard.is-shown .eco-fcard__panel {
     max-height: none;
     opacity: 1;
   }
-  /* The animation box fills the full width of the card (was inset 16px). */
-  .node-panel {
-    margin: 0;
-    padding: 12px;
-    border-radius: 0;
-    border-left: 0;
-    border-right: 0;
-    border-bottom: 0;
-  }
-  .node-illus { max-width: 100%; }
 
   /* Pagination controls */
   .eco-controls {
