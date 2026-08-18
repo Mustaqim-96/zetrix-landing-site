@@ -4056,3 +4056,107 @@ html[data-theme="light"] .social:focus-visible { border-color: rgba(24, 24, 27, 
 @media (max-width: 767px) and (prefers-reduced-motion: reduce) {
   .layers__pin { padding: 60px 20px; }
 }
+
+/* ============================================================
+   Section 2 (ecosystem) — mobile horizontal carousel
+   Phones show the eco cards as a horizontal swipe carousel with
+   prev/next + progress (like the robotics section) instead of the
+   scroll-driven deck. Desktop/tablet keep the deck (cards.js).
+   ============================================================ */
+.eco-controls { display: none; }
+/* Light mode: controls default to white (invisible on the light bg) */
+html[data-theme="light"] .eco-btn { color: #18181b; border-color: rgba(24, 24, 27, .22); }
+html[data-theme="light"] .eco-btn:hover { background: rgba(24, 24, 27, .06); }
+html[data-theme="light"] .eco-progress i { background: rgba(24, 24, 27, .30); }
+html[data-theme="light"] .eco-progress i.is-active { background: #18181b; }
+
+@media (max-width: 767px) {
+  /* Un-pin the section: no scroll-jacking, natural height */
+  .eco-track { height: auto; }
+  .eco-pin { position: static; min-height: 0; display: block; padding: 0; }
+  .eco-card {
+    display: block;
+    height: auto;
+    max-height: none;
+  }
+  .eco-card__bg { opacity: 1; transform: translate(-50%, -50%); }
+
+  /* Horizontal swipe track */
+  .eco-stack {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: calc(100% + 16px);
+    max-width: none;
+    height: auto;
+    margin: 24px -16px 0 0;
+    padding-right: 16px;
+    gap: 12px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    overscroll-behavior-inline: contain;
+  }
+  .eco-stack::-webkit-scrollbar { display: none; }
+
+  /* Each card = one slide */
+  .eco-fcard,
+  .eco-fcard.is-shown {
+    position: static;
+    flex: 0 0 min(340px, calc(100vw - 56px));
+    width: min(340px, calc(100vw - 56px));
+    height: auto;
+    opacity: 1;
+    transform: none;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  /* Illustration always visible (no deal-in collapse) */
+  .eco-fcard__panel,
+  .eco-fcard.is-shown .eco-fcard__panel {
+    max-height: none;
+    opacity: 1;
+  }
+
+  /* Pagination controls */
+  .eco-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 20px;
+  }
+  .eco-btn {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(209, 209, 214, .20);
+    border-radius: 6px;
+    background: none;
+    color: var(--white);
+    cursor: pointer;
+  }
+  .eco-btn:disabled { opacity: .35; cursor: not-allowed; }
+  .eco-btn:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+  .eco-btn svg { width: 16px; height: 16px; }
+  .eco-progress { display: flex; align-items: center; justify-content: center; gap: 4px; height: 20px; }
+  .eco-progress i {
+    display: block;
+    width: 2px;
+    height: 18px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, .32);
+    transform: scaleY(.55);
+    transition: transform 180ms ease, background-color 180ms ease;
+  }
+  .eco-progress i.is-active { transform: scaleY(1); background: #fff; }
+  /* screen-reader-only status text */
+  .eco-status {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+}

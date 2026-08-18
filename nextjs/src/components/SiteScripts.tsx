@@ -28,6 +28,7 @@ const SCRIPTS: string[] = [
   "/js/tools-motion.js",
   "/js/ribbon-flow-motion.js",
   "/js/cards.js",
+  "/js/eco-carousel.js",
   "/js/layers-carousel.js",
   "/js/theme-toggle.js",
   "/js/nav-dropdown.js",

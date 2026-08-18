@@ -158,7 +158,7 @@
     <section class="ecosystem">
      <div class="eco-track" id="eco-track">
       <div class="eco-pin">
-      <div class="eco-card">
+      <div class="eco-card" data-eco-carousel>
         <img loading="lazy" decoding="async" class="eco-card__bg" src="assets/img/ecosystem-card-bg.webp" alt="" aria-hidden="true" />
         <div class="eco-card__left">
           <h2 class="section-heading">One ecosystem.<br />Built on open standards.</h2>
@@ -222,6 +222,16 @@
               </div>
             </div>
           </article>
+        </div>
+        <div class="eco-controls" aria-label="Ecosystem primitives">
+          <button class="eco-btn" id="eco-prev" type="button" aria-label="Previous primitive" disabled>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+          </button>
+          <span class="eco-progress" aria-hidden="true"><i class="is-active"></i><i></i><i></i></span>
+          <span class="eco-status" id="eco-status" aria-live="polite" aria-atomic="true">01 / 03</span>
+          <button class="eco-btn" id="eco-next" type="button" aria-label="Next primitive">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+          </button>
         </div>
       </div>
       </div>
@@ -595,6 +605,7 @@
   <script src="js/tools-motion.js" defer></script>
   <script src="js/ribbon-flow-motion.js" defer></script>
   <script src="js/cards.js" defer></script>
+  <script src="js/eco-carousel.js" defer></script>
   <script src="js/layers-carousel.js" defer></script>
   <script src="js/theme-toggle.js" defer></script>
   <script src="js/nav-dropdown.js" defer></script>

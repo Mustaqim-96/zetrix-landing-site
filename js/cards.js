@@ -7,6 +7,10 @@
   var stack = document.getElementById('eco-stack');
   if (!stack) return;
 
+  // On phones the eco cards are a horizontal swipe carousel (eco-carousel.js),
+  // not the scroll-driven deck — skip the deck logic so it doesn't fight it.
+  if (window.matchMedia && window.matchMedia('(max-width: 767px)').matches) return;
+
   var cards = Array.prototype.slice.call(stack.querySelectorAll('.eco-fcard'));
   if (!cards.length) return;
 

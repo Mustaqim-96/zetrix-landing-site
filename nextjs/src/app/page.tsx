@@ -155,7 +155,7 @@ export default function Home() {
           <section className="ecosystem">
             <div className="eco-track" id="eco-track">
               <div className="eco-pin">
-                <div className="eco-card">
+                <div className="eco-card" data-eco-carousel>
                   <img loading="lazy" decoding="async" className="eco-card__bg" src="/assets/img/ecosystem-card-bg.webp" alt="" aria-hidden="true" />
                   <div className="eco-card__left">
                     <h2 className="section-heading">One ecosystem.<br />Built on open standards.</h2>
@@ -219,6 +219,16 @@ export default function Home() {
                         </div>
                       </div>
                     </article>
+                  </div>
+                  <div className="eco-controls" aria-label="Ecosystem primitives">
+                    <button className="eco-btn" id="eco-prev" type="button" aria-label="Previous primitive" disabled>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+                    </button>
+                    <span className="eco-progress" aria-hidden="true"><i className="is-active"></i><i></i><i></i></span>
+                    <span className="eco-status" id="eco-status" aria-live="polite" aria-atomic="true">01 / 03</span>
+                    <button className="eco-btn" id="eco-next" type="button" aria-label="Next primitive">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+                    </button>
                   </div>
                 </div>
               </div>
