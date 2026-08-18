@@ -3272,13 +3272,13 @@ html[data-theme="light"] .footer__wordmark-art .footer__wordmark--light { displa
   }
   .eco-card {
     width: 100%;
-    height: min(780px, calc(100svh - 120px));
+    height: min(820px, calc(100svh - 72px));
     max-height: none;
-    padding: 64px 16px 24px;
+    padding: 32px 16px 20px;
     display: grid;
     grid-template-rows: auto minmax(0, 1fr);
     align-content: start;
-    gap: 40px;
+    gap: 16px;
     border-radius: 24px;
   }
   .eco-card__sub {
@@ -3296,7 +3296,7 @@ html[data-theme="light"] .footer__wordmark-art .footer__wordmark--light { displa
     position: relative;
     display: block;
     width: min(100%, 523px);
-    height: 540px;
+    height: 460px;
     margin: 0 0 0 auto;
     justify-self: end;
   }
@@ -3321,11 +3321,11 @@ html[data-theme="light"] .footer__wordmark-art .footer__wordmark--light { displa
     opacity: 0;
   }
   .eco-fcard.is-shown .eco-fcard__panel {
-    max-height: 232px;
+    max-height: 176px;
     opacity: 1;
   }
   .node-panel {
-    min-height: 200px;
+    min-height: 150px;
     margin: 0 16px 16px;
     padding: 16px;
     border-radius: 12px;

@@ -105,8 +105,12 @@
     function update() {
       ticking = false;
       var rect = track.getBoundingClientRect();
-      if (coin) coin.classList.toggle('is-in', rect.top <= 0);
-      if (cardBg) cardBg.classList.toggle('is-in', rect.top <= 0);
+      // Start the cube background / coin sliding in as the section enters the
+      // viewport (its top crossing the lower half), so they glide in with the
+      // scroll instead of popping in only once the section is fully pinned.
+      var bgIn = rect.top <= window.innerHeight * 0.5;
+      if (coin) coin.classList.toggle('is-in', bgIn);
+      if (cardBg) cardBg.classList.toggle('is-in', bgIn);
       var total = track.offsetHeight - window.innerHeight;
       if (total <= 0) { show(cards.length - 1); return; }
       var scrolled = Math.min(Math.max(-rect.top, 0), total);
