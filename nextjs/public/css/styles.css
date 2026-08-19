@@ -703,15 +703,20 @@ ul { list-style: none; margin: 0; padding: 0; }
   .hero__aurora::before,
   .hero__aurora::after { animation: none; }
 }
-/* light theme: soft crimson tint at the top of the white hero */
+/* light theme: soft chrome/grey tint at the top of the white hero.
+   Uses the brand's neutral grey (--grey #999) rather than the crimson accent:
+   the warm red fought the near-black title and grey subtitle and muddied them,
+   while a neutral grey wash keeps the text at full contrast and lets the red
+   CTA and globe accents pop. (Brand palette is red + white/black/chrome-grey;
+   blue/purple are off-brand.) */
 html[data-theme="light"] .hero__aurora {
-  background: linear-gradient(to top, var(--theme-bg) 48%, rgba(197, 36, 46, .34) 122%);
+  background: linear-gradient(to top, var(--theme-bg) 46%, rgba(153, 153, 153, .20) 118%);
 }
 html[data-theme="light"] .hero__aurora::before {
-  background: radial-gradient(42% 46% at 50% 50%, rgba(197, 36, 46, .34), transparent 66%);
+  background: radial-gradient(42% 46% at 50% 50%, rgba(153, 153, 153, .18), transparent 66%);
 }
 html[data-theme="light"] .hero__aurora::after {
-  background: radial-gradient(48% 44% at 50% 50%, rgba(228, 34, 46, .26), transparent 70%);
+  background: radial-gradient(48% 44% at 50% 50%, rgba(120, 120, 124, .13), transparent 70%);
 }
 /* Mobile: tone down the red glow behind the globe — the hero reads too red on
    small screens where the aurora fills a larger share of the viewport. */
@@ -3828,6 +3833,13 @@ html[data-theme="light"] .tools__pin,
 html[data-theme="light"] .ai-layer__pin,
 html[data-theme="light"] .robotics__pin { background-color: transparent; }
 html[data-theme="light"] .layers-track { background-color: var(--theme-bg); }
+/* Light mode: the section headings and subtitles that sit over the flowing
+   ribbon have transparent backgrounds, so the saturated brand red behind them
+   dropped their contrast. Soften the ribbon to a light red tint in light mode
+   (kept on-brand — same red gradient, just lower opacity) so dark headings and
+   grey subtitles read clearly. Only opacity is touched, so the scroll reveal
+   mask and the gradient's end-fades are preserved. */
+html[data-theme="light"] .ribbon-flow__path { opacity: .22; }
 html[data-theme="light"] .hero__title,
 html[data-theme="light"] .section-heading,
 html[data-theme="light"] .eco-fcard__title,

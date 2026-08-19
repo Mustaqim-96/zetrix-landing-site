@@ -7,11 +7,11 @@
 
   var TIMING = Object.freeze({
     ignitionRamp: 90,
-    burst: 620,
-    tableau: 300,
-    assemble: 900,
-    resolve: 560,
-    total: 2380
+    burst: 430,
+    tableau: 130,
+    assemble: 780,
+    resolve: 520,
+    total: 1860
   });
 
   function clamp01(value) {

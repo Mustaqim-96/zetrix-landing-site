@@ -247,7 +247,7 @@
         "varying vec3 vColor;varying float vLayer;varying float vWeight;varying float vCloud;" +
         "void main(){vec4 dot=texture2D(uSprite,gl_PointCoord);" +
         "if(dot.a<0.25)discard;float fieldFade=mix(1.0,mix(0.5,1.0,vWeight),vCloud*vLayer);" +
-        "float energy=1.0+uCoreEnergy*(1.0-vLayer)*0.6;" +
+        "float energy=1.0+uCoreEnergy*(1.0-vLayer)*0.32;" +
         "float mobileField=mix(0.72,1.0,uMobileScale);" +
         /* Don't dim the dot field on phones in light theme, so the globe reads
            the same colour on mobile/tablet as it does on the web. */
@@ -317,7 +317,7 @@
   var UP = new THREE.Vector3(0, 1, 0);
   for (var s2 = 0; s2 < NODES.length; s2++) {
     var lat = NODES[s2][0], lng = NODES[s2][1];
-    var len = 13 + ((s2 * 37) % 7);
+    var len = 8 + ((s2 * 37) % 5);
     var dir = toVec(lat, lng, 1).normalize();
     var anchor = dir.clone().multiplyScalar(R);
     var cyl = new THREE.Mesh(spikeGeo, spikeMat);
@@ -337,7 +337,7 @@
   var tGeo = new THREE.BufferGeometry();
   tGeo.setAttribute("position", new THREE.Float32BufferAttribute(tipPos, 3));
   var tipMat = new THREE.PointsMaterial({
-    size: 4.5, map: sprite, color: 0xff8a92, transparent: true,
+    size: 3.4, map: sprite, color: 0xff8a92, transparent: true,
     blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true
   });
   var tips = new THREE.Points(tGeo, tipMat);
