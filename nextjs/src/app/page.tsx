@@ -338,10 +338,6 @@ export default function Home() {
                   </div>
 
                   <div className="tools__art" data-tools-art aria-hidden="true">
-                    <img loading="lazy" decoding="async" className="tools__art-layer tools__art-particles" src="/assets/tools-art/tools-art-particles.svg" alt="" />
-                    <img loading="lazy" decoding="async" className="tools__art-layer tools__art-small-cubes" src="/assets/tools-art/tools-art-small-cubes.svg" alt="" />
-                    <img loading="lazy" decoding="async" className="tools__art-layer tools__art-ticks" src="/assets/tools-art/tools-art-ticks.svg" alt="" />
-                    <img loading="lazy" decoding="async" className="tools__art-layer tools__art-connectors" src="/assets/tools-art/tools-art-connectors.svg" alt="" />
 
                     <img loading="lazy" decoding="async" className="tools__cube tools__cube--bottom" data-tools-cube="bottom" src="/assets/tools-art/tools-blockchain-cube.webp" alt="" />
                     <img loading="lazy" decoding="async" className="tools__cube tools__cube--centre" data-tools-cube="centre" src="/assets/tools-art/tools-blockchain-cube.webp" alt="" />
