@@ -154,6 +154,8 @@
     </section>
 
     <div class="ribbon-story" data-ribbon-story>
+      <!-- Scroll-driven grid ribbon (right edge, Sections 2-5). Engine: js/grid-ribbon.js -->
+      <canvas class="grid-ribbon" data-grid-ribbon aria-hidden="true"></canvas>
     <!-- ===================== ONE ECOSYSTEM ===================== -->
     <section class="ecosystem">
      <div class="eco-track" id="eco-track">
@@ -239,28 +241,6 @@
     </section>
 
     <div class="ribbon-flow" data-ribbon-flow>
-      <img loading="lazy" decoding="async" class="ribbon-flow__mobile" src="assets/ribbon/zetrix-mobile-ribbon.svg" alt="" aria-hidden="true" />
-      <svg class="ribbon-flow__visual" viewBox="0 0 1185.65 3200.02" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-        <defs>
-          <linearGradient id="ribbon-flow-gradient" x1="592.809" y1="100.008" x2="592.809" y2="3100.01" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#E4222E" stop-opacity="0" />
-            <stop offset="0.09" stop-color="#E4222E" stop-opacity="0.95" />
-            <stop offset="0.5" stop-color="#C5242E" />
-            <stop offset="0.91" stop-color="#E4222E" stop-opacity="0.95" />
-            <stop offset="1" stop-color="#E4222E" stop-opacity="0" />
-          </linearGradient>
-          <linearGradient id="ribbon-flow-head-fade" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#fff" />
-            <stop offset="1" stop-color="#000" />
-          </linearGradient>
-          <mask id="ribbon-flow-edge-mask" maskUnits="userSpaceOnUse" x="-180" y="0" width="1545.65" height="3200.02" mask-type="luminance">
-            <rect x="-180" y="0" width="1545.65" height="3200.02" fill="#000" />
-            <rect class="ribbon-flow__reveal-body" x="-180" y="0" width="1545.65" height="0" fill="#fff" />
-            <rect class="ribbon-flow__reveal-edge" x="-180" y="0" width="1545.65" height="0" fill="url(#ribbon-flow-head-fade)" />
-          </mask>
-        </defs>
-        <path class="ribbon-flow__path" opacity="1" vector-effect="non-scaling-stroke" stroke-dasharray="none" d="M500.04 100.008C596.64 236.708 1146.64 646.708 1080.04 920.008C1013.34 1193.31 106.64 1503.31 100.04 1740.01C93.3402 1976.71 956.64 2113.31 1040.04 2340.01C1123.34 2566.71 673.34 2973.31 600.04 3100.01" stroke="url(#ribbon-flow-gradient)" stroke-width="360" stroke-linecap="round" stroke-linejoin="round" fill="none" mask="url(#ribbon-flow-edge-mask)" />
-      </svg>
 
     <!-- ===================== ZETRIX-POWERED TOOLS ===================== -->
     <section class="tools" data-tools-track>
@@ -599,7 +579,7 @@
   <script src="js/robotics-carousel.js" defer></script>
   <script src="js/hero-ecosystem-handoff.js" defer></script>
   <script src="js/tools-motion.js" defer></script>
-  <script src="js/ribbon-flow-motion.js" defer></script>
+  <script src="js/grid-ribbon.js" defer></script>
   <script src="js/cards.js" defer></script>
   <script src="js/eco-carousel.js" defer></script>
   <script src="js/layers-carousel.js" defer></script>

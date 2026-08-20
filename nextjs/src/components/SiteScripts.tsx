@@ -26,7 +26,7 @@ const SCRIPTS: string[] = [
   "/js/robotics-carousel.js",
   "/js/hero-ecosystem-handoff.js",
   "/js/tools-motion.js",
-  "/js/ribbon-flow-motion.js",
+  "/js/grid-ribbon.js",
   "/js/cards.js",
   "/js/eco-carousel.js",
   "/js/layers-carousel.js",

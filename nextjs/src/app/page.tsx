@@ -151,6 +151,8 @@ export default function Home() {
         </section>
 
         <div className="ribbon-story" data-ribbon-story>
+          {/* Scroll-driven grid ribbon (right edge, Sections 2–5). Canvas engine: /js/grid-ribbon.js */}
+          <canvas className="grid-ribbon" data-grid-ribbon aria-hidden="true"></canvas>
           {/* ===================== ONE ECOSYSTEM ===================== */}
           <section className="ecosystem">
             <div className="eco-track" id="eco-track">
@@ -236,28 +238,6 @@ export default function Home() {
           </section>
 
           <div className="ribbon-flow" data-ribbon-flow>
-            <img loading="lazy" decoding="async" className="ribbon-flow__mobile" src="/assets/ribbon/zetrix-mobile-ribbon.svg" alt="" aria-hidden="true" />
-            <svg className="ribbon-flow__visual" viewBox="0 0 1185.65 3200.02" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-              <defs>
-                <linearGradient id="ribbon-flow-gradient" x1="592.809" y1="100.008" x2="592.809" y2="3100.01" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#E4222E" stopOpacity="0" />
-                  <stop offset="0.09" stopColor="#E4222E" stopOpacity="0.95" />
-                  <stop offset="0.5" stopColor="#C5242E" />
-                  <stop offset="0.91" stopColor="#E4222E" stopOpacity="0.95" />
-                  <stop offset="1" stopColor="#E4222E" stopOpacity="0" />
-                </linearGradient>
-                <linearGradient id="ribbon-flow-head-fade" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stopColor="#fff" />
-                  <stop offset="1" stopColor="#000" />
-                </linearGradient>
-                <mask id="ribbon-flow-edge-mask" maskUnits="userSpaceOnUse" x="-180" y="0" width="1545.65" height="3200.02" style={{ maskType: "luminance" }}>
-                  <rect x="-180" y="0" width="1545.65" height="3200.02" fill="#000" />
-                  <rect className="ribbon-flow__reveal-body" x="-180" y="0" width="1545.65" height="0" fill="#fff" />
-                  <rect className="ribbon-flow__reveal-edge" x="-180" y="0" width="1545.65" height="0" fill="url(#ribbon-flow-head-fade)" />
-                </mask>
-              </defs>
-              <path className="ribbon-flow__path" opacity="1" vectorEffect="non-scaling-stroke" strokeDasharray="none" d="M500.04 100.008C596.64 236.708 1146.64 646.708 1080.04 920.008C1013.34 1193.31 106.64 1503.31 100.04 1740.01C93.3402 1976.71 956.64 2113.31 1040.04 2340.01C1123.34 2566.71 673.34 2973.31 600.04 3100.01" stroke="url(#ribbon-flow-gradient)" strokeWidth="360" strokeLinecap="round" strokeLinejoin="round" fill="none" mask="url(#ribbon-flow-edge-mask)" />
-            </svg>
 
             {/* ===================== ZETRIX-POWERED TOOLS ===================== */}
             <section className="tools" data-tools-track>

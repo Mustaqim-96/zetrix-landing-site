@@ -1214,9 +1214,42 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
 }
 .ribbon-flow {
   position: relative;
+  z-index: 2;
   isolation: isolate;
   overflow: clip;
-  background: var(--bg);
+  /* transparent so the grid-ribbon stage behind it (inside .ribbon-story)
+     shows through the right-edge negative space. The identical dark base is
+     painted by .ribbon-story, so there is no visual change to the sections. */
+  background: transparent;
+}
+
+/* Grid ribbon: a canvas pinned to the right edge, spanning Sections 2–5.
+   Fixed positioning (viewport-relative) sidesteps the page's 0-width flow
+   containers. It lives inside .ribbon-story's isolated stacking context at
+   z-index 1 — above the base background but below the sections (z-index 2) —
+   so it reads as a background/decorative element behind all content. JS fades
+   it in only while the Sections 2–5 band is on screen. */
+.grid-ribbon {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  display: block;
+  width: 50vw;
+  height: 100vh;
+  height: 100svh;
+  pointer-events: none;
+  opacity: 0;          /* JS fades in/out at the band edges */
+  will-change: opacity;
+  /* Horizontal edge fade so the fine grid dissolves into the background
+     on both sides — no hard border. Covers the right half of the screen. */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 24%, #000 76%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 24%, #000 76%, transparent 100%);
+}
+/* Desktop/tablet only — a 400px right strip doesn't belong on phones, and
+   scroll performance matters most there. */
+@media (max-width: 1023px) {
+  .grid-ribbon { display: none; }
 }
 .ribbon-flow__visual {
   position: absolute;
@@ -3822,13 +3855,18 @@ html[data-theme="light"] .theme-toggle__orb {
 html[data-theme="light"] .hero,
 html[data-theme="light"] .ecosystem,
 html[data-theme="light"] .ribbon-story,
+html[data-theme="light"] .layers__pin {
+  background-color: var(--theme-bg);
+}
+/* Sections 3–5 stay transparent in light mode too (as in dark mode), so the
+   scroll-driven grid ribbon behind them (z-index 1, inside .ribbon-story)
+   shows through the right-edge negative space. .ribbon-story paints the white
+   base below the canvas. If these are given the theme bg they become opaque
+   and hide the grid. */
 html[data-theme="light"] .ribbon-flow,
 html[data-theme="light"] .tools,
 html[data-theme="light"] .ai-layer,
 html[data-theme="light"] .robotics,
-html[data-theme="light"] .layers__pin {
-  background-color: var(--theme-bg);
-}
 html[data-theme="light"] .tools__pin,
 html[data-theme="light"] .ai-layer__pin,
 html[data-theme="light"] .robotics__pin { background-color: transparent; }
