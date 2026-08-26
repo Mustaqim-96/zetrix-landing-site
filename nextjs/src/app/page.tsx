@@ -327,44 +327,84 @@ export default function Home() {
               </div>
             </section>
 
-            {/* ===================== INTELLIGENCE GROUNDED IN IDENTITY ===================== */}
-            <section className="ai-layer" data-ai-ribbon-track>
-              <div className="ai-layer__pin">
-                <div className="ai-layer__backdrop" aria-hidden="true">
-                  <img loading="lazy" decoding="async" className="ai-layer__frame" src="/assets/tools-art/tools-section-frame.svg" alt="" />
-                  <img loading="lazy" decoding="async" className="ai-layer__particles" src="/assets/tools-art/tools-art-particles.svg" alt="" />
+            {/* ===================== AI INTRO (title + partners) ===================== */}
+            <section className="ai-intro" data-ai-intro>
+              <div className="ai-intro__inner">
+                <div className="ai-intro__lead">
+                  <h2 className="section-heading ai-intro__title"><span className="ai-intro__title-line">Intelligence grounded in identity and values.</span></h2>
                 </div>
-
-                <div className="ai-layer__inner">
-                  <h2 className="section-heading section-heading--center"><span className="ai-heading__line">Intelligence grounded in</span><br className="ai-heading__break ai-heading__break--mobile" /> <span className="ai-heading__line">identity</span><br className="ai-heading__break ai-heading__break--desktop" /> <span className="ai-heading__line">and values.</span></h2>
-
-                  <div className="ai-cards">
-                    <article className="ai-card">
-                      <div className="ai-card__media ai-card__media--nurai">
-                        <div className="ai-card__media-stage">
-                          <img loading="lazy" decoding="async" className="ai-card__base-image" src="/assets/img/ai-nurai-illustration.webp" width="1080" height="680" alt="NurAI product preview" />
-                        </div>
+                <div className="ai-intro__partners">
+                  <div className="partners" aria-label="Partner of our AI Lab">
+                    <p className="partners__label">Partner of our AI Lab</p>
+                    <div className="partners__marquee">
+                      <div className="partners__track">
+                        <span className="partner-pill partner-pill--crest"><img loading="lazy" decoding="async" src="/assets/partners/beihang.webp" alt="Beihang University" /></span>
+                        <span className="partner-pill"><img loading="lazy" decoding="async" src="/assets/partners/alibaba-cloud.svg" alt="Alibaba Cloud" /></span>
+                        <span className="partner-pill"><img loading="lazy" decoding="async" src="/assets/partners/deepseek.svg" alt="DeepSeek" /></span>
+                        <span className="partner-pill"><img loading="lazy" decoding="async" src="/assets/partners/dji.webp" alt="DJI" /></span>
+                        <span className="partner-pill"><img loading="lazy" decoding="async" src="/assets/partners/huawei.svg" alt="Huawei" /></span>
+                        <span className="partner-pill"><img loading="lazy" decoding="async" src="/assets/partners/leju.webp" alt="Leju Robot" /></span>
+                        <span className="partner-pill"><img loading="lazy" decoding="async" src="/assets/partners/raisound.webp" alt="Raisound" /></span>
+                        <span className="partner-pill"><img loading="lazy" decoding="async" src="/assets/partners/speakly-ai.webp" alt="Speakly AI" /></span>
+                        <span className="partner-pill partner-pill--crest" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/partners/beihang.webp" alt="" /></span>
+                        <span className="partner-pill" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/partners/alibaba-cloud.svg" alt="" /></span>
+                        <span className="partner-pill" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/partners/deepseek.svg" alt="" /></span>
+                        <span className="partner-pill" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/partners/dji.webp" alt="" /></span>
+                        <span className="partner-pill" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/partners/huawei.svg" alt="" /></span>
+                        <span className="partner-pill" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/partners/leju.webp" alt="" /></span>
+                        <span className="partner-pill" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/partners/raisound.webp" alt="" /></span>
+                        <span className="partner-pill" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/partners/speakly-ai.webp" alt="" /></span>
                       </div>
-                      <div className="ai-card__body">
-                        <h3 className="ai-card__title">The World’s First Shariah-Aligned Intelligence Model</h3>
-                        <p className="ai-card__desc">A Shariah-aligned, multilingual AI foundation for culturally , and institutionally relevant services.</p>
-                        <a className="btn btn--red ai-card__cta" href="https://nur-ai.ai/" target="_blank" rel="noopener noreferrer" aria-label="Know more about NurAI">Know more <span className="arrow-ext" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17 17 7M9 7h8v8" /></svg></span></a>
-                      </div>
-                    </article>
-
-                    <article className="ai-card">
-                      <div className="ai-card__media ai-card__media--avatar">
-                        <div className="ai-card__media-stage">
-                          <img loading="lazy" decoding="async" className="ai-card__base-image" src="/assets/img/ai-avatar-illustration.webp" width="1080" height="680" alt="Avatar agent product preview" />
-                        </div>
-                      </div>
-                      <div className="ai-card__body">
-                        <h3 className="ai-card__title">Your Agentic Twin</h3>
-                        <p className="ai-card__desc">An AI agent with verified identity that can represent users or organisations and execute approved tasks.</p>
-                        <a className="btn btn--red ai-card__cta" href="https://avatar.inc/" target="_blank" rel="noopener noreferrer" aria-label="Know more about Avatar">Know more <span className="arrow-ext" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17 17 7M9 7h8v8" /></svg></span></a>
-                      </div>
-                    </article>
+                    </div>
                   </div>
+                </div>
+              </div>
+            </section>
+
+            {/* ===================== YOUR AGENTIC TWIN ===================== */}
+            {/* The grid-ribbon canvas morphs into a red-tile mascot on the right
+                (>=1024px). Below that the canvas is hidden, so .agentic__mascot
+                shows the illustration as the fallback. */}
+            <section className="ai-layer agentic-section" data-ai-ribbon-track>
+              <div className="ai-layer__pin">
+                <div className="ai-layer__inner agentic">
+                  <div className="agentic__text">
+                    <h2 className="section-heading agentic__title"><span className="agentic__title-line">Your Agentic Twin</span></h2>
+                    <p className="agentic__sub">An AI agent with verified identity that can represent users or organisations and execute approved tasks.</p>
+                    <a className="btn btn--red agentic__cta" href="https://avatar.inc/" target="_blank" rel="noopener noreferrer" aria-label="Know more about your Agentic Twin">Know more <span className="arrow-ext" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17 17 7M9 7h8v8" /></svg></span></a>
+                  </div>
+                  <div className="agentic__art" aria-hidden="true">
+                    <img loading="lazy" decoding="async" className="agentic__mascot" src="/assets/img/ai-avatar-illustration.webp" width="1080" height="680" alt="" />
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* ===================== NURAI ===================== */}
+            {/* Same two-column treatment as the Agentic Twin: copy on the left,
+                illustration on the right. */}
+            <section className="nurai" data-nurai>
+              <div className="nurai__inner">
+                <div className="nurai__text">
+                  <h2 className="section-heading nurai__title"><span className="nurai__title-line">The World’s First Shariah-Aligned Intelligence Model</span></h2>
+                  <p className="nurai__sub">A Shariah-aligned, multilingual AI foundation for culturally, and institutionally relevant services.</p>
+                  <a className="btn btn--red nurai__cta" href="https://nur-ai.ai/" target="_blank" rel="noopener noreferrer" aria-label="Know more about NurAI">Know more <span className="arrow-ext" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17 17 7M9 7h8v8" /></svg></span></a>
+                </div>
+                <div className="nurai__art" aria-hidden="true">
+                  {/* Desktop (>=1024px): the grid-ribbon canvas morphs into the NurAI
+                      logo here. Below that the canvas is hidden, so this SVG (the real
+                      brand logo) is the fallback. */}
+                  <svg className="nurai__logo" viewBox="0 0 811 645" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M649.172 116.17C686.444 107.41 728.644 110.857 760.39 110.857C788.005 110.858 810.39 133.243 810.39 160.857C810.39 188.472 788.005 210.857 760.39 210.857C715.137 210.857 694.306 208.286 672.051 213.517C655.726 217.353 636.826 226.497 610.632 259.781C600.981 272.044 592.748 295.417 585.893 333.538C582.645 351.604 580.005 370.956 577.248 391.653C574.543 411.963 571.714 433.67 568.196 454.718C561.383 495.486 550.939 541.42 527.954 577.603C515.953 596.494 499.848 613.886 478.151 626.261C456.275 638.739 431.427 644.561 404.456 644.21C335.033 643.305 298.951 590.752 279.83 544.139C260.635 497.346 249.939 436.904 240.042 384.883C229.437 329.144 219.567 281.771 203.885 248.393C196.313 232.276 188.958 223.041 182.705 218.062C177.534 213.945 171.682 211.466 162.163 211.718C142.693 212.233 133.337 218.727 126.324 227.991C117.269 239.953 109.565 260.585 104.962 292.676C95.5092 358.568 102.238 440.161 102.596 525.505C102.713 553.119 80.4213 575.599 52.8074 575.715C25.1934 575.831 2.7135 553.539 2.59747 525.925C2.28937 452.602 -4.85969 354.006 5.97539 278.476C11.5158 239.854 22.4969 199.466 46.5916 167.636C72.7285 133.108 110.987 113.038 159.516 111.753C192.496 110.88 221.356 121.011 244.991 139.828C267.543 157.783 283.089 181.808 294.393 205.869C316.465 252.846 328.255 313.499 338.28 366.192C349.012 422.603 357.915 470.999 372.348 506.187C386.856 541.553 398.432 544.122 405.759 544.218C417.162 544.366 424.049 541.996 428.606 539.396C433.343 536.695 438.371 532.125 443.545 523.981C454.908 506.094 462.976 477.658 469.564 438.234C472.748 419.186 475.342 399.34 478.124 378.451C480.854 357.95 483.765 336.457 487.471 315.842C494.528 276.599 505.823 231.26 532.048 197.937C568.844 151.181 605.968 126.324 649.172 116.17Z" fill="url(#nuraiGrad)" />
+                    <path d="M386.954 7.11034C396.222 -2.24621 411.299 -2.38641 420.739 6.79589L467.656 52.4297C477.282 61.7925 477.353 77.2314 467.814 86.6826L420.9 133.163C411.422 142.554 396.103 142.411 386.802 132.846L341.601 86.3623C332.483 76.9853 332.552 62.0337 341.757 52.7412L386.954 7.11034Z" fill="url(#nuraiGrad)" />
+                    <defs>
+                      <linearGradient id="nuraiGrad" x1="0" y1="322" x2="784" y2="322" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#085A70" />
+                        <stop offset="0.5" stopColor="#6AACBF" />
+                        <stop offset="1" stopColor="#B9EFFF" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
                 </div>
               </div>
             </section>
@@ -474,30 +514,6 @@ export default function Home() {
                 <div className="cta__actions">
                   <a className="btn btn--red cta__btn" href="#">Get Started</a>
                   <a className="btn btn--outline cta__btn" href="#">Contact the team</a>
-                </div>
-              </div>
-            </div>
-
-            <div className="partners" aria-label="Partner of our AI Lab">
-              <p className="partners__label">Partner of our AI Lab</p>
-              <div className="partners__marquee">
-                <div className="partners__track">
-                  <span className="partner-pill partner-pill--crest"><img loading="lazy" decoding="async" src="/assets/partners/beihang.webp" alt="Beihang University" /></span>
-                  <span className="partner-pill"><img loading="lazy" decoding="async" src="/assets/partners/alibaba-cloud.svg" alt="Alibaba Cloud" /></span>
-                  <span className="partner-pill"><img loading="lazy" decoding="async" src="/assets/partners/deepseek.svg" alt="DeepSeek" /></span>
-                  <span className="partner-pill"><img loading="lazy" decoding="async" src="/assets/partners/dji.webp" alt="DJI" /></span>
-                  <span className="partner-pill"><img loading="lazy" decoding="async" src="/assets/partners/huawei.svg" alt="Huawei" /></span>
-                  <span className="partner-pill"><img loading="lazy" decoding="async" src="/assets/partners/leju.webp" alt="Leju Robot" /></span>
-                  <span className="partner-pill"><img loading="lazy" decoding="async" src="/assets/partners/raisound.webp" alt="Raisound" /></span>
-                  <span className="partner-pill"><img loading="lazy" decoding="async" src="/assets/partners/speakly-ai.webp" alt="Speakly AI" /></span>
-                  <span className="partner-pill partner-pill--crest" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/partners/beihang.webp" alt="" /></span>
-                  <span className="partner-pill" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/partners/alibaba-cloud.svg" alt="" /></span>
-                  <span className="partner-pill" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/partners/deepseek.svg" alt="" /></span>
-                  <span className="partner-pill" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/partners/dji.webp" alt="" /></span>
-                  <span className="partner-pill" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/partners/huawei.svg" alt="" /></span>
-                  <span className="partner-pill" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/partners/leju.webp" alt="" /></span>
-                  <span className="partner-pill" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/partners/raisound.webp" alt="" /></span>
-                  <span className="partner-pill" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/partners/speakly-ai.webp" alt="" /></span>
                 </div>
               </div>
             </div>

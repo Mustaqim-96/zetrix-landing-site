@@ -55,9 +55,8 @@
     var bars = Array.prototype.slice.call(rootElement.querySelectorAll('.robotics__progress i'));
     if (!track || !cards.length || !prev || !next || !status) return;
 
-    var narrowQuery = win.matchMedia('(max-width: 1023px)');
-    var tabletQuery = win.matchMedia('(min-width: 768px) and (max-width: 1023px)');
-    var reducedQuery = win.matchMedia('(prefers-reduced-motion: reduce)');
+    var narrowQuery = win.matchMedia('(max-width: 1279px)');
+    var tabletQuery = win.matchMedia('(min-width: 768px) and (max-width: 1279px)');
     var current = 0;
     var ticking = false;
 
@@ -76,11 +75,15 @@
       });
 
       if (shouldScroll && narrowQuery.matches) {
-        cards[current].scrollIntoView({
-          behavior: reducedQuery.matches ? 'auto' : 'smooth',
-          block: 'nearest',
-          inline: 'start'
-        });
+        // A smooth scrollIntoView / scrollTo never lands on this snap-mandatory
+        // flex track (the snap container resets the pending animation), so the
+        // card never moves on a button press. Jump instantly instead. offsetLeft
+        // is relative to the track, so aligning the card to the track's start
+        // brings it into view.
+        var prevBehavior = track.style.scrollBehavior;
+        track.style.scrollBehavior = 'auto';
+        track.scrollLeft = cards[current].offsetLeft;
+        track.style.scrollBehavior = prevBehavior;
       }
     }
 

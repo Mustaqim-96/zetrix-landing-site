@@ -1241,15 +1241,33 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
   pointer-events: none;
   opacity: 0;          /* JS fades in/out at the band edges */
   will-change: opacity;
-  /* Horizontal edge fade so the fine grid dissolves into the background
-     on both sides — no hard border. Covers the right half of the screen. */
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 24%, #000 76%, transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0%, #000 24%, #000 76%, transparent 100%);
+  /* Edge fade so the fine grid dissolves into the background with no hard
+     border — horizontal (both sides) AND vertical (top/bottom). The two
+     gradients are intersected, so the grid is strongest in the centre (where
+     the red wave lives) and melts away toward every edge of the viewport,
+     including the top where it meets the section above. */
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent 0%, #000 24%, #000 76%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, #000 20%, #000 80%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(90deg, transparent 0%, #000 24%, #000 76%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, #000 20%, #000 80%, transparent 100%);
+  mask-composite: intersect;
 }
-/* Desktop/tablet only — a 400px right strip doesn't belong on phones, and
-   scroll performance matters most there. */
+/* Tablet & mobile: the grid becomes a full-width layer so the morphs
+   (cubes / robot / logo) read as each section's centred visual. A lighter
+   horizontal fade keeps the centred shape from being over-masked. */
 @media (max-width: 1023px) {
-  .grid-ribbon { display: none; }
+  .grid-ribbon {
+    width: 100vw;
+    -webkit-mask-image:
+      linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+    mask-image:
+      linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  }
 }
 .ribbon-flow__visual {
   position: absolute;
@@ -1518,6 +1536,9 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
   opacity: var(--tools-art-active-opacity);
   visibility: visible;
 }
+/* The grid-ribbon canvas renders the cube stack at every width now, so the
+   image cubes are hidden throughout (no-canvas safety net only). */
+.tools__art { display: none; }
 .tools__art-layer,
 .tools__cube {
   position: absolute;
@@ -1818,6 +1839,166 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
 }
 .arrow-ext { display: inline-flex; }
 .arrow-ext svg { width: 16px; height: 16px; }
+
+/* ---- Your Agentic Twin (Section 4): text left, mascot right (rendered by the
+   grid-ribbon canvas on desktop; the .agentic__mascot image is the mobile
+   fallback). ---- */
+.ai-layer__inner.agentic {
+  height: 100%;
+  padding-top: 150px;         /* top-align the copy near the top of the section */
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 48px;
+}
+.agentic__text { max-width: 440px; }
+.agentic__title { text-align: left; }
+.agentic__sub {
+  margin-top: 16px;
+  max-width: 360px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-tertiary);
+}
+.agentic__cta {
+  margin-top: 24px;
+  height: 44px;
+  padding: 0 16px;
+  font-size: 15px;
+  border-radius: var(--radius-sm);
+}
+.agentic__art {
+  flex: 0 0 auto;
+  width: 46%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* The grid canvas now draws the mascot at every width, so the fallback image
+   is hidden throughout (kept in the DOM only as a no-canvas safety net). */
+.agentic__mascot { display: none; }
+/* Tablet/mobile: stack, centre horizontally, top-align the copy so the grid
+   morph (centred lower in the viewport) reads as the visual below it. The
+   section stays full-height so the fixed morph has room below the copy. */
+@media (max-width: 1023px) {
+  .ai-layer.agentic-section .ai-layer__pin {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+  .ai-layer__inner.agentic {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    gap: 28px;
+    padding-top: 96px;
+  }
+  .agentic__text { max-width: 520px; }
+  .agentic__title { text-align: center; }
+  .agentic__sub { margin-inline: auto; }
+  .agentic__art { width: 100%; }
+}
+
+/* ---- AI intro: title section before the Agentic Twin (heading left, the AI-Lab
+   partners marquee right). Introduces the AI theme. ---- */
+.ai-intro {
+  position: relative;
+  /* hug the content — this title introduces the Agentic Twin + NurAI below it,
+     so it sits close to them instead of taking a full viewport. */
+  padding-block: 120px;
+}
+.ai-intro__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  /* title and partners stacked vertically, centred */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 40px;
+}
+.ai-intro__lead { max-width: 640px; margin: 0; }
+.ai-intro__title { text-align: center; }
+.ai-intro__partners {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* full-width carousel frame — fills the section's content width (max 1200) */
+.ai-intro__partners .partners { width: 100%; max-width: none; }
+.ai-intro__partners .partners__label { text-align: center; }
+@media (max-width: 1023px) {
+  .ai-intro__inner { gap: 32px; }
+}
+
+/* ---- NurAI (its own section, same two-column treatment as the Agentic Twin:
+   copy left, illustration right) ---- */
+.nurai {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-start;      /* top-align the copy in the section */
+}
+.nurai__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  padding-top: 150px;           /* near the top of the section */
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 48px;
+}
+.nurai__art {
+  flex: 0 0 auto;
+  width: 48%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* The grid canvas draws the wave logo at every width, so the fallback SVG is
+   hidden throughout. */
+.nurai__logo { display: none; }
+.nurai__text { flex: 1 1 auto; min-width: 0; }
+.nurai__title { text-align: left; }
+.nurai__sub {
+  margin-top: 16px;
+  max-width: 400px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-tertiary);
+}
+.nurai__cta {
+  margin-top: 24px;
+  height: 44px;
+  padding: 0 16px;
+  font-size: 15px;
+  border-radius: var(--radius-sm);
+}
+@media (max-width: 1023px) {
+  .nurai__inner {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    gap: 28px;
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+  .nurai__art { width: 100%; max-width: 520px; }
+  .nurai__text { flex: 0 0 auto; max-width: 520px; }
+  .nurai__title { text-align: center; }
+  .nurai__sub { margin-inline: auto; }
+}
 .ai-card {
   transition: transform 260ms cubic-bezier(.16, 1, .3, 1),
               border-color 260ms ease,
@@ -2195,7 +2376,10 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
   }
 }
 
-@media (max-width: 1023px) {
+/* <=1279 (phone through landscape tablet): the robotics cards are a contained,
+   centred grid — NOT the >=1280 pinned scrolly deck (which fans cards out beyond
+   the section). Keeps the robot images within the section on tablet. */
+@media (max-width: 1279px) {
   .robotics__pin {
     height: auto;
     min-height: 100vh;
@@ -3224,6 +3408,9 @@ html[data-theme="light"] .footer__wordmark-art .footer__wordmark--light { displa
   }
 }
 
+/* (Tablet ecosystem carousel tuning lives after the <=1279 eco block below, so
+   its overrides win — see the "Tablet ecosystem tuning" block.) */
+
 @media (max-width: 767px) {
   html,
   body {
@@ -3365,8 +3552,8 @@ html[data-theme="light"] .footer__wordmark-art .footer__wordmark--light { displa
     display: block;
     width: min(100%, 523px);
     height: 436px;
-    margin: 0 0 0 auto;
-    justify-self: end;
+    margin: 0 auto;
+    justify-self: center;
   }
   .eco-fcard {
     position: absolute;
@@ -4120,7 +4307,10 @@ html[data-theme="light"] .eco-btn:hover { background: rgba(24, 24, 27, .06); }
 html[data-theme="light"] .eco-progress i { background: rgba(24, 24, 27, .30); }
 html[data-theme="light"] .eco-progress i.is-active { background: #18181b; }
 
-@media (max-width: 767px) {
+/* Phone AND tablet (<=1279px): the ecosystem primitives render as a one-card
+   horizontal swipe carousel (like the robotics carousel). The scroll-driven
+   deck (cards.js) is disabled at this width; eco-carousel.js drives prev/next. */
+@media (max-width: 1279px) {
   /* Outer card (.eco-card) sits inset from the edges like the CTA card — NOT
      full-bleed. The inner animation cards swipe full-width WITHIN it. */
   .ecosystem { padding: 0 20px; }
@@ -4215,4 +4405,115 @@ html[data-theme="light"] .eco-progress i.is-active { background: #18181b; }
     position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
     overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
   }
+}
+
+/* Tablet only (768–1279, NOT phones): the AI + robotics sections are
+   content-light, so drop them from a full viewport to ~80vh to cut the empty
+   space. min-height (never a fixed height) keeps content from clipping. The
+   morph's vertical anchor is pushed lower (grid-ribbon.js) at these widths so it
+   still sits below the copy. */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .ai-layer.agentic-section,
+  .ai-layer.agentic-section .ai-layer__pin,
+  .nurai {
+    min-height: 80vh;
+    min-height: 80svh;
+  }
+}
+/* Landscape tablet (1024–1279): the agentic pin uses a fixed height:100vh here
+   (unlike the auto height at <=1023), so override it to 80vh too. */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .ai-layer.agentic-section .ai-layer__pin {
+    height: 80vh;
+    height: 80svh;
+  }
+}
+/* Robotics reduces across 768–1279, where it's a contained stacked grid; only at
+   >=1280 is it the pinned scroll carousel that needs its full-height pin. */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .robotics,
+  .robotics__pin {
+    min-height: 80vh;
+    min-height: 80svh;
+  }
+}
+
+/* Tablet ecosystem tuning (768–1279) — placed after the <=1279 eco carousel so
+   it wins. The outer card is full-width within the section; the inner gif card
+   keeps its web-view width (523px) centred; content is centre-aligned; padding
+   is roomier; and the section gets 32px side gutters. */
+@media (min-width: 768px) and (max-width: 1279px) {
+  .ecosystem { padding: 0 32px; }
+  .eco-card {
+    max-width: none;
+    margin-inline: 0;
+    padding: 48px 40px;
+  }
+  /* Full-width so the centred title spans the whole card. Without this, at
+     1024–1279 the left column keeps its narrow desktop width and sits on the
+     left, making the centred title read as left-aligned. */
+  .eco-card__left { text-align: center; width: 100%; }
+  .eco-card__sub { margin-inline: auto; }
+  /* the gif card keeps the web-view width, centred within the full-width card */
+  .eco-stack { width: min(523px, 100%); margin-inline: auto; }
+  /* centre the content inside the card */
+  .eco-fcard__head { text-align: center; }
+  .eco-fcard__desc { margin-inline: auto; }
+  /* Keep the gif/diagram card inset from the fcard edges (L/R padding) so it
+     lines up with the head's 28px padding instead of spanning edge-to-edge.
+     `margin-inline: auto` collapsed to 0 here because the panel has no width
+     cap, which left the gif card wider than the (inset) title/description. */
+  .node-panel { margin-inline: 28px; }
+}
+
+/* ── Uniform tablet side gutters ──────────────────────────────────────────────
+   Every section's content sits 32px from the screen edges on tablet, matching
+   the ecosystem section. Appended last so it wins over the per-section tablet
+   paddings above. Only the inline (left/right) padding is touched — vertical
+   rhythm is left untouched. The full-bleed grid-ribbon canvas behind the pinned
+   sections still spans edge to edge; only the content wrapper is inset.
+
+   Portrait (768–1023): all sections are in their contained/stacked layouts, so
+   the 32px gutter applies to every one. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero__content { padding-inline: 32px; }
+  .ecosystem { padding-inline: 32px; }
+  .tools__pin { padding-inline: 32px; }
+  .tools__inner { width: 100%; }
+  .ai-intro__inner { padding-inline: 32px; }
+  .ai-layer__pin { padding-inline: 32px; }
+  .nurai__inner { padding-inline: 32px; }
+  .robotics__pin { padding-inline: 32px; }
+  /* layers__inner is absolutely positioned (pinned scrolly) so it ignores the
+     pin's padding — size it directly: 64px total = 32px each side. The pin
+     padding still positions the (static) heading. */
+  .layers__pin { padding-inline: 32px; }
+  .layers__inner { width: calc(100% - 64px); }
+  .cta { padding-inline: 32px; }
+}
+/* Landscape tablet (1024–1279): tools, agentic and layers are still the desktop
+   pinned scrollies (transform-scaled, max-width content), so they keep their
+   natural gutters. The normal-flow sections are normalised to the same 32px. */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .ecosystem { padding-inline: 32px; }
+  .ai-intro__inner { padding-inline: 32px; }
+  .nurai__inner { padding-inline: 32px; }
+  .robotics__pin { padding-inline: 32px; }
+}
+/* Phones (<=767): match the tablet gutters — every section's content sits 32px
+   from the screen edges. Only inline padding/margins are touched; the gutter is
+   applied to whichever element actually carries it on mobile (the section for
+   hero/ecosystem/cta, the inner wrapper elsewhere, a width for the absolutely
+   positioned layers deck). */
+@media (max-width: 767px) {
+  .hero { padding-inline: 32px; }
+  .ecosystem { padding-inline: 32px; }
+  .tools__inner { margin-inline: 32px; width: auto; }
+  .ai-intro__inner { padding-inline: 32px; }
+  .ai-layer__pin { padding-inline: 32px; }
+  .nurai__inner { padding-inline: 32px; }
+  .robotics__pin { padding-inline: 32px; }
+  .layers__pin { padding-inline: 32px; }
+  .layers__inner { width: calc(100% - 64px); }
+  .cta { padding-inline: 32px; }
 }

@@ -3155,6 +3155,10 @@ html[data-theme="light"] .footer__wordmark-art .footer__wordmark--light { displa
   .robotics__btn:disabled { opacity: .35; cursor: not-allowed; }
   .robotics__btn:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
   .robotics__btn svg { width: 18px; height: 18px; }
+  /* Match the robotics controls' 44px touch target on tablet (the layers
+     "Ecosystem layers" carousel was left at the 32px desktop size). */
+  .carousel__btn { width: 44px; height: 44px; }
+  .carousel__btn svg { width: 18px; height: 18px; }
   .robotics__progress {
     display: flex;
     width: 18px;

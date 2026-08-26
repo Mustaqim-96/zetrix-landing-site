@@ -15,7 +15,7 @@
   var bars = Array.prototype.slice.call(root.querySelectorAll('.eco-progress i'));
   if (!track || !cards.length || !prev || !next) return;
 
-  var narrow = window.matchMedia('(max-width: 767px)');
+  var narrow = window.matchMedia('(max-width: 1279px)');
   var current = 0;
   var ticking = false;
 
@@ -30,11 +30,17 @@
     bars.forEach(function (bar, i) { bar.classList.toggle('is-active', i === current); });
 
     if (shouldScroll && narrow.matches) {
-      cards[current].scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'start'
-      });
+      // The track has `scroll-behavior: smooth` + `scroll-snap-type: x mandatory`,
+      // and in that combination programmatic scrolls (scrollIntoView / scrollTo /
+      // a plain scrollLeft assignment) never land — the snap container keeps
+      // resetting the pending smooth animation to 0, so the card never moves.
+      // Force an instant jump by temporarily disabling smooth. offsetLeft is
+      // relative to the (position:relative) track, so aligning the card to the
+      // track's start centres it (the track itself is centred in the card).
+      var prevBehavior = track.style.scrollBehavior;
+      track.style.scrollBehavior = 'auto';
+      track.scrollLeft = cards[current].offsetLeft;
+      track.style.scrollBehavior = prevBehavior;
     }
   }
 
