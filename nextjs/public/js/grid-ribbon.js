@@ -162,6 +162,11 @@
     light: { grey: [24, 24, 27],    tileAlpha: 0.06, red: [222, 52, 62], redHi: [204, 42, 52], cellAlpha: 0.96, maxOpacity: 0.58 }
   };
   var pal = PALETTES.dark;
+  // On phones the grid sits directly behind each section's title (there's no
+  // side column for it to occupy, unlike wider screens), so dim the whole canvas
+  // further there to keep the headings readable over it.
+  var MOBILE_MAX = 767;
+  var MOBILE_DIM = 0.5;
   function refreshPalette() {
     pal = document.documentElement.getAttribute('data-theme') === 'light'
       ? PALETTES.light : PALETTES.dark;
@@ -290,8 +295,10 @@
       var nt = nextGuard.getBoundingClientRect().top;
       op = Math.min(op, clamp((nt - vh * 0.55) / (vh * 0.45)));
     }
-    // Ceiling so the grid stays a background texture, never a focal element.
-    canvas.style.opacity = String(op * pal.maxOpacity);
+    // Ceiling so the grid stays a background texture, never a focal element;
+    // dimmed further on phones so section titles stay readable over it.
+    var dim = window.innerWidth <= MOBILE_MAX ? MOBILE_DIM : 1;
+    canvas.style.opacity = String(op * pal.maxOpacity * dim);
 
     // --- cube morph (Section 3) ---------------------------------------------
     // The tools section is a single-viewport section, so drive the morph off how
