@@ -372,6 +372,31 @@ export default function Home() {
                     <h2 className="section-heading agentic__title"><span className="agentic__title-line">Your Agentic Twin</span></h2>
                     <p className="agentic__sub">An AI agent with verified identity that can represent users or organisations and execute approved tasks.</p>
                     <a className="btn btn--red agentic__cta" href="https://avatar.inc/" target="_blank" rel="noopener noreferrer" aria-label="Know more about your Agentic Twin">Know more <span className="arrow-ext" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17 17 7M9 7h8v8" /></svg></span></a>
+
+                    {/* Selling points — avatar.inc's four focused capabilities. Same
+                        card treatment as the Tools section; icons are inline Lucide. */}
+                    <div className="sp-grid">
+                      <article className="sp-card">
+                        <span className="sp-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" /><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09" /><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z" /><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05" /></svg></span>
+                        <h3 className="sp-card__title">Work on autopilot</h3>
+                        <p className="sp-card__desc">Assign your Avatar to handle conversations, run workflows, and stay consistent.</p>
+                      </article>
+                      <article className="sp-card">
+                        <span className="sp-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" /><path d="m9 12 2 2 4-4" /></svg></span>
+                        <h3 className="sp-card__title">An agent you trust</h3>
+                        <p className="sp-card__desc">Operate in trust-critical environments, with accountability built in.</p>
+                      </article>
+                      <article className="sp-card">
+                        <span className="sp-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 16v5" /><path d="M16 14.639V21" /><path d="M20 10.656V21" /><path d="m22 3-8.646 8.646a.5.5 0 0 1-.708 0L9.354 8.354a.5.5 0 0 0-.707 0L2 15" /><path d="M4 18.463V21" /><path d="M8 14.656V21" /></svg></span>
+                        <h3 className="sp-card__title">Scale your operations</h3>
+                        <p className="sp-card__desc">Run simultaneous interactions and repeatable workflows through one identity.</p>
+                      </article>
+                      <article className="sp-card">
+                        <span className="sp-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2" /><path d="M17 3h2a2 2 0 0 1 2 2v2" /><path d="M21 17v2a2 2 0 0 1-2 2h-2" /><path d="M7 21H5a2 2 0 0 1-2-2v-2" /><path d="M8 14s1.5 2 4 2 4-2 4-2" /><path d="M9 9h.01" /><path d="M15 9h.01" /></svg></span>
+                        <h3 className="sp-card__title">Verifiable identity</h3>
+                        <p className="sp-card__desc">Verified identity, secure data, and trusted autonomous execution.</p>
+                      </article>
+                    </div>
                   </div>
                   <div className="agentic__art" aria-hidden="true">
                     <img loading="lazy" decoding="async" className="agentic__mascot" src="/assets/img/ai-avatar-illustration.webp" width="1080" height="680" alt="" />
@@ -389,6 +414,31 @@ export default function Home() {
                   <h2 className="section-heading nurai__title"><span className="nurai__title-line">The World’s First Shariah-Aligned Intelligence Model</span></h2>
                   <p className="nurai__sub">A Shariah-aligned, multilingual AI foundation for culturally, and institutionally relevant services.</p>
                   <a className="btn btn--red nurai__cta" href="https://nur-ai.ai/" target="_blank" rel="noopener noreferrer" aria-label="Know more about NurAI">Know more <span className="arrow-ext" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17 17 7M9 7h8v8" /></svg></span></a>
+
+                  {/* Selling points — NurAI's core value propositions (nur-ai.ai).
+                      Same card treatment as the Tools section; inline Lucide icons. */}
+                  <div className="sp-grid">
+                    <article className="sp-card">
+                      <span className="sp-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 18v-7" /><path d="M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949z" /><path d="M14 18v-7" /><path d="M18 18v-7" /><path d="M3 22h18" /><path d="M6 18v-7" /></svg></span>
+                      <h3 className="sp-card__title">Quran &amp; Sunnah rooted</h3>
+                      <p className="sp-card__desc">Grounded in Islamic teachings at its core, not treated as an add-on.</p>
+                    </article>
+                    <article className="sp-card">
+                      <span className="sp-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3v18" /><path d="m19 8 3 8a5 5 0 0 1-6 0zV7" /><path d="M3 7h1a17 17 0 0 0 8-2 17 17 0 0 0 8 2h1" /><path d="m5 8 3 8a5 5 0 0 1-6 0zV7" /><path d="M7 21h10" /></svg></span>
+                      <h3 className="sp-card__title">Scholar-validated</h3>
+                      <p className="sp-card__desc">Guidance reviewed by Islamic legal experts worldwide for doctrinal accuracy.</p>
+                    </article>
+                    <article className="sp-card">
+                      <span className="sp-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 21a8 8 0 0 0-16 0" /><circle cx="10" cy="8" r="5" /><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3" /></svg></span>
+                      <h3 className="sp-card__title">Culturally localised</h3>
+                      <p className="sp-card__desc">Region-specific, multilingual answers aligned with JAKIM and local context.</p>
+                    </article>
+                    <article className="sp-card">
+                      <span className="sp-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" /><line x1="12" x2="12" y1="16" y2="12" /><line x1="12" x2="12.01" y1="8" y2="8" /></svg></span>
+                      <h3 className="sp-card__title">Transparent sourcing</h3>
+                      <p className="sp-card__desc">Referenced answers drawn from hadith and fatwa sources you can verify.</p>
+                    </article>
+                  </div>
                 </div>
                 <div className="nurai__art" aria-hidden="true">
                   {/* Desktop (>=1024px): the grid-ribbon canvas morphs into the NurAI

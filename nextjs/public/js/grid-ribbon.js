@@ -157,16 +157,32 @@
   // tileAlpha: opacity of the faint grey rounded tile drawn in EVERY cell (the
   // empty dot-grid field). It replaces the old graph-paper lines, so the grid
   // now reads as separate rounded squares rather than a connected lattice.
+  // `avatarRib` recolours ONLY the ribbon behind the Section-4 mascot. The mascot
+  // body itself uses the AVATAR_GRAD three-stop warm gradient below (not a flat
+  // palette colour). The red wave, Section-3 cubes and NurAI logo keep their hues.
   var PALETTES = {
-    dark:  { grey: [120, 124, 134], tileAlpha: 0.08, red: [232, 58, 70], redHi: [255, 108, 116], cellAlpha: 0.94, maxOpacity: 0.72 },
-    light: { grey: [24, 24, 27],    tileAlpha: 0.06, red: [222, 52, 62], redHi: [204, 42, 52], cellAlpha: 0.96, maxOpacity: 0.58 }
+    dark:  { grey: [120, 124, 134], tileAlpha: 0.08, red: [232, 58, 70], redHi: [255, 108, 116], avatarRib: [255, 143, 31], cellAlpha: 0.94, maxOpacity: 0.72 },
+    light: { grey: [24, 24, 27],    tileAlpha: 0.06, red: [222, 52, 62], redHi: [204, 42, 52], avatarRib: [255, 143, 31], cellAlpha: 0.96, maxOpacity: 0.58 }
   };
+  // Mascot body gradient (top -> bottom): #FF351D -> #FF8F1F -> #FDC215.
+  var AVATAR_GRAD = [[255, 53, 29], [255, 143, 31], [253, 194, 21]];
+  function avatarGrad(t) {
+    t = t < 0 ? 0 : t > 1 ? 1 : t;
+    var seg = t * (AVATAR_GRAD.length - 1);
+    var i = Math.min((seg | 0), AVATAR_GRAD.length - 2);
+    var f = seg - i, a = AVATAR_GRAD[i], b = AVATAR_GRAD[i + 1];
+    return [(a[0] + (b[0] - a[0]) * f) | 0, (a[1] + (b[1] - a[1]) * f) | 0, (a[2] + (b[2] - a[2]) * f) | 0];
+  }
   var pal = PALETTES.dark;
   // On phones the grid sits directly behind each section's title (there's no
   // side column for it to occupy, unlike wider screens), so dim the whole canvas
   // further there to keep the headings readable over it.
   var MOBILE_MAX = 767;
   var MOBILE_DIM = 0.5;
+  // Light mode on web/tablet (> MOBILE_MAX) gets a higher opacity ceiling so the
+  // grid reads more strongly on white. Phones keep pal.maxOpacity (below) so the
+  // headings stay readable over the centred morph.
+  var LIGHT_MAX_WIDE = 0.8;
   function refreshPalette() {
     pal = document.documentElement.getAttribute('data-theme') === 'light'
       ? PALETTES.light : PALETTES.dark;
@@ -297,8 +313,11 @@
     }
     // Ceiling so the grid stays a background texture, never a focal element;
     // dimmed further on phones so section titles stay readable over it.
-    var dim = window.innerWidth <= MOBILE_MAX ? MOBILE_DIM : 1;
-    canvas.style.opacity = String(op * pal.maxOpacity * dim);
+    var wide = window.innerWidth > MOBILE_MAX;
+    var dim = wide ? 1 : MOBILE_DIM;
+    // Raise the ceiling for light mode on web/tablet only; dark and phones keep pal.maxOpacity.
+    var maxOp = (wide && pal === PALETTES.light) ? LIGHT_MAX_WIDE : pal.maxOpacity;
+    canvas.style.opacity = String(op * maxOp * dim);
 
     // --- cube morph (Section 3) ---------------------------------------------
     // The tools section is a single-viewport section, so drive the morph off how
@@ -517,8 +536,6 @@
       var rRows = ROBOT.length, rCols = ROBOT[0].length;
       var colStart = Math.round((AVATAR_CX * cssW) / cw - rCols / 2);
       var rowStart = Math.round((cssH * centerY) / ch - rRows / 2);
-      var solid = pal.redHi;                                    // body / head / arms
-      var face = [(solid[0] * AVATAR_FACE) | 0, (solid[1] * AVATAR_FACE) | 0, (solid[2] * AVATAR_FACE) | 0]; // dim face panel
 
       // --- horizontal wavy "ribbon" of tiles flowing across, behind the robot ---
       // A sine band a couple of tiles thick, spanning the width and fading at its
@@ -527,7 +544,7 @@
       var ribAmp = cssH * RIBBON_AMP;
       var ribThick = ch * RIBBON_THICK;
       var ribFreq = (Math.PI * 2) / (cssW * RIBBON_WAVELEN);
-      var ribCol = pal.red;
+      var ribCol = pal.avatarRib;
       for (r = 0; r < rows; r++) {
         var rpy = r * ch + ch / 2;
         y = Math.round(r * ch) + GAP;
@@ -556,6 +573,9 @@
         if (gr < 0 || gr >= rows) continue;
         y = Math.round(gr * ch) + GAP;
         hh = Math.ceil(ch) - GAP;
+        // Warm top->bottom gradient across the mascot body (#FF351D -> #FF8F1F -> #FDC215).
+        var solid = avatarGrad(rRows > 1 ? br / (rRows - 1) : 0);
+        var face = [(solid[0] * AVATAR_FACE) | 0, (solid[1] * AVATAR_FACE) | 0, (solid[2] * AVATAR_FACE) | 0]; // dim face panel
         for (var bc = 0; bc < rCols; bc++) {
           var chr = line.charAt(bc);
           if (chr === ' ' || chr === '.') continue;        // empty / carved eyes+mouth
