@@ -1910,28 +1910,28 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
 .ai-intro__inner {
   position: relative;
   z-index: 2;
-  width: 100%;
-  max-width: 1200px;
+  /* Match the other sections' content edge (1200 box, 24px gutter only when the
+     viewport is narrower) so the left-aligned title lines up across the page. */
+  width: min(1200px, calc(100% - 48px));
   margin-inline: auto;
-  padding-inline: 24px;
-  /* title and partners stacked vertically, centred */
+  /* title and partners stacked vertically, left-aligned */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
   gap: 40px;
 }
 .ai-intro__lead { max-width: 640px; margin: 0; }
-.ai-intro__title { text-align: center; }
+.ai-intro__title { text-align: left; }
 .ai-intro__partners {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 /* full-width carousel frame — fills the section's content width (max 1200) */
 .ai-intro__partners .partners { width: 100%; max-width: none; }
-.ai-intro__partners .partners__label { text-align: center; }
+.ai-intro__partners .partners__label { text-align: left; }
 @media (max-width: 1023px) {
   .ai-intro__inner { gap: 32px; }
 }
@@ -1948,10 +1948,9 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
 .nurai__inner {
   position: relative;
   z-index: 2;
-  width: 100%;
-  max-width: 1200px;
+  /* Match the other sections' content edge so the title lines up across the page. */
+  width: min(1200px, calc(100% - 48px));
   margin-inline: auto;
-  padding-inline: 24px;
   padding-top: 150px;           /* near the top of the section */
   display: flex;
   align-items: flex-start;
@@ -2332,20 +2331,24 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
   transform-origin: 50% 0;
 }
 .robotics__heading {
-  width: 800px;
-  height: 120px;
-  margin-inline: auto;
+  width: 100%;
+  max-width: 600px;
+  min-height: 120px;   /* was fixed 120px; grow so the narrower wrapping copy isn't clipped */
+  margin-inline: 0;
+  text-align: left;
 }
 .robotics__title {
   font-size: 40px;
   line-height: 48px;
+  text-align: left;
 }
 .robotics__subtitle {
   margin-top: 16px;
-  margin-inline: auto;
-  max-width: 800px;
+  margin-inline: 0;
+  max-width: 480px;
   font-size: 20px;
   line-height: 28px;
+  text-align: left;
 }
 .robot-cards {
   margin-top: 40px;
