@@ -203,6 +203,16 @@ ul { list-style: none; margin: 0; padding: 0; }
 .site-intro.is-handoff .site-intro__mark--white,
 .site-intro.is-handoff .site-intro__mark--nav { transition: opacity 300ms ease; }
 .site-intro.is-settling { opacity: 0; transition: opacity 100ms linear; }
+/* Light theme: land the intro's logo handoff on the LIGHT nav seamlessly.
+   The nav logo is filtered dark in light mode, so (1) the handoff "--nav" mark
+   gets the same dark filter — the travelling logo crossfades white → dark as it
+   moves to the nav, instead of the intro fading out to reveal a suddenly-dark
+   nav logo; and (2) the reveal canvas is light instead of #18181b, so there is
+   no dark flash before the light page shows. Dark mode is unchanged. */
+html[data-theme="light"] .site-intro__canvas--dark { background: var(--theme-bg); }
+html[data-theme="light"] .site-intro__mark--nav {
+  filter: brightness(0) saturate(100%) invert(10%) sepia(7%) saturate(767%) hue-rotate(202deg) brightness(94%) contrast(96%);
+}
 @media (max-width: 479px) {
   .site-intro__logo { width: min(220px, calc(100vw - 48px)); }
 }
