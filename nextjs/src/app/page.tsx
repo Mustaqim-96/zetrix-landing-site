@@ -262,17 +262,6 @@ export default function Home() {
 
                       <article className="tool-card">
                         <div className="tool-card__top">
-                          <span className="tool-card__icon" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/icons/lucide-badge-check.svg" alt="" /></span>
-                          <span className="tool-card__arrow" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/icons/arrow-up-right.svg" alt="" /></span>
-                        </div>
-                        <div className="tool-card__text">
-                          <h3 className="tool-card__title">ZCert</h3>
-                          <p className="tool-card__desc">Issue and verify tamper-evident credentials.</p>
-                        </div>
-                      </article>
-
-                      <article className="tool-card">
-                        <div className="tool-card__top">
                           <span className="tool-card__icon" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/icons/lucide-scroll-text.svg" alt="" /></span>
                           <span className="tool-card__arrow" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/icons/arrow-up-right.svg" alt="" /></span>
                         </div>
