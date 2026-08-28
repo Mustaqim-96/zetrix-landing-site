@@ -2107,8 +2107,9 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
      column, instead of collapsing to a single column. */
   .sp-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .sp-card { padding: 14px; gap: 10px; }
+  /* Match the Tools (section 3) card text exactly: 16/22 title, 13/17 desc. */
   .sp-card__title { font-size: 16px; line-height: 22px; }
-  .sp-card__desc { font-size: 13px; line-height: 19px; }
+  .sp-card__desc { font-size: 13px; line-height: 17px; }
   .agentic__sub,
   .nurai__sub { font-size: 16px; line-height: 24px; }
   /* Know more buttons step down with the hero "Get Started" on phones. */
