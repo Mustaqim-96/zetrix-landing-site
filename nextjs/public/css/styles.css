@@ -1349,8 +1349,8 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
   position: relative;
   top: auto;
   width: 100%;
-  height: 100vh;
-  height: 100svh;
+  min-height: 100vh;
+  min-height: 100svh;
   padding: 120px 0;
   display: flex;
   align-items: center;
@@ -1660,28 +1660,29 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
   .eco-card { padding: 48px; }
   .eco-card__coin { bottom: -360px; }
   .tools__pin {
-    padding: 96px 0 20px;
+    padding: 112px 0 72px;
     align-items: flex-start;
   }
+  /* Flow at 1:1 (no scale-to-fit) so the fonts render at the same size as the
+     Agentic section; the section grows taller than the viewport and scrolls. */
   .tools__inner {
-    left: 50%;
-    width: min(1333.333px, calc(111.111% - 53.333px));
+    left: auto;
+    width: min(1200px, calc(100% - 48px));
     max-width: none;
-    margin-inline: 0;
-    transform: translateX(-50%) scale(0.9);
-    transform-origin: 50% 0;
+    margin-inline: auto;
+    transform: none;
   }
-  .tools__left { width: 652px; }
+  .tools__left { width: 600px; }
   .tool-grid {
-    width: 100%;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: auto;
+    grid-template-columns: repeat(2, 290px);
   }
 }
 
 @media (min-width: 1024px) and (max-height: 799px) {
   .tools__inner {
-    width: min(1578.947px, calc(131.579% - 63.158px));
-    transform: translateX(-50%) scale(0.76);
+    width: min(1200px, calc(100% - 48px));
+    transform: none;
     flex-shrink: 0;
   }
 }
@@ -2355,8 +2356,8 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
   position: relative;
   z-index: 2;
   width: 100%;
-  height: 100vh;
-  height: 100svh;
+  min-height: 100vh;
+  min-height: 100svh;
   overflow: hidden;
 }
 .robotics__inner {
@@ -2500,25 +2501,34 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
 }
 
 @media (min-width: 1280px) and (max-height: 899px) {
+  /* Flow at 1:1 (no scale-to-fit) so the title + subtitle render at the same
+     size as the Agentic section; the pin grows and scrolls if content is tall. */
+  .robotics__pin {
+    padding: 120px 0 56px;
+  }
   .robotics__inner {
-    top: 84px;
-    width: 1363.636px;
-    transform: translateX(-50%) scale(.88);
-  }
-  .robot-cards {
-    width: 100%;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .robot-card {
-    width: 100%;
+    position: static;
+    top: auto;
+    left: auto;
+    width: min(1200px, calc(100% - 48px));
+    height: auto;
+    margin-inline: auto;
+    transform: none;
   }
 }
 
 @media (min-width: 1024px) and (max-width: 1279px) and (max-height: 899px) {
+  .robotics__pin {
+    padding: 120px 40px 56px;
+  }
   .robotics__inner {
-    top: 88px;
-    width: min(1421.053px, calc(131.579% - 52.632px));
-    transform: translateX(-50%) scale(.76);
+    position: static;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    margin-inline: auto;
+    transform: none;
   }
   .robot-cards {
     width: 100%;
@@ -2771,16 +2781,25 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
 }
 
 @media (min-width: 1024px) and (max-height: 899px) {
+  /* Keep the heading + subtitle at full size (matching the Agentic section);
+     scale only the card deck so the pinned single-screen layout still fits. */
   .layers__inner {
-    top: 128px;
-    transform: translateX(-50%) scale(.82);
+    top: 80px;
+    height: auto;
+    transform: translateX(-50%);
+  }
+  .carousel {
+    transform: scale(.74);
+    transform-origin: 50% 0;
   }
 }
 
 @media (min-width: 1024px) and (max-height: 749px) {
   .layers__inner {
-    top: 128px;
-    transform: translateX(-50%) scale(.72);
+    top: 64px;
+  }
+  .carousel {
+    transform: scale(.62);
   }
 }
 
