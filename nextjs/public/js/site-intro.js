@@ -101,23 +101,32 @@
         await wait(600);
         await wait(400);
 
-        var sourceRect = movingLogo.getBoundingClientRect();
-        var targetRect = navLogo.getBoundingClientRect();
-        if (!sourceRect.width || !targetRect.width) return cleanup();
-        var target = destinationTransform(sourceRect, targetRect);
-
         overlay.classList.add('is-handoff');
-        var handoff = movingLogo.animate([
-          { transform: 'translate3d(0, 0, 0) scale(1, 1)' },
-          { transform: 'translate3d(' + target.x + 'px, ' + target.y +
-              'px, 0) scale(' + target.scaleX + ', ' + target.scaleY + ')' }
-        ], {
-          duration: 750,
-          easing: 'cubic-bezier(.16, 1, .3, 1)',
-          fill: 'forwards'
-        });
-        animations.push(handoff);
-        await handoff.finished;
+
+        // Phones skip the flying-logo transform: at small sizes the
+        // scale/translate/clip hand-off is fragile and can render the wordmark
+        // incompletely. The brand canvas still wipes away and the mark cross-fades
+        // in place; is-settling then fades the intro out to reveal the nav logo.
+        if (win.innerWidth <= 767) {
+          await wait(650);
+        } else {
+          var sourceRect = movingLogo.getBoundingClientRect();
+          var targetRect = navLogo.getBoundingClientRect();
+          if (!sourceRect.width || !targetRect.width) return cleanup();
+          var target = destinationTransform(sourceRect, targetRect);
+
+          var handoff = movingLogo.animate([
+            { transform: 'translate3d(0, 0, 0) scale(1, 1)' },
+            { transform: 'translate3d(' + target.x + 'px, ' + target.y +
+                'px, 0) scale(' + target.scaleX + ', ' + target.scaleY + ')' }
+          ], {
+            duration: 750,
+            easing: 'cubic-bezier(.16, 1, .3, 1)',
+            fill: 'forwards'
+          });
+          animations.push(handoff);
+          await handoff.finished;
+        }
 
         overlay.classList.add('is-settling');
         await wait(100);
