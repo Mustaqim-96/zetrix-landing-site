@@ -7,15 +7,17 @@
 
   var STORAGE_KEY = 'zetrix-theme';
 
+  // Light is the default; only an explicit 'dark' opts out. Kept in sync with
+  // the pre-paint theme-init script in the app's root layout.
   function normalizeTheme(value) {
-    return value === 'light' ? 'light' : 'dark';
+    return value === 'dark' ? 'dark' : 'light';
   }
 
   function readStoredTheme(storage) {
     try {
       return normalizeTheme(storage && storage.getItem(STORAGE_KEY));
     } catch (error) {
-      return 'dark';
+      return 'light';
     }
   }
 
@@ -56,7 +58,7 @@
       for (var i = 0; i < buttons.length; i++) syncButton(buttons[i], t);
     }
 
-    var theme = applyTheme(doc, 'dark');
+    var theme = applyTheme(doc, readStoredTheme(storage));
     syncAll(theme);
 
     function onClick() {
