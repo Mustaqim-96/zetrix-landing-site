@@ -211,7 +211,7 @@ ul { list-style: none; margin: 0; padding: 0; }
    no dark flash before the light page shows. Dark mode is unchanged. */
 html[data-theme="light"] .site-intro__canvas--dark { background: var(--theme-bg); }
 html[data-theme="light"] .site-intro__mark--nav {
-  filter: brightness(0) saturate(100%) invert(10%) sepia(7%) saturate(767%) hue-rotate(202deg) brightness(94%) contrast(96%);
+  content: url("../assets/img/logo-zetrix-light.svg");
 }
 @media (max-width: 479px) {
   .site-intro__logo { width: min(220px, calc(100vw - 48px)); }
@@ -4090,7 +4090,9 @@ html[data-theme="light"] .nav {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .92), 0 12px 34px rgba(31, 41, 55, .13);
 }
 html[data-theme="light"] .nav__logo { position: relative; }
-html[data-theme="light"] .nav__logo img { filter: brightness(0) saturate(100%) invert(10%) sepia(7%) saturate(767%) hue-rotate(202deg) brightness(94%) contrast(96%); }
+/* Light mode uses a dedicated logo variant (red "Z" + dark "ETRIX") instead of a
+   uniform dark filter, so the brand-red Z is preserved on the light nav. */
+html[data-theme="light"] .nav__logo img { content: url("../assets/img/logo-zetrix-light.svg"); }
 html[data-theme="light"] .nav__logo::after {
   content: "";
   position: absolute;
