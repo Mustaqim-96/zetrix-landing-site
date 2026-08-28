@@ -1866,11 +1866,13 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
   justify-content: space-between;
   gap: 48px;
 }
-.agentic__text { max-width: 600px; }
+/* flex-grow so the text column fills the row (like nurai__text), making the card
+   grid render the same ~290px cards as the Tools (section 3) grid. */
+.agentic__text { flex: 1 1 auto; min-width: 0; }
 .agentic__title { text-align: left; }
 .agentic__sub {
   margin-top: 16px;
-  max-width: 480px;
+  max-width: 600px;
   font-size: 20px;
   line-height: 28px;
   color: var(--text-tertiary);
@@ -1986,7 +1988,7 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
 .nurai__title { text-align: left; }
 .nurai__sub {
   margin-top: 16px;
-  max-width: 480px;
+  max-width: 600px;
   font-size: 20px;
   line-height: 28px;
   color: var(--text-tertiary);
