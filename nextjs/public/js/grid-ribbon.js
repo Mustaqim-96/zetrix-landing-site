@@ -162,12 +162,12 @@
   // palette colour). The red wave, Section-3 cubes and NurAI logo keep their hues.
   var PALETTES = {
     dark:  { grey: [120, 124, 134], tileAlpha: 0.08, red: [232, 58, 70], redHi: [255, 108, 116], avatarRib: [255, 143, 31], cellAlpha: 0.94, maxOpacity: 0.72 },
-    // Light mode: cellAlpha at full so the active cube/robot/logo morphs read as
-    // solid, vivid colour on white (like dark mode) instead of washing out to a
-    // translucent tint; a low tileAlpha keeps the grey base dot-grid faintly
-    // present (kept below the 0.06 that previously showed as a dotted line);
-    // maxOpacity raised so the whole grid carries more presence.
-    light: { grey: [24, 24, 27],    tileAlpha: 0.04, red: [222, 52, 62], redHi: [204, 42, 52], avatarRib: [255, 143, 31], cellAlpha: 1, maxOpacity: 0.68 }
+    // Light palette holds the MOBILE (phone) values — kept at the original design
+    // so phones stay dim and headings stay readable. Desktop/tablet get the
+    // stronger look elsewhere: a higher opacity ceiling (LIGHT_MAX_WIDE) and a
+    // desktop-only grey base grid (LIGHT_TILE_WIDE, applied in render), so mobile
+    // is unchanged while large light screens read more strongly.
+    light: { grey: [24, 24, 27],    tileAlpha: 0, red: [222, 52, 62], redHi: [204, 42, 52], avatarRib: [255, 143, 31], cellAlpha: 0.96, maxOpacity: 0.58 }
   };
   // Mascot body gradient (top -> bottom): #FF351D -> #FF8F1F -> #FDC215.
   var AVATAR_GRAD = [[255, 53, 29], [255, 143, 31], [253, 194, 21]];
@@ -188,6 +188,9 @@
   // grid reads more strongly on white. Phones keep pal.maxOpacity (below) so the
   // headings stay readable over the centred morph.
   var LIGHT_MAX_WIDE = 0.9;
+  // Desktop/tablet light mode also shows a faint grey base dot-grid; phones keep
+  // the palette's tileAlpha (0) so their look is unchanged.
+  var LIGHT_TILE_WIDE = 0.04;
   function refreshPalette() {
     pal = document.documentElement.getAttribute('data-theme') === 'light'
       ? PALETTES.light : PALETTES.dark;
@@ -361,7 +364,9 @@
     // --- base dot-grid: a faint grey rounded tile in EVERY cell (always) ---
     // Separate tiles with a gap around each — not connected lines — so the field
     // reads like a mosaic of squares that the red wave lights up.
-    ctx.fillStyle = 'rgba(' + pal.grey[0] + ',' + pal.grey[1] + ',' + pal.grey[2] + ',' + pal.tileAlpha + ')';
+    // Desktop/tablet light mode uses a faint grey base grid; phones keep pal.tileAlpha.
+    var tileA = (window.innerWidth > MOBILE_MAX && pal === PALETTES.light) ? LIGHT_TILE_WIDE : pal.tileAlpha;
+    ctx.fillStyle = 'rgba(' + pal.grey[0] + ',' + pal.grey[1] + ',' + pal.grey[2] + ',' + tileA + ')';
     for (r = 0; r < rows; r++) {
       y = Math.round(r * ch) + GAP;
       hh = Math.ceil(ch) - GAP;
