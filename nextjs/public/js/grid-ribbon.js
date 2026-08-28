@@ -162,7 +162,10 @@
   // palette colour). The red wave, Section-3 cubes and NurAI logo keep their hues.
   var PALETTES = {
     dark:  { grey: [120, 124, 134], tileAlpha: 0.08, red: [232, 58, 70], redHi: [255, 108, 116], avatarRib: [255, 143, 31], cellAlpha: 0.94, maxOpacity: 0.72 },
-    light: { grey: [24, 24, 27],    tileAlpha: 0.06, red: [222, 52, 62], redHi: [204, 42, 52], avatarRib: [255, 143, 31], cellAlpha: 0.96, maxOpacity: 0.58 }
+    // tileAlpha 0 in light mode: the near-black empty dot-grid field reads as a
+    // faint dotted line/mosaic on white, so it is removed here. The red wave and
+    // the cube/robot/logo morphs (drawn separately) are unaffected.
+    light: { grey: [24, 24, 27],    tileAlpha: 0, red: [222, 52, 62], redHi: [204, 42, 52], avatarRib: [255, 143, 31], cellAlpha: 0.96, maxOpacity: 0.58 }
   };
   // Mascot body gradient (top -> bottom): #FF351D -> #FF8F1F -> #FDC215.
   var AVATAR_GRAD = [[255, 53, 29], [255, 143, 31], [253, 194, 21]];
