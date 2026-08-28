@@ -32,7 +32,9 @@
     var root = doc.documentElement;
     var overlay = doc.querySelector('[data-site-intro]');
     var movingLogo = doc.querySelector('[data-site-intro-logo]');
-    var navLogo = doc.querySelector('.nav__logo img');
+    // Measure the wrapper, not a specific <img>: light/dark logo variants toggle
+    // with display:none, and a hidden img would report zero size and abort handoff.
+    var navLogo = doc.querySelector('.nav__logo');
 
     if (!root.classList.contains('site-intro-pending') || !overlay || !movingLogo || !navLogo) {
       root.classList.remove('site-intro-pending');

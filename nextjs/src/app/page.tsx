@@ -19,7 +19,8 @@ export default function Home() {
         <div className="site-intro__logo" data-site-intro-logo>
           <img className="site-intro__mark site-intro__mark--light" src="/assets/img/logo-zetrix-intro.svg" alt="" />
           <img className="site-intro__mark site-intro__mark--white" src="/assets/img/logo-zetrix-intro.svg" alt="" />
-          <img className="site-intro__mark site-intro__mark--nav" src="/assets/img/logo-zetrix.svg" alt="" />
+          <img className="site-intro__mark site-intro__mark--nav site-intro__mark--nav-dark" src="/assets/img/logo-zetrix.svg" alt="" />
+          <img className="site-intro__mark site-intro__mark--nav site-intro__mark--nav-light" src="/assets/img/logo-zetrix-light.svg" alt="" />
         </div>
       </div>
 
@@ -29,7 +30,8 @@ export default function Home() {
 
         <nav className="nav" data-nav aria-label="Primary">
           <a className="nav__logo" href="#" aria-label="Zetrix home">
-            <img src="/assets/img/logo-zetrix.svg" alt="Zetrix" />
+            <img className="nav__logo-mark nav__logo-mark--dark" src="/assets/img/logo-zetrix.svg" alt="Zetrix" />
+            <img className="nav__logo-mark nav__logo-mark--light" src="/assets/img/logo-zetrix-light.svg" alt="" aria-hidden="true" />
           </a>
 
           <ul className="nav__menu">
