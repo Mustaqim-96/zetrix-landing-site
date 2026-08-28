@@ -162,10 +162,12 @@
   // palette colour). The red wave, Section-3 cubes and NurAI logo keep their hues.
   var PALETTES = {
     dark:  { grey: [120, 124, 134], tileAlpha: 0.08, red: [232, 58, 70], redHi: [255, 108, 116], avatarRib: [255, 143, 31], cellAlpha: 0.94, maxOpacity: 0.72 },
-    // tileAlpha 0 in light mode: the near-black empty dot-grid field reads as a
-    // faint dotted line/mosaic on white, so it is removed here. The red wave and
-    // the cube/robot/logo morphs (drawn separately) are unaffected.
-    light: { grey: [24, 24, 27],    tileAlpha: 0, red: [222, 52, 62], redHi: [204, 42, 52], avatarRib: [255, 143, 31], cellAlpha: 0.96, maxOpacity: 0.58 }
+    // Light mode: cellAlpha at full so the active cube/robot/logo morphs read as
+    // solid, vivid colour on white (like dark mode) instead of washing out to a
+    // translucent tint; a low tileAlpha keeps the grey base dot-grid faintly
+    // present (kept below the 0.06 that previously showed as a dotted line);
+    // maxOpacity raised so the whole grid carries more presence.
+    light: { grey: [24, 24, 27],    tileAlpha: 0.04, red: [222, 52, 62], redHi: [204, 42, 52], avatarRib: [255, 143, 31], cellAlpha: 1, maxOpacity: 0.68 }
   };
   // Mascot body gradient (top -> bottom): #FF351D -> #FF8F1F -> #FDC215.
   var AVATAR_GRAD = [[255, 53, 29], [255, 143, 31], [253, 194, 21]];
@@ -185,7 +187,7 @@
   // Light mode on web/tablet (> MOBILE_MAX) gets a higher opacity ceiling so the
   // grid reads more strongly on white. Phones keep pal.maxOpacity (below) so the
   // headings stay readable over the centred morph.
-  var LIGHT_MAX_WIDE = 0.8;
+  var LIGHT_MAX_WIDE = 0.9;
   function refreshPalette() {
     pal = document.documentElement.getAttribute('data-theme') === 'light'
       ? PALETTES.light : PALETTES.dark;
