@@ -709,14 +709,17 @@ ul { list-style: none; margin: 0; padding: 0; }
    while a neutral grey wash keeps the text at full contrast and lets the red
    CTA and globe accents pop. (Brand palette is red + white/black/chrome-grey;
    blue/purple are off-brand.) */
+/* Light theme: a soft brand-crimson tint at the TOP of the hero (behind the nav
+   and above the title), mirroring the dark hero's crimson crest. Kept low so the
+   near-black title stays high-contrast. */
 html[data-theme="light"] .hero__aurora {
-  background: linear-gradient(to top, var(--theme-bg) 46%, rgba(153, 153, 153, .20) 118%);
+  background: linear-gradient(to top, var(--theme-bg) 46%, rgba(197, 36, 46, .10) 118%);
 }
 html[data-theme="light"] .hero__aurora::before {
-  background: radial-gradient(42% 46% at 50% 50%, rgba(153, 153, 153, .18), transparent 66%);
+  background: radial-gradient(42% 46% at 50% 50%, rgba(197, 36, 46, .10), transparent 66%);
 }
 html[data-theme="light"] .hero__aurora::after {
-  background: radial-gradient(48% 44% at 50% 50%, rgba(120, 120, 124, .13), transparent 70%);
+  background: radial-gradient(48% 44% at 50% 50%, rgba(228, 34, 46, .07), transparent 70%);
 }
 /* Mobile: tone down the red glow behind the globe — the hero reads too red on
    small screens where the aurora fills a larger share of the viewport. */
