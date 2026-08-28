@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import "./globals.css";
 import SiteScripts from "@/components/SiteScripts";
 
@@ -25,9 +24,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     // <html> element (data-theme / site-intro-pending) outside React's control.
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script id="zetrix-intro-failsafe" strategy="beforeInteractive">
-          {introFailsafe}
-        </Script>
+        {/* Plain inline script: runs during head parsing (before hydration),
+            same timing as the old beforeInteractive next/script, but without
+            Next's deferred __next_s bootstrap wrapper — which reduces the
+            hydration-tracked surface in <head>. */}
+        <script
+          id="zetrix-intro-failsafe"
+          dangerouslySetInnerHTML={{ __html: introFailsafe }}
+        />
         {/* The complete hand-authored design system, served statically. */}
         {/* eslint-disable-next-line @next/next/no-css-tags */}
         <link rel="stylesheet" href="/css/styles.css" />
