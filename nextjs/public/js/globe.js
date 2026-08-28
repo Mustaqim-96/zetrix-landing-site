@@ -357,6 +357,15 @@
     atmosphere.visible = false; // glow is handled by the CSS backlight behind the globe
     lineFallback.color.setHex(lightTheme ? 0x52525b : 0x767c88);
     if (pointUniforms) pointUniforms.uLightTheme.value = lightTheme ? 1 : 0;
+    // Keep the dot arrangement in sync with the theme too: light mode always uses
+    // the full desktop arrangement (scale 1) on every viewport, so the globe reads
+    // the same colour/density on mobile as on the web. Without this, a theme toggle
+    // or entrance-timing race could leave the phone at the tighter dark arrangement.
+    if (pointUniforms) {
+      pointUniforms.uMobileScale.value = lightTheme
+        ? 1
+        : explosion.mobileScale(window.innerWidth || document.documentElement.clientWidth || 1024);
+    }
     // node spikes stay red in both themes — swap the baked gradient + tip dot per theme.
     // additive blending only reads as vivid on the dark bg; on white it washes out, so
     // light mode uses normal blending and fades the red into white instead of black.
