@@ -103,30 +103,31 @@
 
         overlay.classList.add('is-handoff');
 
-        // Phones skip the flying-logo transform: at small sizes the
-        // scale/translate/clip hand-off is fragile and can render the wordmark
-        // incompletely. The brand canvas still wipes away and the mark cross-fades
-        // in place; is-settling then fades the intro out to reveal the nav logo.
-        if (win.innerWidth <= 767) {
-          await wait(650);
-        } else {
-          var sourceRect = movingLogo.getBoundingClientRect();
-          var targetRect = navLogo.getBoundingClientRect();
-          if (!sourceRect.width || !targetRect.width) return cleanup();
-          var target = destinationTransform(sourceRect, targetRect);
+        // Unified flying-logo hand-off on every viewport (mobile, tablet, web):
+        // the splash logo scales/translates from centre into the nav slot.
+        var sourceRect = movingLogo.getBoundingClientRect();
+        var targetRect = navLogo.getBoundingClientRect();
+        if (!sourceRect.width || !targetRect.width) return cleanup();
+        var target = destinationTransform(sourceRect, targetRect);
 
-          var handoff = movingLogo.animate([
-            { transform: 'translate3d(0, 0, 0) scale(1, 1)' },
-            { transform: 'translate3d(' + target.x + 'px, ' + target.y +
-                'px, 0) scale(' + target.scaleX + ', ' + target.scaleY + ')' }
-          ], {
-            duration: 750,
-            easing: 'cubic-bezier(.16, 1, .3, 1)',
-            fill: 'forwards'
-          });
-          animations.push(handoff);
-          await handoff.finished;
-        }
+        var handoff = movingLogo.animate([
+          { transform: 'translate3d(0, 0, 0) scale(1, 1)' },
+          { transform: 'translate3d(' + target.x + 'px, ' + target.y +
+              'px, 0) scale(' + target.scaleX + ', ' + target.scaleY + ')' }
+        ], {
+          duration: 750,
+          easing: 'cubic-bezier(.16, 1, .3, 1)',
+          fill: 'forwards'
+        });
+        animations.push(handoff);
+        await handoff.finished;
+
+        // The splash logo has landed exactly on the (empty) nav slot. Reveal the
+        // real nav logo beneath it first, then fade the intro out over it — so the
+        // splash logo seamlessly *becomes* the nav logo with no empty blink. The
+        // nav slot stays empty until this moment.
+        var navImgs = doc.querySelectorAll('.nav__logo img');
+        for (var k = 0; k < navImgs.length; k++) navImgs[k].style.opacity = '1';
 
         overlay.classList.add('is-settling');
         await wait(100);
