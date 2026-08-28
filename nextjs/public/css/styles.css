@@ -4652,14 +4652,19 @@ html[data-theme="light"] .eco-progress i.is-active { background: #18181b; }
    hero/ecosystem/cta, the inner wrapper elsewhere, a width for the absolutely
    positioned layers deck). */
 @media (max-width: 767px) {
-  .hero { padding-inline: 32px; }
-  .ecosystem { padding-inline: 32px; }
-  .tools__inner { margin-inline: 32px; width: auto; }
-  .ai-intro__inner { padding-inline: 32px; }
-  .ai-layer__pin { padding-inline: 32px; }
-  .nurai__inner { padding-inline: 32px; }
-  .robotics__pin { padding-inline: 32px; }
-  .layers__pin { padding-inline: 32px; }
-  .layers__inner { width: calc(100% - 64px); }
-  .cta { padding-inline: 32px; }
+  /* Consistent 16px left/right gutter across every section on mobile. */
+  .hero { padding-inline: 16px; }
+  .ecosystem { padding-inline: 16px; }
+  .tools__inner { margin-inline: 16px; width: auto; }
+  /* ai-intro__inner is centred via width: calc(100% - Npx) + margin:auto, so the
+     gutter is (100%-width)/2; use 32px total to land 16px each side, no extra padding. */
+  .ai-intro__inner { width: calc(100% - 32px); padding-inline: 0; }
+  .ai-layer__pin { padding-inline: 16px; }
+  /* Same centred width+margin pattern as ai-intro__inner — 32px total for 16px sides. */
+  .nurai__inner { width: calc(100% - 32px); padding-inline: 0; }
+  .robotics__pin { padding-inline: 16px; }
+  .layers__pin { padding-inline: 16px; }
+  .layers__inner { width: calc(100% - 32px); }
+  .cta { padding-inline: 16px; }
+  .footer__inner { padding-inline: 16px; }
 }
