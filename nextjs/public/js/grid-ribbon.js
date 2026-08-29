@@ -184,12 +184,18 @@
   // further there to keep the headings readable over it.
   var MOBILE_MAX = 767;
   var MOBILE_DIM = 0.5;
-  // Light mode on web/tablet (> MOBILE_MAX) gets a higher opacity ceiling so the
-  // grid reads more strongly on white. Phones keep pal.maxOpacity (below) so the
-  // headings stay readable over the centred morph.
+  // The stronger light-mode look (higher opacity ceiling + grey base grid) is a
+  // desktop-only treatment. Tablet portrait stacks like mobile (no side column
+  // for the grid), so it follows the mobile opacity — dimmed, no base grid — to
+  // keep headings readable over the centred morph. Only widths above this get
+  // the wide look.
+  var TABLET_MAX = 1023;
+  // Light mode on desktop (> TABLET_MAX) gets a higher opacity ceiling so the
+  // grid reads more strongly on white. Phones + tablets keep pal.maxOpacity
+  // (below) so the headings stay readable over the centred morph.
   var LIGHT_MAX_WIDE = 0.9;
-  // Desktop/tablet light mode also shows a faint grey base dot-grid; phones keep
-  // the palette's tileAlpha (0) so their look is unchanged.
+  // Desktop light mode also shows a faint grey base dot-grid; phones + tablets
+  // keep the palette's tileAlpha (0) so their look matches mobile.
   var LIGHT_TILE_WIDE = 0.04;
   function refreshPalette() {
     pal = document.documentElement.getAttribute('data-theme') === 'light'
@@ -321,9 +327,11 @@
     }
     // Ceiling so the grid stays a background texture, never a focal element;
     // dimmed further on phones so section titles stay readable over it.
-    var wide = window.innerWidth > MOBILE_MAX;
+    var wide = window.innerWidth > TABLET_MAX;
+    // Tablet + phone both get the dimmed, mobile-style grid so headings stay
+    // readable over the centred morph; only true desktop keeps full strength.
     var dim = wide ? 1 : MOBILE_DIM;
-    // Raise the ceiling for light mode on web/tablet only; dark and phones keep pal.maxOpacity.
+    // Raise the ceiling for light mode on desktop only; dark, tablets and phones keep pal.maxOpacity.
     var maxOp = (wide && pal === PALETTES.light) ? LIGHT_MAX_WIDE : pal.maxOpacity;
     canvas.style.opacity = String(op * maxOp * dim);
 
@@ -365,7 +373,7 @@
     // Separate tiles with a gap around each — not connected lines — so the field
     // reads like a mosaic of squares that the red wave lights up.
     // Desktop/tablet light mode uses a faint grey base grid; phones keep pal.tileAlpha.
-    var tileA = (window.innerWidth > MOBILE_MAX && pal === PALETTES.light) ? LIGHT_TILE_WIDE : pal.tileAlpha;
+    var tileA = (window.innerWidth > TABLET_MAX && pal === PALETTES.light) ? LIGHT_TILE_WIDE : pal.tileAlpha;
     ctx.fillStyle = 'rgba(' + pal.grey[0] + ',' + pal.grey[1] + ',' + pal.grey[2] + ',' + tileA + ')';
     for (r = 0; r < rows; r++) {
       y = Math.round(r * ch) + GAP;
