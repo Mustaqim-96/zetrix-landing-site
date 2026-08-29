@@ -2739,14 +2739,17 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
 .carousel__title {
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 32px;
-  line-height: normal;
+  /* Match the Agentic Twin card text (.sp-card__title): 20/28. Short-desktop
+     blocks scale the deck, so they enlarge these to compensate and land back
+     on 20/16 rendered. */
+  font-size: 20px;
+  line-height: 28px;
   color: var(--white);
 }
 .carousel__desc {
   margin-top: 4px;
-  font-size: 18px;
-  line-height: normal;
+  font-size: 16px;
+  line-height: 24px;
   color: var(--text-tertiary);
 }
 .carousel__controls {
@@ -2790,23 +2793,30 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
   /* Keep the heading + subtitle at full size (matching the Agentic section);
      scale only the card deck so the pinned single-screen layout still fits. */
   .layers__inner {
-    top: 80px;
+    top: 128px;   /* clear gap below the floating nav during the card scroll */
     height: auto;
     transform: translateX(-50%);
   }
   .carousel {
-    transform: scale(.74);
+    transform: scale(.66);
     transform-origin: 50% 0;
   }
+  /* Enlarge to counter the .66 deck scale so the foot text renders at the
+     Agentic card sizes (~20/16) rather than shrinking with the deck. */
+  .carousel__title { font-size: 30px; line-height: 42px; }
+  .carousel__desc { font-size: 24px; line-height: 36px; }
 }
 
 @media (min-width: 1024px) and (max-height: 749px) {
   .layers__inner {
-    top: 64px;
+    top: 104px;   /* keep a gap below the nav on short screens too */
   }
   .carousel {
-    transform: scale(.62);
+    transform: scale(.56);
   }
+  /* Counter the .56 deck scale (see above). */
+  .carousel__title { font-size: 36px; line-height: 50px; }
+  .carousel__desc { font-size: 29px; line-height: 43px; }
 }
 
 /* Narrow screens: shared element sizing. Applies to both the pinned
