@@ -50,27 +50,19 @@ function CheckNode({ cx, cy }: { cx: number; cy: number }) {
   );
 }
 
-// Simplified, recognisable tech-stack marks on a dark badge.
+// Official tech-stack logos (vendored from devicon) on a dark badge.
+const LOGO: Record<"node" | "java" | "go", { src: string; w: number; h: number }> = {
+  node: { src: "/assets/icons/tech/nodejs.svg", w: 18, h: 18 },
+  java: { src: "/assets/icons/tech/java.svg", w: 16, h: 18 },
+  go: { src: "/assets/icons/tech/go-wordmark.svg", w: 21, h: 14 },
+};
 function TechBadge({ x, y, kind }: { x: number; y: number; kind: "node" | "java" | "go" }) {
-  const hex = Array.from({ length: 6 }, (_, i) => {
-    const a = ((90 + i * 60) * Math.PI) / 180;
-    return `${r1(x + 8 * Math.cos(a))},${r1(y + 8 * Math.sin(a))}`;
-  }).join(" ");
+  const l = LOGO[kind];
   return (
     <g className="badge">
       <circle className="badge-bg" cx={x} cy={y} r={15} />
       <circle className="badge-ring" cx={x} cy={y} r={15} />
-      {kind === "node" && <polygon points={hex} fill="#6cc24a" />}
-      {kind === "java" && (
-        <g>
-          <path d={`M${x - 5} ${y - 1} h10 v3.5 a5 5 0 0 1 -10 0 z`} fill="#e2574c" />
-          <path d={`M${x + 5} ${y - 0.5} a3 3 0 0 1 0 4.5`} fill="none" stroke="#e2574c" strokeWidth="1.4" />
-          <path d={`M${x - 2.5} ${y - 6.5} q2 1.5 0 3 M${x + 1.5} ${y - 6.5} q2 1.5 0 3`} fill="none" stroke="#e2574c" strokeWidth="1.2" strokeLinecap="round" />
-        </g>
-      )}
-      {kind === "go" && (
-        <text x={x} y={y + 3.4} fontSize="9" fontWeight="700" fill="#2bb4d6" textAnchor="middle" fontFamily="var(--font-body), sans-serif">GO</text>
-      )}
+      <image href={l.src} x={r1(x - l.w / 2)} y={r1(y - l.h / 2)} width={l.w} height={l.h} preserveAspectRatio="xMidYMid meet" />
     </g>
   );
 }
