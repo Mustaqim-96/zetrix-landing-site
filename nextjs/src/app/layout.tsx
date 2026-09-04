@@ -1,11 +1,54 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import SiteScripts from "@/components/SiteScripts";
 
+// TODO(handover): set to the final production domain when it moves off the
+// preview URL (e.g. "https://www.zetrix.com"). metadataBase makes every
+// relative OG/canonical URL below absolute.
+const SITE_URL = "https://zetrix-landing-site.vercel.app";
+const TITLE = "Zetrix — From Trusted Infrastructure to Intelligent Machines";
+const DESCRIPTION =
+  "Build trust and transparency with a scalable public blockchain designed for Public Sectors, Enterprises and Financial institutions.";
+
 export const metadata: Metadata = {
-  title: "Zetrix — From Trusted Infrastructure to Intelligent Machines",
-  description:
-    "Build trust and transparency with a scalable public blockchain designed for Public Sectors, Enterprises and Financial institutions.",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  applicationName: "Zetrix",
+  alternates: { canonical: "/" },
+  keywords: [
+    "Zetrix",
+    "public blockchain",
+    "digital identity",
+    "verifiable credentials",
+    "AI",
+    "robotics",
+    "Web3",
+    "enterprise blockchain",
+  ],
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "Zetrix",
+    title: TITLE,
+    description: DESCRIPTION,
+    // TODO(handover): add a 1200×630 share image and reference it here, e.g.
+    // images: [{ url: "/assets/og/zetrix-og.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+  robots: { index: true, follow: true },
+};
+
+// Mobile browser chrome matches the page theme (light default / dark toggle).
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#18181b" },
+  ],
 };
 
 // Mirrors the original inline <head> script: mark the intro as pending as early

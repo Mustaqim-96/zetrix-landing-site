@@ -238,6 +238,36 @@ html[data-theme="light"] .site-intro__mark--nav-light { display: block; }
   padding-inline: 20px;
 }
 
+/* ---------- Skip link (a11y) ---------- */
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 200;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-150%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .18s ease, opacity .18s ease;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .skip-link { transition: none; }
+}
+
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-flex;
@@ -4102,7 +4132,9 @@ html[data-theme="light"] {
   --theme-border: #d1d1d6;
   --theme-text: #18181b;
   --theme-text-secondary: #71717a;
-  --theme-text-tertiary: #a1a1aa;
+  /* #a1a1aa was ~2.3:1 on the white light-theme ground (fails WCAG AA);
+     #6b7280 is ~4.6:1 and passes AA for normal text. */
+  --theme-text-tertiary: #6b7280;
   --theme-icon: #3f3f46;
   --theme-glass: rgba(255, 255, 255, .74);
   --theme-glass-strong: rgba(255, 255, 255, .94);

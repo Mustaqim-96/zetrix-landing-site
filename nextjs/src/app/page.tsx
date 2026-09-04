@@ -10,9 +10,13 @@
 // CSS select images by class and mutate them directly, and next/image's wrapper
 // DOM + generated srcset would break that targeting and the pixel-tuned layout.
 
+import Link from "next/link";
+
 export default function Home() {
   return (
     <>
+      <a className="skip-link" href="#main-content">Skip to content</a>
+
       <div className="site-intro" data-site-intro aria-hidden="true">
         <div className="site-intro__canvas site-intro__canvas--brand"></div>
         <div className="site-intro__canvas site-intro__canvas--dark"></div>
@@ -29,10 +33,10 @@ export default function Home() {
         <button className="nav__backdrop" type="button" data-nav-backdrop hidden aria-label="Close navigation menu"></button>
 
         <nav className="nav" data-nav aria-label="Primary">
-          <a className="nav__logo" href="/" aria-label="Zetrix home">
+          <Link className="nav__logo" href="/" aria-label="Zetrix home">
             <img className="nav__logo-mark nav__logo-mark--dark" src="/assets/img/logo-zetrix.svg" alt="Zetrix" />
             <img className="nav__logo-mark nav__logo-mark--light" src="/assets/img/logo-zetrix-light.svg" alt="" aria-hidden="true" />
-          </a>
+          </Link>
 
           <ul className="nav__menu">
             <li><button className="nav__link" type="button" data-nav-trigger="developers" aria-controls="nav-group-developers" aria-expanded="false">Developers <span className="caret" aria-hidden="true"></span></button></li>
@@ -127,18 +131,21 @@ export default function Home() {
             </div>
           </div>
 
-          <noscript>
-            <style dangerouslySetInnerHTML={{ __html: `
+          {/* Set as a raw HTML string on <noscript> itself. With JS enabled the
+              browser exposes noscript content as inert text, so a real <style>
+              child element makes React's hydration tree disagree with the parsed
+              DOM. dangerouslySetInnerHTML keeps React from reconciling the inside
+              while the styles still apply when scripting is disabled. */}
+          <noscript dangerouslySetInnerHTML={{ __html: `<style>
               .nav-dropdown { opacity: 1 !important; visibility: visible !important; transform: none !important; pointer-events: auto !important; }
               .nav-dropdown__surface { height: auto !important; max-height: calc(100svh - 112px); overflow-y: auto; }
               .nav-panel__group { display: block !important; margin-bottom: 12px; }
               .nav-panel__accordion { display: flex !important; }
-            ` }} />
-          </noscript>
+            </style>` }} />
         </nav>
       </header>
 
-      <main>
+      <main id="main-content">
         {/* ============================= HERO ============================= */}
         <section className="hero">
           <div className="hero__aurora" aria-hidden="true"></div>

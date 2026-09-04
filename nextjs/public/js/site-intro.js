@@ -38,7 +38,10 @@
 
     if (!root.classList.contains('site-intro-pending') || !overlay || !movingLogo || !navLogo) {
       root.classList.remove('site-intro-pending');
-      if (overlay) overlay.remove();
+      // Hide, don't remove: the overlay is rendered by React (page.tsx). Detaching
+      // it with .remove() invalidates React's node reference and makes the
+      // reconciler throw insertBefore/removeChild if the tree is ever re-rendered.
+      if (overlay) overlay.style.display = 'none';
       signalComplete();
       return function () {};
     }
@@ -70,7 +73,8 @@
       win.removeEventListener('pagehide', cleanup);
       root.classList.remove('site-intro-pending');
       movingLogo.style.removeProperty('transform');
-      overlay.remove();
+      // Hide, don't remove — see note above: keep the React-rendered node in the DOM.
+      overlay.style.display = 'none';
       signalComplete();
     }
 
