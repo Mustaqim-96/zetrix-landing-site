@@ -29,7 +29,7 @@ export default function Home() {
         <button className="nav__backdrop" type="button" data-nav-backdrop hidden aria-label="Close navigation menu"></button>
 
         <nav className="nav" data-nav aria-label="Primary">
-          <a className="nav__logo" href="#" aria-label="Zetrix home">
+          <a className="nav__logo" href="/" aria-label="Zetrix home">
             <img className="nav__logo-mark nav__logo-mark--dark" src="/assets/img/logo-zetrix.svg" alt="Zetrix" />
             <img className="nav__logo-mark nav__logo-mark--light" src="/assets/img/logo-zetrix-light.svg" alt="" aria-hidden="true" />
           </a>
@@ -43,7 +43,7 @@ export default function Home() {
             <li><button className="nav__link" type="button" data-nav-trigger="investors" aria-controls="nav-group-investors" aria-expanded="false">Investors <span className="caret" aria-hidden="true"></span></button></li>
           </ul>
 
-          <a className="btn btn--red nav__cta" href="#">BUIDL Now</a>
+          <a className="btn btn--red nav__cta" href="https://www.zetrix.com/buidl-zetrix/">BUIDL Now</a>
 
           <button className="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light mode" title="Switch to light mode">
             <span className="theme-toggle__track" aria-hidden="true">
