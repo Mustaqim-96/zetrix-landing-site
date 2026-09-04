@@ -45,27 +45,23 @@ export default function SiteScripts() {
     if (started) return;
     started = true;
 
-    const loadScript = (src: string) =>
-      new Promise<void>((resolve) => {
-        const script = document.createElement("script");
-        script.src = src;
-        script.async = false;
-        script.dataset.zetrixSiteScript = "true";
-        script.onload = () => resolve();
-        script.onerror = () => {
-          // Keep the chain going even if one script fails, matching how the
-          // browser would continue past a failed <script> tag.
-          console.error(`[Zetrix] Failed to load ${src}`);
-          resolve();
-        };
-        document.body.appendChild(script);
-      });
-
-    (async () => {
-      for (const src of SCRIPTS) {
-        await loadScript(src);
-      }
-    })();
+    // Append every script up front with `async = false`. Dynamically-inserted
+    // scripts default to async (unordered); forcing async=false makes the browser
+    // FETCH them all in parallel but still EXECUTE them in insertion (list) order.
+    // That preserves the required ordering (three.js defines THREE before the
+    // globe code runs, etc.) while removing the serial download waterfall that
+    // awaiting each onload before appending the next would create.
+    for (const src of SCRIPTS) {
+      const script = document.createElement("script");
+      script.src = src;
+      script.async = false;
+      script.dataset.zetrixSiteScript = "true";
+      script.onerror = () => {
+        // Match how the browser continues past a failed <script> tag.
+        console.error(`[Zetrix] Failed to load ${src}`);
+      };
+      document.body.appendChild(script);
+    }
   }, []);
 
   return null;

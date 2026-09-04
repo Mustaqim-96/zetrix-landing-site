@@ -96,6 +96,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           id="zetrix-intro-failsafe"
           dangerouslySetInnerHTML={{ __html: introFailsafe }}
         />
+        {/* Preload the heaviest hero-critical scripts so their download starts
+            during HTML parse, in parallel — SiteScripts (after hydration) then
+            executes them in order. three.min.js is ~600 KB and gates the globe. */}
+        <link rel="preload" as="script" href="/vendor/three.min.js" />
+        <link rel="preload" as="script" href="/js/globe-data.js" />
+
         {/* The complete hand-authored design system, served statically. */}
         {/* eslint-disable-next-line @next/next/no-css-tags */}
         <link rel="stylesheet" href="/css/styles.css" />
