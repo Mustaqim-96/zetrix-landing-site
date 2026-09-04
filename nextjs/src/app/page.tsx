@@ -11,6 +11,7 @@
 // DOM + generated srcset would break that targeting and the pixel-tuned layout.
 
 import Link from "next/link";
+import NodeIllus from "@/components/NodeIllus";
 
 export default function Home() {
   return (
@@ -181,14 +182,7 @@ export default function Home() {
                       </button>
                       <div className="eco-fcard__panel">
                         <div className="node-panel node-panel--smart-contract">
-                          <picture className="node-illus-theme node-illus-theme--dark">
-                            <source media="(prefers-reduced-motion: reduce)" srcSet="/assets/img/IDE-reduced-motion.webp" />
-                            <img loading="lazy" decoding="async" className="node-illus node-illus--smart-contract" src="/assets/img/IDE.webp" width="480" height="270" alt="" aria-hidden="true" />
-                          </picture>
-                          <picture className="node-illus-theme node-illus-theme--light">
-                            <source media="(prefers-reduced-motion: reduce)" srcSet="/assets/img/IDE-reduced-motion-light.webp" />
-                            <img loading="lazy" decoding="async" className="node-illus node-illus--smart-contract" src="/assets/img/IDE-light.webp" width="480" height="270" alt="" aria-hidden="true" />
-                          </picture>
+                          <NodeIllus variant="smart-contract" />
                         </div>
                       </div>
                     </article>
@@ -200,14 +194,7 @@ export default function Home() {
                       </button>
                       <div className="eco-fcard__panel">
                         <div className="node-panel node-panel--w3c-identifiers">
-                          <picture className="node-illus-theme node-illus-theme--dark">
-                            <source media="(prefers-reduced-motion: reduce)" srcSet="/assets/img/decentralised-identifiers-reduced-motion.webp" />
-                            <img loading="lazy" decoding="async" className="node-illus node-illus--w3c-identifiers" src="/assets/img/decentralised-identifiers.webp" width="480" height="270" alt="" aria-hidden="true" />
-                          </picture>
-                          <picture className="node-illus-theme node-illus-theme--light">
-                            <source media="(prefers-reduced-motion: reduce)" srcSet="/assets/img/decentralised-identifiers-reduced-motion-light.webp" />
-                            <img loading="lazy" decoding="async" className="node-illus node-illus--w3c-identifiers" src="/assets/img/decentralised-identifiers-light.webp" width="480" height="270" alt="" aria-hidden="true" />
-                          </picture>
+                          <NodeIllus variant="w3c-identifiers" />
                         </div>
                       </div>
                     </article>
@@ -219,14 +206,7 @@ export default function Home() {
                       </button>
                       <div className="eco-fcard__panel">
                         <div className="node-panel node-panel--verifiable-credential">
-                          <picture className="node-illus-theme node-illus-theme--dark">
-                            <source media="(prefers-reduced-motion: reduce)" srcSet="/assets/img/verifiable-credential-reduced-motion.webp" />
-                            <img loading="lazy" decoding="async" className="node-illus node-illus--verifiable-credential" src="/assets/img/verifiable-credential.webp" width="480" height="270" alt="" aria-hidden="true" />
-                          </picture>
-                          <picture className="node-illus-theme node-illus-theme--light">
-                            <source media="(prefers-reduced-motion: reduce)" srcSet="/assets/img/verifiable-credential-reduced-motion-light.webp" />
-                            <img loading="lazy" decoding="async" className="node-illus node-illus--verifiable-credential" src="/assets/img/verifiable-credential-light.webp" width="480" height="270" alt="" aria-hidden="true" />
-                          </picture>
+                          <NodeIllus variant="verifiable-credential" />
                         </div>
                       </div>
                     </article>

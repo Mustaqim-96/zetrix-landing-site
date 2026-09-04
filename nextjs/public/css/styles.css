@@ -1222,13 +1222,35 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
   aspect-ratio: 16 / 9;
   object-fit: contain;
 }
-.node-illus .ring { fill: none; stroke: #c8c8ce; stroke-width: 2; }
-.node-illus .link { fill: none; stroke: rgba(255, 255, 255, 0.14); stroke-width: 1.2; }
-.node-illus .spoke { stroke: rgba(255, 255, 255, 0.13); stroke-width: 1.2; }
-.node-illus .cf { fill: #fff; stroke: var(--red); stroke-width: 2; stroke-linejoin: round; }
-.node-illus .ce { fill: none; stroke: var(--red); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.node-illus .check-circle { fill: #fff; stroke: var(--red); stroke-width: 3; }
-.node-illus .check-mark { fill: none; stroke: var(--red); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+/* Node-network illustrations (inline SVG via NodeIllus.tsx) — theme-aware + animated */
+.node-illus .ring { fill: none; stroke: #b9b9c0; stroke-width: 2; }
+.node-illus .link,
+.node-illus .spoke { fill: none; stroke: rgba(255, 255, 255, .2); stroke-width: 1.2; stroke-dasharray: 3 5; }
+.node-illus .cube-glow { fill: var(--red); opacity: .16; transform-box: fill-box; transform-origin: center; }
+.node-illus .cf { stroke: none; }
+.node-illus .cf-top { fill: #ef4a54; }
+.node-illus .cf-left { fill: #a01d25; }
+.node-illus .cf-right { fill: var(--red); }
+.node-illus .ce { fill: none; stroke: rgba(255, 255, 255, .92); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+.node-illus .check-circle { fill: var(--red); stroke: none; }
+.node-illus .check-mark { fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Light theme: darken rings + links so they read on the white ground */
+html[data-theme="light"] .node-illus .ring { stroke: #c4c4ca; }
+html[data-theme="light"] .node-illus .link,
+html[data-theme="light"] .node-illus .spoke { stroke: rgba(24, 24, 27, .2); }
+
+/* Motion: data flows along the links; the centre gently pulses */
+@keyframes node-flow { to { stroke-dashoffset: -16; } }
+@keyframes node-pulse { 0%, 100% { opacity: .12; transform: scale(1); } 50% { opacity: .28; transform: scale(1.14); } }
+.node-illus .link,
+.node-illus .spoke { animation: node-flow 2.6s linear infinite; }
+.node-illus .cube-glow { animation: node-pulse 2.8s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .node-illus .link,
+  .node-illus .spoke,
+  .node-illus .cube-glow { animation: none; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .eco-fcard, .eco-fcard__panel { transition: none; }
