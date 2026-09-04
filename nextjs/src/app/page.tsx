@@ -145,7 +145,7 @@ export default function Home() {
           <div className="hero__content">
             <h1 className="hero__title hero__reveal">From Trusted<br />Infrastructure to<br />Intelligent Machines</h1>
             <p className="hero__subtitle hero__reveal">Build trust and transparency with a scalable public blockchain designed for Public Sectors, Enterprises and Financial institutions.</p>
-            <a className="btn btn--red hero__cta hero__reveal" href="#">Get Started</a>
+            <a className="btn btn--red hero__cta hero__reveal" href="https://www.zetrix.com/buidl-zetrix/">Get Started</a>
           </div>
           <div className="hero__globe" id="hero-globe" aria-hidden="true">
             {/* Three.js globe renders here */}
@@ -460,30 +460,30 @@ export default function Home() {
                   </header>
 
                   <div className="robot-cards">
-                    <article className="robot-card">
+                    <a className="robot-card" href="https://www.zetrix.com/asean-china-ai-lab/" target="_blank" rel="noopener noreferrer" aria-label="PM01 — ASEAN–China AI Lab">
                       <img loading="lazy" decoding="async" className="robot-card__image" src="/assets/img/robotics-pm01.webp" alt="PM01 humanoid robot" />
                       <div className="robot-card__caption">
                         <div className="robot-card__meta"><span>01</span><img loading="lazy" decoding="async" className="robot-card__arrow" src="/assets/icons/arrow-up-right.svg" alt="" aria-hidden="true" /></div>
                         <h3 className="robot-card__title">PM01</h3>
                         <p className="robot-card__desc">An agile humanoid platform for development, research, and embodied-AI experiences.</p>
                       </div>
-                    </article>
-                    <article className="robot-card">
+                    </a>
+                    <a className="robot-card" href="https://www.zetrix.com/asean-china-ai-lab/" target="_blank" rel="noopener noreferrer" aria-label="Leju Kuavo — ASEAN–China AI Lab">
                       <img loading="lazy" decoding="async" className="robot-card__image" src="/assets/img/robotics-leju-kuavo.webp" alt="Leju Kuavo humanoid robot" />
                       <div className="robot-card__caption">
                         <div className="robot-card__meta"><span>02</span><img loading="lazy" decoding="async" className="robot-card__arrow" src="/assets/icons/arrow-up-right.svg" alt="" aria-hidden="true" /></div>
                         <h3 className="robot-card__title">Leju Kuavo</h3>
                         <p className="robot-card__desc">A humanoid robotics platform for embodied intelligence and real-world applications.</p>
                       </div>
-                    </article>
-                    <article className="robot-card">
+                    </a>
+                    <a className="robot-card" href="https://www.zetrix.com/robotics/" target="_blank" rel="noopener noreferrer" aria-label="Gausium — Zetrix Robotics">
                       <img loading="lazy" decoding="async" className="robot-card__image" src="/assets/img/robotics-gausium.webp" alt="Gausium autonomous cleaning robots" />
                       <div className="robot-card__caption">
                         <div className="robot-card__meta"><span>03</span><img loading="lazy" decoding="async" className="robot-card__arrow" src="/assets/icons/arrow-up-right.svg" alt="" aria-hidden="true" /></div>
                         <h3 className="robot-card__title">Gausium</h3>
                         <p className="robot-card__desc">Autonomous cleaning robots for commercial and industrial facilities.</p>
                       </div>
-                    </article>
+                    </a>
                   </div>
                   <div className="robotics__controls" aria-label="Robotics products">
                     <button className="robotics__btn" id="robotics-prev" type="button" aria-label="Previous robotics product" disabled>
@@ -553,8 +553,7 @@ export default function Home() {
                 <h2 className="cta__title">#BUIDLREAL on Zetrix</h2>
                 <p className="cta__desc">Explore enterprise solutions or build directly on Zetrix — the network for digital trust, intelligent systems, and real-world automation.</p>
                 <div className="cta__actions">
-                  <a className="btn btn--red cta__btn" href="#">Get Started</a>
-                  <a className="btn btn--outline cta__btn" href="#">Contact the team</a>
+                  <a className="btn btn--red cta__btn" href="https://www.zetrix.com/buidl-zetrix/">Get Started</a>
                 </div>
               </div>
             </div>
