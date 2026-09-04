@@ -1222,11 +1222,14 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
   aspect-ratio: 16 / 9;
   object-fit: contain;
 }
-/* Node-network illustrations (inline SVG via NodeIllus.tsx) — theme-aware + animated */
-.node-illus .ring { fill: none; stroke: #b9b9c0; stroke-width: 2; }
+/* Node-network illustrations (inline SVG via NodeIllus.tsx) — theme-aware + animated.
+   A signal radiates from the hub: nodes fill in a wave, links + spokes pulse,
+   and the focus node carries a breathing red halo. */
+.node-illus { --node-active: rgba(255, 255, 255, .5); --node-line: rgba(255, 255, 255, .42); }
+.node-illus .ring { fill: transparent; stroke: #b9b9c0; stroke-width: 2; }
 .node-illus .link,
-.node-illus .spoke { fill: none; stroke: rgba(255, 255, 255, .2); stroke-width: 1.2; stroke-dasharray: 3 5; }
-.node-illus .cube-glow { fill: var(--red); opacity: .16; transform-box: fill-box; transform-origin: center; }
+.node-illus .spoke,
+.node-illus .badge-connect { fill: none; stroke: var(--node-line); stroke-width: 1.2; }
 .node-illus .cf { stroke: none; }
 .node-illus .cf-top { fill: #ef4a54; }
 .node-illus .cf-left { fill: #a01d25; }
@@ -1234,22 +1237,27 @@ html[data-theme="light"] .node-panel .node-illus-theme--light { display: block; 
 .node-illus .ce { fill: none; stroke: rgba(255, 255, 255, .92); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
 .node-illus .check-circle { fill: var(--red); stroke: none; }
 .node-illus .check-mark { fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.node-illus .focus-halo { fill: none; stroke: var(--red); stroke-width: 2; opacity: .5; transform-box: fill-box; transform-origin: center; }
+.node-illus .badge-bg { fill: #1b2236; }
+.node-illus .badge-ring { fill: none; stroke: rgba(255, 255, 255, .16); stroke-width: 1; }
 
-/* Light theme: darken rings + links so they read on the white ground */
-html[data-theme="light"] .node-illus .ring { stroke: #c4c4ca; }
-html[data-theme="light"] .node-illus .link,
-html[data-theme="light"] .node-illus .spoke { stroke: rgba(24, 24, 27, .2); }
+/* Light theme: darken rings/lines so they read on the white ground */
+html[data-theme="light"] .node-illus { --node-active: rgba(24, 24, 27, .5); --node-line: rgba(24, 24, 27, .26); }
+html[data-theme="light"] .node-illus .ring { stroke: #c2c2c8; }
 
-/* Motion: data flows along the links; the centre gently pulses */
-@keyframes node-flow { to { stroke-dashoffset: -16; } }
-@keyframes node-pulse { 0%, 100% { opacity: .12; transform: scale(1); } 50% { opacity: .28; transform: scale(1.14); } }
-.node-illus .link,
-.node-illus .spoke { animation: node-flow 2.6s linear infinite; }
-.node-illus .cube-glow { animation: node-pulse 2.8s ease-in-out infinite; }
+/* Motion: a signal spreads out from the hub (nodes fill), links flash, spokes
+   beat bold, and the focus halo breathes. Per-element delays are set inline. */
+@keyframes node-fill  { 0%, 68%, 100% { fill: transparent; } 30% { fill: var(--node-active); } }
+@keyframes link-flash { 0%, 68%, 100% { opacity: .55; } 30% { opacity: 1; } }
+@keyframes spoke-beat { 0%, 100% { opacity: .3; stroke-width: 1; } 50% { opacity: .95; stroke-width: 3; } }
+@keyframes halo-beat  { 0%, 100% { opacity: .3; transform: scale(.88); } 50% { opacity: .85; transform: scale(1.14); } }
+.node-illus .ring  { animation: node-fill 3.6s ease-in-out infinite; }
+.node-illus .link  { animation: link-flash 3.6s ease-in-out infinite; }
+.node-illus .spoke { animation: spoke-beat 2.6s ease-in-out infinite; }
+.node-illus .focus-halo { animation: halo-beat 2.6s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) {
-  .node-illus .link,
-  .node-illus .spoke,
-  .node-illus .cube-glow { animation: none; }
+  .node-illus .ring, .node-illus .link, .node-illus .spoke, .node-illus .focus-halo { animation: none; }
+  .node-illus .ring { fill: transparent; }
 }
 
 @media (prefers-reduced-motion: reduce) {
