@@ -122,6 +122,17 @@ test("scales the ZID hero screenshot proportionally", () => {
   assert.match(rule, /height:auto/);
 });
 
+test("maps the QR-scanning screenshot to verification Step 3", () => {
+  const page = read("src/app/zid/page.tsx");
+  const media = new Map(
+    [...page.matchAll(/data-verify-media=["'](\d)["'][^>]*src=["']([^"']+)["']/g)]
+      .map((match) => [match[1], match[2]]),
+  );
+
+  assert.equal(media.get("1"), "/assets/zid/verify-wallet-figma.webp");
+  assert.equal(media.get("2"), "/assets/zid/verify-step-2.webp");
+});
+
 test("keeps ZID media resets out of the shared site chrome", () => {
   const css = read("src/app/zid/zid.css");
 
