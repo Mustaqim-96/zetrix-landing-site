@@ -4223,7 +4223,7 @@ html[data-theme="light"] .nav {
 }
 html[data-theme="light"] .nav__logo { position: relative; }
 /* Light mode swaps to a dedicated logo variant (red "Z" + dark "ETRIX") via a
-   two-image toggle — robust across browsers, unlike content:url() on <img>. The
+   two-image toggle — robust across browsers, unlike content:url() on image elements. The
    dark variant is the default; light mode hides it and shows the light one. */
 .nav__logo .nav__logo-mark--light { display: none; }
 html[data-theme="light"] .nav__logo .nav__logo-mark--dark { display: none; }

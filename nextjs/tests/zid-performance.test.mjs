@@ -2,21 +2,22 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, statSync } from 'node:fs';
 
-const htmlUrl = new URL('../public/zid.html', import.meta.url);
-const html = readFileSync(htmlUrl, 'utf8');
+const page = readFileSync(new URL('../src/app/zid/page.tsx', import.meta.url), 'utf8');
+const css = readFileSync(new URL('../src/app/zid/zid.css', import.meta.url), 'utf8');
+const runtime = readFileSync(new URL('../src/components/ZidRuntime.tsx', import.meta.url), 'utf8');
 
 function rasterSources(markup) {
-  return [...markup.matchAll(/src="\.\/(assets\/[^"?#]+\.(?:png|jpe?g|webp))"/gi)]
+  return [...markup.matchAll(/src=["']\/(assets\/[^"'?#]+\.(?:png|jpe?g|webp))["']/gi)]
     .map((match) => match[1]);
 }
 
 function rasterTags(markup) {
-  return [...markup.matchAll(/<img\b[^>]*src="\.\/assets\/[^"?#]+\.(?:png|jpe?g|webp)"[^>]*>/gi)]
+  return [...markup.matchAll(/<img\b[^>]*src=["']\/assets\/[^"'?#]+\.(?:png|jpe?g|webp)["'][^>]*\/>/gi)]
     .map((match) => match[0]);
 }
 
 test('references only WebP raster assets with a sub-1 MiB unique payload', () => {
-  const sources = [...new Set(rasterSources(html))];
+  const sources = [...new Set(rasterSources(page))];
 
   assert.ok(sources.length > 0);
   assert.deepEqual(
@@ -33,9 +34,9 @@ test('references only WebP raster assets with a sub-1 MiB unique payload', () =>
 });
 
 test('keeps hero raster images eager and asynchronously decoded', () => {
-  const heroStart = html.indexOf('<section class="hero"');
-  const heroEnd = html.indexOf('<section class="process"');
-  const tags = rasterTags(html.slice(heroStart, heroEnd));
+  const heroStart = page.indexOf('<section className="hero"');
+  const heroEnd = page.indexOf('<section className="process"');
+  const tags = rasterTags(page.slice(heroStart, heroEnd));
 
   assert.ok(tags.length > 0);
   for (const tag of tags) {
@@ -47,8 +48,8 @@ test('keeps hero raster images eager and asynchronously decoded', () => {
 });
 
 test('lazy-loads and asynchronously decodes below-the-fold raster images', () => {
-  const processStart = html.indexOf('<section class="process"');
-  const tags = rasterTags(html.slice(processStart));
+  const processStart = page.indexOf('<section className="process"');
+  const tags = rasterTags(page.slice(processStart));
 
   assert.ok(tags.length > 0);
   for (const tag of tags) {
@@ -60,17 +61,17 @@ test('lazy-loads and asynchronously decodes below-the-fold raster images', () =>
 });
 
 test('pauses hero motion while offscreen or while the document is hidden', () => {
-  assert.match(html, /\.hero\.is-motion-paused \.orbit-icon/);
-  assert.match(html, /animation-play-state:paused/);
-  assert.match(html, /function syncHeroMotion\(\)/);
-  assert.match(html, /heroSection\.classList\.toggle\('is-motion-paused', document\.hidden \|\| !heroVisible\)/);
-  assert.match(html, /heroObserver\.observe\(heroSection\)/);
-  assert.match(html, /document\.addEventListener\('visibilitychange', handleVisibilityChange\)/);
+  assert.match(css, /\.hero\.is-motion-paused \.orbit-icon/);
+  assert.match(css, /animation-play-state:paused/);
+  assert.match(runtime, /function syncHeroMotion\(\)/);
+  assert.match(runtime, /heroSection\?\.classList\.toggle\("is-motion-paused", doc\.hidden \|\| !heroVisible\)/);
+  assert.match(runtime, /heroObserver\.observe\(heroSection\)/);
+  assert.match(runtime, /doc\.addEventListener\("visibilitychange", handleVisibilityChange\)/);
 });
 
 test('animates verification progress with transforms instead of width', () => {
-  const progressRule = html.match(/\.verify-progress::after\{([^}]*)\}/)?.[1] ?? '';
-  const progressKeyframes = html.match(/@keyframes verify-progress-cycle\{from\{([^}]*)\}to\{([^}]*)\}\}/);
+  const progressRule = css.match(/\.verify-progress::after\{([^}]*)\}/)?.[1] ?? '';
+  const progressKeyframes = css.match(/@keyframes verify-progress-cycle\{from\{([^}]*)\}to\{([^}]*)\}\}/);
 
   assert.match(progressRule, /transform:scaleX\(0\)/);
   assert.match(progressRule, /transform-origin:left/);

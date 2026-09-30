@@ -62,3 +62,7 @@ test("provides a visible keyboard focus treatment for the linked card", () => {
   const css = read("public/css/styles.css");
   assert.match(css, /\.tool-card:focus-visible/);
 });
+
+test("retires the standalone ZID HTML document", () => {
+  assert.equal(existsSync(new URL("../public/zid.html", import.meta.url)), false);
+});
