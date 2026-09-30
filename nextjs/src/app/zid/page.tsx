@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ZidRuntime from "@/components/ZidRuntime";
+import SiteHeader from "@/components/SiteHeader";
 import "./zid.css";
 
 const TITLE = "ZID — Blockchain-based Identity Network";
@@ -30,74 +31,7 @@ export default function ZidPage() {
       <ZidRuntime />
       <a className="skip-link" href="#main">Skip to content</a>
       
-        <header className="nav-wrap">
-          <button className="nav__backdrop" type="button" data-nav-backdrop hidden aria-label="Close navigation menu"></button>
-          <nav className="nav" data-nav aria-label="Primary">
-            {/* Full navigation intentionally resets the homepage's legacy one-shot animation runtime. */}
-            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-            <a className="nav__logo" href="/" aria-label="Zetrix home"><img className="nav__logo-mark nav__logo-mark--dark" src="/assets/img/logo-zetrix.svg" alt="Zetrix" /><img className="nav__logo-mark nav__logo-mark--light" src="/assets/img/logo-zetrix-light.svg" alt="" aria-hidden="true" /></a>
-            <ul className="nav__menu">
-              <li><button className="nav__link" type="button" data-nav-trigger="developers" aria-controls="nav-group-developers" aria-expanded="false">Developers <span className="caret" aria-hidden="true"></span></button></li>
-              <li><button className="nav__link" type="button" data-nav-trigger="individuals" aria-controls="nav-group-individuals" aria-expanded="false">Individuals <span className="caret" aria-hidden="true"></span></button></li>
-              <li><button className="nav__link" type="button" data-nav-trigger="ecosystem" aria-controls="nav-group-ecosystem" aria-expanded="false">Ecosystem <span className="caret" aria-hidden="true"></span></button></li>
-              <li><button className="nav__link" type="button" data-nav-trigger="tools" aria-controls="nav-group-tools" aria-expanded="false">Tools <span className="caret" aria-hidden="true"></span></button></li>
-              <li><button className="nav__link" type="button" data-nav-trigger="discover" aria-controls="nav-group-discover" aria-expanded="false">Discover <span className="caret" aria-hidden="true"></span></button></li>
-              <li><button className="nav__link" type="button" data-nav-trigger="investors" aria-controls="nav-group-investors" aria-expanded="false">Investors <span className="caret" aria-hidden="true"></span></button></li>
-            </ul>
-            <a className="btn btn--red nav__cta" href="https://www.zetrix.com/buidl-zetrix/">BUIDL Now</a>
-            <button className="theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light mode"><span className="theme-toggle__track" aria-hidden="true"><span className="theme-toggle__orb"></span></span></button>
-            <button className="nav__mobile-toggle" type="button" data-nav-mobile-toggle aria-label="Open navigation menu" aria-controls="nav-dropdown" aria-expanded="false"><span></span><span></span></button>
-            <div className="nav-dropdown" data-nav-panel id="nav-dropdown" role="navigation" aria-label="Navigation menu" hidden>
-              <div className="nav-dropdown__surface">
-                <section className="nav-panel__group" id="nav-group-developers" data-nav-group="developers" data-nav-count="2">
-                  <button className="nav-panel__accordion" type="button" data-nav-accordion-trigger="developers" aria-controls="nav-group-developers-content" aria-expanded="false"><span>Developers</span><span className="caret" aria-hidden="true"></span></button>
-                  <div className="nav-panel__content" id="nav-group-developers-content" data-nav-group-content>
-                    <a className="nav-card" href="https://www.zetrix.com/buidl-zetrix/"><span className="nav-card__icon"><img src="/assets/icons/lucide/code-2.svg" alt="" /></span><span className="nav-card__copy"><span className="nav-card__title">#BUIDL With Zetrix</span><span className="nav-card__desc">Start building on the Zetrix network.</span></span><span className="nav-card__arrow"><img src="/assets/icons/arrow-up-right.svg" alt="" /></span></a>
-                    <a className="nav-card" href="https://www.zetrix.com/bug-bounty-programme/"><span className="nav-card__icon"><img src="/assets/icons/lucide/bug.svg" alt="" /></span><span className="nav-card__copy"><span className="nav-card__title">Bug Bounty Programme</span><span className="nav-card__desc">Help strengthen Zetrix and earn rewards.</span></span><span className="nav-card__arrow"><img src="/assets/icons/arrow-up-right.svg" alt="" /></span></a>
-                  </div>
-                </section>
-                <section className="nav-panel__group" id="nav-group-individuals" data-nav-group="individuals" data-nav-count="2">
-                  <button className="nav-panel__accordion" type="button" data-nav-accordion-trigger="individuals" aria-controls="nav-group-individuals-content" aria-expanded="false"><span>Individuals</span><span className="caret" aria-hidden="true"></span></button>
-                  <div className="nav-panel__content" id="nav-group-individuals-content" data-nav-group-content>
-                    <a className="nav-card" href="#download"><span className="nav-card__icon"><img src="/assets/icons/lucide/wallet-cards.svg" alt="" /></span><span className="nav-card__copy"><span className="nav-card__title">Zetrix Wallet</span><span className="nav-card__desc">Manage assets and trusted digital credentials.</span></span><span className="nav-card__arrow"><img src="/assets/icons/arrow-up-right.svg" alt="" /></span></a>
-                    <a className="nav-card" href="#digitise"><span className="nav-card__icon"><img src="/assets/icons/lucide/scan-face.svg" alt="" /></span><span className="nav-card__copy"><span className="nav-card__title">ZID</span><span className="nav-card__desc">Create and present a verifiable digital identity.</span></span><span className="nav-card__arrow"><img src="/assets/icons/arrow-up-right.svg" alt="" /></span></a>
-                  </div>
-                </section>
-                <section className="nav-panel__group" id="nav-group-ecosystem" data-nav-group="ecosystem" data-nav-count="2">
-                  <button className="nav-panel__accordion" type="button" data-nav-accordion-trigger="ecosystem" aria-controls="nav-group-ecosystem-content" aria-expanded="false"><span>Ecosystem</span><span className="caret" aria-hidden="true"></span></button>
-                  <div className="nav-panel__content" id="nav-group-ecosystem-content" data-nav-group-content>
-                    <a className="nav-card" href="https://www.zetrix.com/zetrix-ecosystems/"><span className="nav-card__icon"><img src="/assets/icons/lucide/blocks.svg" alt="" /></span><span className="nav-card__copy"><span className="nav-card__title">Zetrix Ecosystem</span><span className="nav-card__desc">Explore applications and partners built on Zetrix.</span></span><span className="nav-card__arrow"><img src="/assets/icons/arrow-up-right.svg" alt="" /></span></a>
-                    <a className="nav-card" href="https://www.zetrix.com/global-accelerator-programme/"><span className="nav-card__icon"><img src="/assets/icons/lucide/rocket.svg" alt="" /></span><span className="nav-card__copy"><span className="nav-card__title">Accelerator</span><span className="nav-card__desc">Grow Web3 ideas with global support.</span></span><span className="nav-card__arrow"><img src="/assets/icons/arrow-up-right.svg" alt="" /></span></a>
-                  </div>
-                </section>
-                <section className="nav-panel__group" id="nav-group-tools" data-nav-group="tools" data-nav-count="3">
-                  <button className="nav-panel__accordion" type="button" data-nav-accordion-trigger="tools" aria-controls="nav-group-tools-content" aria-expanded="false"><span>Tools</span><span className="caret" aria-hidden="true"></span></button>
-                  <div className="nav-panel__content" id="nav-group-tools-content" data-nav-group-content>
-                    <a className="nav-card" href="https://explorer.zetrix.com/"><span className="nav-card__icon"><img src="/assets/icons/lucide/search-code.svg" alt="" /></span><span className="nav-card__copy"><span className="nav-card__title">Block Explorer</span><span className="nav-card__desc">Inspect blocks, transactions, and accounts.</span></span><span className="nav-card__arrow"><img src="/assets/icons/arrow-up-right.svg" alt="" /></span></a>
-                    <a className="nav-card" href="https://ds.zetrix.com/"><span className="nav-card__icon"><img src="/assets/icons/lucide/activity.svg" alt="" /></span><span className="nav-card__copy"><span className="nav-card__title">Node Monitor</span><span className="nav-card__desc">Monitor Zetrix network node performance.</span></span><span className="nav-card__arrow"><img src="/assets/icons/arrow-up-right.svg" alt="" /></span></a>
-                    <a className="nav-card" href="https://ide.zetrix.com/"><span className="nav-card__icon"><img src="/assets/icons/lucide/file-code-2.svg" alt="" /></span><span className="nav-card__copy"><span className="nav-card__title">Smart Contract</span><span className="nav-card__desc">Build and deploy smart contracts.</span></span><span className="nav-card__arrow"><img src="/assets/icons/arrow-up-right.svg" alt="" /></span></a>
-                  </div>
-                </section>
-                <section className="nav-panel__group" id="nav-group-discover" data-nav-group="discover" data-nav-count="3">
-                  <button className="nav-panel__accordion" type="button" data-nav-accordion-trigger="discover" aria-controls="nav-group-discover-content" aria-expanded="false"><span>Discover</span><span className="caret" aria-hidden="true"></span></button>
-                  <div className="nav-panel__content" id="nav-group-discover-content" data-nav-group-content>
-                    <a className="nav-card" href="https://www.zetrix.com/about-zetrix/"><span className="nav-card__icon"><img src="/assets/icons/lucide/badge-info.svg" alt="" /></span><span className="nav-card__copy"><span className="nav-card__title">About Zetrix</span><span className="nav-card__desc">Learn about the Zetrix public blockchain.</span></span><span className="nav-card__arrow"><img src="/assets/icons/arrow-up-right.svg" alt="" /></span></a>
-                    <a className="nav-card" href="https://www.zetrix.com/media-and-community/"><span className="nav-card__icon"><img src="/assets/icons/lucide/users-round.svg" alt="" /></span><span className="nav-card__copy"><span className="nav-card__title">Media and community</span><span className="nav-card__desc">Connect with Zetrix news and communities.</span></span><span className="nav-card__arrow"><img src="/assets/icons/arrow-up-right.svg" alt="" /></span></a>
-                    <a className="nav-card" href="https://www.zetrix.com/jobs/"><span className="nav-card__icon"><img src="/assets/icons/lucide/briefcase-business.svg" alt="" /></span><span className="nav-card__copy"><span className="nav-card__title">Careers</span><span className="nav-card__desc">Build the future of trust with Zetrix.</span></span><span className="nav-card__arrow"><img src="/assets/icons/arrow-up-right.svg" alt="" /></span></a>
-                  </div>
-                </section>
-                <section className="nav-panel__group" id="nav-group-investors" data-nav-group="investors" data-nav-count="2">
-                  <button className="nav-panel__accordion" type="button" data-nav-accordion-trigger="investors" aria-controls="nav-group-investors-content" aria-expanded="false"><span>Investors</span><span className="caret" aria-hidden="true"></span></button>
-                  <div className="nav-panel__content" id="nav-group-investors-content" data-nav-group-content>
-                    <a className="nav-card" href="https://www.zetrix.com/investor-relations/"><span className="nav-card__icon"><img src="/assets/icons/lucide/landmark.svg" alt="" /></span><span className="nav-card__copy"><span className="nav-card__title">Investor Relations</span><span className="nav-card__desc">Access the investor information centre.</span></span><span className="nav-card__arrow"><img src="/assets/icons/arrow-up-right.svg" alt="" /></span></a>
-                    <a className="nav-card" href="https://www.zetrix.com/investor-relations/reports-presentations/"><span className="nav-card__icon"><img src="/assets/icons/lucide/presentation.svg" alt="" /></span><span className="nav-card__copy"><span className="nav-card__title">Reports &amp; Presentations</span><span className="nav-card__desc">Access reports and presentation materials.</span></span><span className="nav-card__arrow"><img src="/assets/icons/arrow-up-right.svg" alt="" /></span></a>
-                  </div>
-                </section>
-                <div className="nav-dropdown__theme"><span className="nav-dropdown__theme-label">Appearance</span><button className="theme-toggle nav-dropdown__theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to light mode"><span className="theme-toggle__track" aria-hidden="true"><span className="theme-toggle__orb"></span></span></button></div>
-              </div>
-            </div>
-          </nav>
-        </header>
+        <SiteHeader homeLinkMode="document" />
       
         <main id="main">
           <section className="hero" id="hero" aria-labelledby="hero-title">
