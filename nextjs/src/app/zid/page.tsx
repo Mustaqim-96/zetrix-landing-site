@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ZidRuntime from "@/components/ZidRuntime";
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import "./zid.css";
 
 const TITLE = "ZID — Blockchain-based Identity Network";
@@ -149,32 +150,7 @@ export default function ZidPage() {
           </section>
         </main>
       
-        <footer className="footer">
-          <div className="footer__inner">
-            <div className="footer__top">
-              <nav className="footer__nav" aria-label="Footer">
-                <div className="footer__col"><h4 className="footer__head">Product</h4><a href="https://www.zetrix.com/buidl-zetrix/">#BUIDL With Zetrix</a><a href="https://www.zetrix.com/bug-bounty-programme/">Bug Bounty Programme</a></div>
-                <div className="footer__col"><h4 className="footer__head">Individuals</h4><a href="#download">Zetrix Wallet</a></div>
-                <div className="footer__col"><h4 className="footer__head">Ecosystem</h4><a href="https://www.zetrix.com/zetrix-ecosystems/">Zetrix Ecosystem</a><a href="https://www.zetrix.com/global-accelerator-programme/">Accelerator</a></div>
-                <div className="footer__col"><h4 className="footer__head">Tools</h4><a href="https://ds.zetrix.com/">Node Monitor</a><a href="https://explorer.zetrix.com/">Block Explorer</a><a href="https://ide.zetrix.com/">Smart Contract</a></div>
-                <div className="footer__col"><h4 className="footer__head">Discover</h4><a href="https://www.zetrix.com/about-zetrix/">About Zetrix</a><a href="https://www.zetrix.com/media-and-community/">Media and community</a><a href="https://www.zetrix.com/jobs/">Careers</a></div>
-              </nav>
-              <div className="footer__socials" aria-label="Zetrix social channels">
-                <a href="#" className="social" aria-label="Telegram"><img src="/assets/footer/telegram.svg" alt="" /></a><a href="#" className="social" aria-label="Discord"><img src="/assets/footer/discord.svg" alt="" /></a><a href="#" className="social" aria-label="X"><img src="/assets/footer/x.svg" alt="" /></a><a href="#" className="social" aria-label="TikTok"><img src="/assets/footer/tiktok.svg" alt="" /></a>
-              </div>
-            </div>
-            <div className="footer__brand">
-              <div className="footer__wordmark-art" data-footer-spotlight aria-hidden="true">
-                <img className="footer__wordmark-base" src="/assets/footer/zetrix-wordmark-fill.svg" alt="" />
-                <img className="footer__wordmark-color-trail footer__wordmark--dark" src="/assets/footer/zetrix-wordmark-fill.svg" alt="" />
-                <img className="footer__wordmark-spotlight footer__wordmark--dark" src="/assets/footer/zetrix-wordmark-fill.svg" alt="" />
-                <img className="footer__wordmark-color-trail footer__wordmark--light" src="/assets/footer/zetrix-wordmark-fill-light.svg" alt="" />
-                <img className="footer__wordmark-spotlight footer__wordmark--light" src="/assets/footer/zetrix-wordmark-fill-light.svg" alt="" />
-              </div>
-              <div className="footer__bottom"><p className="footer__copy">© 2026 Zetrix. All rights reserved.</p><div className="footer__legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div>
-            </div>
-          </div>
-        </footer>
+        <SiteFooter />
     </div>
   );
 }
