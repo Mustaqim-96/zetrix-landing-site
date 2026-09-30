@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import SiteScripts from "@/components/SiteScripts";
 
 // TODO(handover): set to the final production domain when it moves off the
 // preview URL (e.g. "https://www.zetrix.com"). metadataBase makes every
@@ -45,6 +44,7 @@ export const metadata: Metadata = {
 
 // Mobile browser chrome matches the page theme (light default / dark toggle).
 export const viewport: Viewport = {
+  viewportFit: "cover",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
     { media: "(prefers-color-scheme: dark)", color: "#18181b" },
@@ -55,6 +55,7 @@ export const viewport: Viewport = {
 // as possible and fail-safe it away after 4.2s so the page is never stuck behind
 // the intro overlay.
 const introFailsafe = `(function () {
+  if (window.location.pathname !== '/') return;
   document.documentElement.classList.add('site-intro-pending');
   window.__zetrixIntroFailsafe = setTimeout(function () {
     document.documentElement.classList.remove('site-intro-pending');
@@ -96,20 +97,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           id="zetrix-intro-failsafe"
           dangerouslySetInnerHTML={{ __html: introFailsafe }}
         />
-        {/* Preload the heaviest hero-critical scripts so their download starts
-            during HTML parse, in parallel — SiteScripts (after hydration) then
-            executes them in order. three.min.js is ~600 KB and gates the globe. */}
-        <link rel="preload" as="script" href="/vendor/three.min.js" />
-        <link rel="preload" as="script" href="/js/globe-data.js" />
-
         {/* The complete hand-authored design system, served statically. */}
         {/* eslint-disable-next-line @next/next/no-css-tags */}
         <link rel="stylesheet" href="/css/styles.css" />
       </head>
-      <body>
-        {children}
-        <SiteScripts />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

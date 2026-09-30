@@ -12,10 +12,14 @@
 
 import Link from "next/link";
 import NodeIllus from "@/components/NodeIllus";
+import HomeResources from "@/components/HomeResources";
+import SiteScripts from "@/components/SiteScripts";
 
 export default function Home() {
   return (
     <>
+      <HomeResources />
+      <SiteScripts />
       <a className="skip-link" href="#main-content">Skip to content</a>
 
       <div className="site-intro" data-site-intro aria-hidden="true">
