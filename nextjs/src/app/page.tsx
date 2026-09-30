@@ -242,7 +242,9 @@ export default function Home() {
                     <p className="tools__sub">Real applications built on Zetrix — for identity, credentials, and cross-border trade.</p>
 
                     <div className="tool-grid">
-                      <article className="tool-card">
+                      {/* Full navigation intentionally resets the legacy one-shot homepage runtime. */}
+                      {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+                      <a href="/zid" className="tool-card" aria-label="Explore ZID digital identity">
                         <div className="tool-card__top">
                           <span className="tool-card__icon" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/icons/lucide-fingerprint.svg" alt="" /></span>
                           <span className="tool-card__arrow" aria-hidden="true"><img loading="lazy" decoding="async" src="/assets/icons/arrow-up-right.svg" alt="" /></span>
@@ -251,7 +253,7 @@ export default function Home() {
                           <h3 className="tool-card__title">ZID</h3>
                           <p className="tool-card__desc">Privacy-preserving digital identity.</p>
                         </div>
-                      </article>
+                      </a>
 
                       <article className="tool-card">
                         <div className="tool-card__top">

@@ -42,3 +42,23 @@ test("uses absolute public asset paths in the ZID JSX", () => {
   assert.doesNotMatch(page, /src=["']\.\//);
   assert.match(page, /src=["']\/assets\/zid\/hero-myid\.webp["']/);
 });
+
+test("links the complete homepage ZID card to the native route", () => {
+  const home = read("src/app/page.tsx");
+
+  assert.match(
+    home,
+    /<a\s+href=["']\/zid["']\s+className=["']tool-card["'][\s\S]*?<h3[^>]*>ZID<\/h3>[\s\S]*?<\/a>/,
+  );
+  assert.doesNotMatch(home, /href=["']\/zid\.html["']/);
+});
+
+test("publishes ZID in the sitemap", () => {
+  const sitemap = read("src/app/sitemap.ts");
+  assert.match(sitemap, /url:\s*`\$\{SITE_URL\}\/zid`/);
+});
+
+test("provides a visible keyboard focus treatment for the linked card", () => {
+  const css = read("public/css/styles.css");
+  assert.match(css, /\.tool-card:focus-visible/);
+});

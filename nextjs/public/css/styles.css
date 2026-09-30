@@ -1487,6 +1487,11 @@ html[data-theme="light"] .node-illus .ring { stroke: #c2c2c8; }
               border-color 240ms cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 240ms cubic-bezier(0.16, 1, 0.3, 1);
 }
+.tool-card[href] { cursor: pointer; }
+.tool-card:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 4px;
+}
 .tools__left.is-reveal-ready .tool-card {
   opacity: 0;
   transition: opacity 160ms ease-out,

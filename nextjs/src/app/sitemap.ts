@@ -4,8 +4,7 @@ import type { MetadataRoute } from "next";
 // TODO(handover): update to the final production domain when it changes.
 const SITE_URL = "https://zetrix-landing-site.vercel.app";
 
-// Single-page landing site — one entry. Next generates /sitemap.xml (static).
-// Add more entries here if additional routes are introduced.
+// Next generates /sitemap.xml statically for the public site routes.
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
@@ -13,6 +12,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
+    },
+    {
+      url: `${SITE_URL}/zid`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
     },
   ];
 }
