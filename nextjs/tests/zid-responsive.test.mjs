@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
 const css = readFileSync(new URL('../src/app/zid/zid.css', import.meta.url), 'utf8');
+const sharedCss = readFileSync(new URL('../public/css/styles.css', import.meta.url), 'utf8');
 const runtime = readFileSync(new URL('../src/components/ZidRuntime.tsx', import.meta.url), 'utf8');
 const layout = readFileSync(new URL('../src/app/layout.tsx', import.meta.url), 'utf8');
 
@@ -14,27 +15,23 @@ test('enables device safe-area viewport handling', () => {
 });
 
 test('compact navigation is safe-area aware with a 44px menu target', () => {
-  const compact = css.match(
-    /@media \(max-width:1023px\)\{([\s\S]*?)\n    \}/,
+  const compact = sharedCss.match(
+    /@media \(max-width: 1023px\) \{([\s\S]*?)\n\}/,
   )?.[1] ?? '';
 
-  assert.match(compact, /\.site-header\{[^}]*env\(safe-area-inset-top\)/);
+  assert.match(compact, /\.nav-wrap\s*\{[^}]*env\(safe-area-inset-top\)/);
   assert.match(compact, /padding-inline:[^;]*env\(safe-area-inset-left\)[^;]*env\(safe-area-inset-right\)/);
-  assert.match(compact, /\.nav__mobile-toggle\{width:44px;height:44px/);
-  assert.match(compact, /\.nav__logo\{[^}]*min-height:44px/);
-  assert.match(compact, /\.nav__cta\{height:44px;min-height:44px/);
-  assert.match(compact, /\.footer__nav a,\.footer__legal a\{[^}]*min-height:44px/);
-  assert.match(compact, /\.social\{width:44px;height:44px/);
+  assert.match(compact, /\.nav__mobile-toggle\s*\{[^}]*width:\s*44px;[^}]*height:\s*44px/);
+  assert.match(compact, /\.nav__logo\s*\{[^}]*min-height:\s*44px/);
+  assert.match(compact, /\.nav__cta\s*\{[^}]*height:\s*44px;[^}]*min-height:\s*44px/);
+  assert.match(compact, /\.footer__nav a,\s*\.footer__legal a\s*\{[^}]*min-height:\s*44px/);
+  assert.match(compact, /\.social\s*\{[^}]*width:\s*44px;[^}]*height:\s*44px/);
 });
 
 test('mobile footer clears the device bottom safe area', () => {
-  const mobile = css.match(
-    /@media \(max-width:767px\)\{([\s\S]*?)\n    \}/,
-  )?.[1] ?? '';
-
   assert.match(
-    mobile,
-    /\.footer__inner\{[^}]*padding-bottom:max\(32px,env\(safe-area-inset-bottom\)\)/,
+    sharedCss,
+    /@media \(max-width: 767px\) \{[\s\S]*?\.footer__inner\s*\{[^}]*padding-bottom:\s*max\(32px,\s*env\(safe-area-inset-bottom\)\)/,
   );
 });
 

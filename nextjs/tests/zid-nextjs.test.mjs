@@ -113,3 +113,10 @@ test("centers the ZID hero screenshot without rotation", () => {
   assert.match(rule, /transform:none/);
   assert.doesNotMatch(rule, /rotate\(/);
 });
+
+test("keeps ZID media resets out of the shared site chrome", () => {
+  const css = read("src/app/zid/zid.css");
+
+  assert.match(css, /\.zid-page main img\{display:block;max-width:100%\}/);
+  assert.doesNotMatch(css, /(?:^|\n)\s*img\{display:block;max-width:100%\}/);
+});
