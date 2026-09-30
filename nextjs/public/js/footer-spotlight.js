@@ -92,5 +92,6 @@
 });
 
 if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-  window.ZetrixFooterSpotlight.init(document, window);
+  if (window.__zetrixFooterSpotlightCleanup) window.__zetrixFooterSpotlightCleanup();
+  window.__zetrixFooterSpotlightCleanup = window.ZetrixFooterSpotlight.init(document, window);
 }

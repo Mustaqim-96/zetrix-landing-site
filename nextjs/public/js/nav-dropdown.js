@@ -288,5 +288,6 @@
 });
 
 if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-  window.ZetrixNavDropdown.init(document, window);
+  if (window.__zetrixNavDropdownCleanup) window.__zetrixNavDropdownCleanup();
+  window.__zetrixNavDropdownCleanup = window.ZetrixNavDropdown.init(document, window);
 }

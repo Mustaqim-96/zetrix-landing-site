@@ -85,5 +85,6 @@
 });
 
 if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-  window.ZetrixThemeToggle.init(document, window);
+  if (window.__zetrixThemeToggleCleanup) window.__zetrixThemeToggleCleanup();
+  window.__zetrixThemeToggleCleanup = window.ZetrixThemeToggle.init(document, window);
 }
