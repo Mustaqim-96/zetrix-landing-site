@@ -2,6 +2,8 @@
    Zetrix Landing — styles
    ============================================================ */
 
+@layer site {
+
 /* ---------- Fonts ---------- */
 @font-face {
   font-family: "Metropolis";
@@ -4800,4 +4802,6 @@ html[data-theme="light"] .eco-progress i.is-active { background: #18181b; }
   .layers__inner { width: calc(100% - 32px); }
   .cta { padding-inline: 16px; }
   .footer__inner { padding-inline: 16px; }
+}
+
 }

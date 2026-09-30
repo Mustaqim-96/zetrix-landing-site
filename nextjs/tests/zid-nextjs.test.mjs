@@ -66,3 +66,13 @@ test("provides a visible keyboard focus treatment for the linked card", () => {
 test("retires the standalone ZID HTML document", () => {
   assert.equal(existsSync(new URL("../public/zid.html", import.meta.url)), false);
 });
+
+test("places ZID styles above shared landing-page styles in the cascade", () => {
+  const globals = read("src/app/globals.css");
+  const shared = read("public/css/styles.css");
+  const zid = read("src/app/zid/zid.css");
+
+  assert.match(globals, /@layer\s+site,\s*zid\s*;/);
+  assert.match(shared, /@layer\s+site\s*\{/);
+  assert.match(zid, /@layer\s+zid\s*\{/);
+});

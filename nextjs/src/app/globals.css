@@ -1,3 +1,5 @@
+@layer site, zid;
+
 /*
  * The Zetrix landing page is styled entirely by /public/css/styles.css,
  * which is linked in src/app/layout.tsx. That hand-authored stylesheet owns
