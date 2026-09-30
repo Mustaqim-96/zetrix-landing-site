@@ -76,3 +76,40 @@ test("places ZID styles above shared landing-page styles in the cascade", () => 
   assert.match(shared, /@layer\s+site\s*\{/);
   assert.match(zid, /@layer\s+zid\s*\{/);
 });
+
+test("shares the canonical site header across homepage and ZID", () => {
+  const header = read("src/components/SiteHeader.tsx");
+  const home = read("src/app/page.tsx");
+  const zid = read("src/app/zid/page.tsx");
+
+  assert.match(header, /export default function SiteHeader/);
+  assert.match(header, /data-nav-count=["']6["']/);
+  assert.match(header, /data-nav-count=["']9["']/);
+  assert.match(home, /<SiteHeader\s*\/>/);
+  assert.match(zid, /<SiteHeader\s+homeLinkMode=["']document["']\s*\/>/);
+  assert.doesNotMatch(home, /<header className=["']nav-wrap["']/);
+  assert.doesNotMatch(zid, /<header className=["']nav-wrap["']/);
+});
+
+test("shares the canonical site footer across homepage and ZID", () => {
+  const footer = read("src/components/SiteFooter.tsx");
+  const home = read("src/app/page.tsx");
+  const zid = read("src/app/zid/page.tsx");
+
+  assert.match(footer, /export default function SiteFooter/);
+  assert.match(footer, /data-footer-spotlight/);
+  assert.match(footer, /footer__wordmark-base/);
+  assert.match(home, /<SiteFooter\s*\/>/);
+  assert.match(zid, /<SiteFooter\s*\/>/);
+  assert.doesNotMatch(home, /<footer className=["']footer["']/);
+  assert.doesNotMatch(zid, /<footer className=["']footer["']/);
+});
+
+test("centers the ZID hero screenshot without rotation", () => {
+  const css = read("src/app/zid/zid.css");
+  const rule = css.match(/\.hero-phone\{([^}]*)\}/)?.[1] ?? "";
+
+  assert.match(rule, /margin-inline:auto/);
+  assert.match(rule, /transform:none/);
+  assert.doesNotMatch(rule, /rotate\(/);
+});
