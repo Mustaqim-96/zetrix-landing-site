@@ -71,21 +71,6 @@ export default function ZidPage() {
             </div>
           </section>
       
-          <section className="verify" id="verify" aria-labelledby="verify-title">
-            <div className="shell">
-              <header className="reveal"><h2 className="section-title" id="verify-title">How to verify the Digitised Credentials?</h2></header>
-              <div className="verify-panel reveal">
-                <div className="verify-steps" role="group" aria-label="Credential verification steps">
-                  <button className="verify-step is-active" type="button" data-verify-step="0" aria-pressed="true"><h3>Step 1</h3><p>Download and open the Zetrix Wallet App.</p><span className="verify-progress" aria-hidden="true"></span></button>
-                  <button className="verify-step" type="button" data-verify-step="1" aria-pressed="false"><h3>Step 2</h3><p>Select Scan in the application.</p><span className="verify-progress" aria-hidden="true"></span></button>
-                  <button className="verify-step" type="button" data-verify-step="2" aria-pressed="false"><h3>Step 3</h3><p>Scan the presented Credential QR code.</p><span className="verify-progress" aria-hidden="true"></span></button>
-                  <button className="verify-step" type="button" data-verify-step="3" aria-pressed="false"><h3>Step 4</h3><p>View the verified result.</p><span className="verify-progress" aria-hidden="true"></span></button>
-                </div>
-                <div className="verify-demo" data-verify-active="0"><div className="verify-phone" role="img" aria-label="Zetrix Wallet verification walkthrough"><img className="verify-media is-active" data-verify-media="0" src="/assets/zid/verify-wallet-figma.webp" alt="" aria-hidden="false" loading="lazy" decoding="async" width="750" height="1624" /><img className="verify-media" data-verify-media="1" src="/assets/zid/verify-wallet-figma.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="750" height="1624" /><img className="verify-media" data-verify-media="2" src="/assets/zid/verify-step-2.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="750" height="1624" /><img className="verify-media" data-verify-media="3" src="/assets/zid/verify-wallet-figma.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="750" height="1624" /></div></div>
-              </div>
-            </div>
-          </section>
-      
           <div className="download-about-handoff">
           <section className="download" id="download" aria-labelledby="download-title">
             <div className="download-content">

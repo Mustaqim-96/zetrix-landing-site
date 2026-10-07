@@ -30,7 +30,6 @@ test("gives ZID route metadata and an isolated client runtime", () => {
   assert.match(page, /<ZidRuntime\s*\/>/);
   assert.match(page, /className=["']zid-page["']/);
   assert.match(runtime, /return \(\) =>/);
-  assert.match(runtime, /clearTimeout/);
   assert.match(runtime, /disconnect\(\)/);
   assert.match(runtime, /removeEventListener/);
   assert.match(runtime, /cancelAnimationFrame/);
@@ -122,15 +121,16 @@ test("scales the ZID hero screenshot proportionally", () => {
   assert.match(rule, /height:auto/);
 });
 
-test("maps the QR-scanning screenshot to verification Step 3", () => {
+test("removes the credential-verification walkthrough and its runtime hooks", () => {
   const page = read("src/app/zid/page.tsx");
-  const media = new Map(
-    [...page.matchAll(/data-verify-media=["'](\d)["'][^>]*src=["']([^"']+)["']/g)]
-      .map((match) => [match[1], match[2]]),
-  );
+  const runtime = read("src/components/ZidRuntime.tsx");
+  const css = read("src/app/zid/zid.css");
 
-  assert.equal(media.get("1"), "/assets/zid/verify-wallet-figma.webp");
-  assert.equal(media.get("2"), "/assets/zid/verify-step-2.webp");
+  assert.doesNotMatch(page, /How to verify the Digitised Credentials\?/);
+  assert.doesNotMatch(page, /className=["']verify["']/);
+  assert.doesNotMatch(page, /data-verify-/);
+  assert.doesNotMatch(runtime, /verify/i);
+  assert.doesNotMatch(css, /\.verify/);
 });
 
 test("keeps ZID media resets out of the shared site chrome", () => {

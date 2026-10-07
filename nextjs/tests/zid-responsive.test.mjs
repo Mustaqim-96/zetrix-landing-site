@@ -101,7 +101,6 @@ test('mobile sections follow the Zetrix 60px transition rhythm', () => {
 
   assert.match(mobile, /:root\{--gutter:16px;--mobile-section-space:60px\}/);
   assert.match(mobile, /\.process\{padding:var\(--mobile-section-space\) 0 0\}/);
-  assert.match(mobile, /\.verify\{padding:var\(--mobile-section-space\) 0 0\}/);
   assert.match(mobile, /\.download\{[^}]*padding:var\(--mobile-section-space\) 0 0/);
   assert.match(mobile, /\.powered\{padding:var\(--mobile-section-space\) 0 80px\}/);
 });
@@ -113,7 +112,6 @@ test('tablet sections follow the Zetrix 96px transition rhythm', () => {
 
   assert.match(tablet, /:root\{--tablet-section-space:96px\}/);
   assert.match(tablet, /\.process\{padding:var\(--tablet-section-space\) 0 0\}/);
-  assert.match(tablet, /\.verify\{padding:var\(--tablet-section-space\) 0 0\}/);
   assert.match(tablet, /\.download\{align-items:flex-start;padding:var\(--tablet-section-space\) 0 0\}/);
   assert.match(tablet, /\.about-card\{height:calc\(100svh - 192px\)/);
   assert.match(tablet, /\.powered\{padding:0 0 112px\}/);

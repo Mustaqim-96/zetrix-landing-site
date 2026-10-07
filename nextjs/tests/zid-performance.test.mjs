@@ -68,16 +68,3 @@ test('pauses hero motion while offscreen or while the document is hidden', () =>
   assert.match(runtime, /heroObserver\.observe\(heroSection\)/);
   assert.match(runtime, /doc\.addEventListener\("visibilitychange", handleVisibilityChange\)/);
 });
-
-test('animates verification progress with transforms instead of width', () => {
-  const progressRule = css.match(/\.verify-progress::after\{([^}]*)\}/)?.[1] ?? '';
-  const progressKeyframes = css.match(/@keyframes verify-progress-cycle\{from\{([^}]*)\}to\{([^}]*)\}\}/);
-
-  assert.match(progressRule, /transform:scaleX\(0\)/);
-  assert.match(progressRule, /transform-origin:left/);
-  assert.doesNotMatch(progressRule, /width:0/);
-  assert.ok(progressKeyframes);
-  assert.match(progressKeyframes[1], /transform:scaleX\(0\)/);
-  assert.match(progressKeyframes[2], /transform:scaleX\(1\)/);
-  assert.doesNotMatch(progressKeyframes[0], /width:/);
-});
