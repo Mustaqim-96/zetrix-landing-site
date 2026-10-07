@@ -147,6 +147,21 @@ test("keeps only the MyID download card", () => {
   );
 });
 
+test("keeps only Zetrix and MYEG in the Powered by grid", () => {
+  const page = read("src/app/zid/page.tsx");
+  const css = read("src/app/zid/zid.css");
+  const powered = page.match(/<section className=["']powered["'][\s\S]*?<\/section>/)?.[0] ?? "";
+
+  assert.match(powered, /partner--zetrix/);
+  assert.match(powered, /partner--myeg/);
+  assert.doesNotMatch(powered, /partner--xinghuo|partner--beibu/);
+  assert.doesNotMatch(powered, /xinghuo\.webp|beibu-gulf\.webp/);
+  assert.doesNotMatch(css, /\.partner--xinghuo|\.partner--beibu|\.partner-logo/);
+  assert.match(page, /collaboration with Beibu Gulf Investment Group and Xinghuo Blockchain Infrastructure/);
+  assert.equal(existsSync(new URL("../public/assets/zid/xinghuo.webp", import.meta.url)), false);
+  assert.equal(existsSync(new URL("../public/assets/zid/beibu-gulf.webp", import.meta.url)), false);
+});
+
 test("keeps ZID media resets out of the shared site chrome", () => {
   const css = read("src/app/zid/zid.css");
 

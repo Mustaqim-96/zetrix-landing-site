@@ -116,8 +116,6 @@ export default function ZidPage() {
             <div className="shell reveal">
               <h2 className="powered-title" id="powered-title">Powered by</h2>
               <div className="partner-grid">
-                <div className="partner partner--xinghuo"><span className="partner-logo"><img src="/assets/zid/xinghuo.webp" alt="Xinghuo Blockchain Infrastructure" loading="lazy" decoding="async" width="652" height="217" /><img className="partner-logo-light" src="/assets/zid/xinghuo.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="652" height="217" /></span></div>
-                <div className="partner partner--beibu"><span className="partner-logo"><img src="/assets/zid/beibu-gulf.webp" alt="Beibu Gulf Investment Group" loading="lazy" decoding="async" width="652" height="217" /><img className="partner-logo-light" src="/assets/zid/beibu-gulf.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="652" height="217" /></span></div>
                 <div className="partner partner--zetrix"><img src="/assets/img/logo-zetrix.svg" alt="Zetrix" /></div>
                 <div className="partner partner--myeg"><img src="/assets/zid/myeg.webp" alt="MYEG" loading="lazy" decoding="async" width="600" height="254" /></div>
               </div>
