@@ -133,6 +133,20 @@ test("removes the credential-verification walkthrough and its runtime hooks", ()
   assert.doesNotMatch(css, /\.verify/);
 });
 
+test("keeps only the MyID download card", () => {
+  const page = read("src/app/zid/page.tsx");
+  const css = read("src/app/zid/zid.css");
+
+  assert.match(page, /<h3>MyID Superapp<\/h3>/);
+  assert.doesNotMatch(page, /Zetrix Wallet\+/);
+  assert.doesNotMatch(page, /zetrix-wallet\.webp/);
+  assert.doesNotMatch(css, /\.download-card--wallet/);
+  assert.equal(
+    existsSync(new URL("../public/assets/zid/zetrix-wallet.webp", import.meta.url)),
+    false,
+  );
+});
+
 test("keeps ZID media resets out of the shared site chrome", () => {
   const css = read("src/app/zid/zid.css");
 

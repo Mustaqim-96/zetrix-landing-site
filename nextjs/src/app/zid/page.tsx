@@ -89,16 +89,6 @@ export default function ZidPage() {
                     <div className="download-code"><div className="download-qr"><img src="/assets/zid/download-qr.webp" alt="QR code to download MyID Superapp" loading="lazy" decoding="async" width="800" height="800" /><span className="download-qr-badge"><img src="/assets/zid/myid-logo.webp" alt="" loading="lazy" decoding="async" width="152" height="152" /></span></div><p className="download-qr-label">Scan QR code to download</p></div>
                   </div>
                 </article>
-                <article className="download-card download-card--wallet reveal">
-                  <div className="download-app-meta"><span>Download</span><h3>Zetrix Wallet+</h3></div>
-                  <div className="download-card-body">
-                    <div className="download-stores">
-                      <a className="download-store" href="#" aria-label="Download Zetrix Wallet Plus on the App Store"><img src="/assets/zid/app-store.svg" alt="" /><span className="download-store-copy"><small>Download on the</small><strong>App Store</strong></span></a>
-                      <a className="download-store" href="#" aria-label="Get Zetrix Wallet Plus on Google Play"><img src="/assets/zid/google-play.svg" alt="" /><span className="download-store-copy"><small>GET IT ON</small><strong>Google Play</strong></span></a>
-                    </div>
-                    <div className="download-code"><div className="download-qr"><img src="/assets/zid/download-qr.webp" alt="QR code to download Zetrix Wallet Plus" loading="lazy" decoding="async" width="800" height="800" /><span className="download-qr-badge"><img src="/assets/zid/zetrix-wallet.webp" alt="" loading="lazy" decoding="async" width="152" height="152" /></span></div><p className="download-qr-label">Scan QR code to download</p></div>
-                  </div>
-                </article>
               </div>
             </div>
           </section>
