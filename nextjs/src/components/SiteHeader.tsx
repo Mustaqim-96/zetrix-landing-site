@@ -1,7 +1,8 @@
 import Link from "next/link";
+import HomeLogoLink from "@/components/HomeLogoLink";
 
 type SiteHeaderProps = {
-  homeLinkMode?: "next" | "document";
+  homeLinkMode?: "next" | "document-skip-intro";
 };
 
 const logo = (
@@ -12,12 +13,8 @@ const logo = (
 );
 
 export default function SiteHeader({ homeLinkMode = "next" }: SiteHeaderProps) {
-  const homeLink = homeLinkMode === "document"
-    ? (
-      // Full navigation prevents one-shot homepage animation state carrying across routes.
-      // eslint-disable-next-line @next/next/no-html-link-for-pages
-      <a className="nav__logo" href="/" aria-label="Zetrix home">{logo}</a>
-    )
+  const homeLink = homeLinkMode === "document-skip-intro"
+    ? <HomeLogoLink>{logo}</HomeLogoLink>
     : <Link className="nav__logo" href="/" aria-label="Zetrix home">{logo}</Link>;
 
   return (

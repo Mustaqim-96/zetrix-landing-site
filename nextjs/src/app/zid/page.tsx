@@ -32,7 +32,7 @@ export default function ZidPage() {
       <ZidRuntime />
       <a className="skip-link" href="#main">Skip to content</a>
       
-        <SiteHeader homeLinkMode="document" />
+        <SiteHeader homeLinkMode="document-skip-intro" />
       
         <main id="main">
           <section className="hero" id="hero" aria-labelledby="hero-title">

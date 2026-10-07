@@ -56,6 +56,12 @@ export const viewport: Viewport = {
 // the intro overlay.
 const introFailsafe = `(function () {
   if (window.location.pathname !== '/') return;
+  try {
+    if (window.sessionStorage.getItem('zetrix-skip-intro') === '1') {
+      window.sessionStorage.removeItem('zetrix-skip-intro');
+      return;
+    }
+  } catch (e) {}
   document.documentElement.classList.add('site-intro-pending');
   window.__zetrixIntroFailsafe = setTimeout(function () {
     document.documentElement.classList.remove('site-intro-pending');

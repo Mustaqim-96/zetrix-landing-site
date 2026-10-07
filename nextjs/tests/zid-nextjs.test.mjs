@@ -85,9 +85,23 @@ test("shares the canonical site header across homepage and ZID", () => {
   assert.match(header, /data-nav-count=["']6["']/);
   assert.match(header, /data-nav-count=["']9["']/);
   assert.match(home, /<SiteHeader\s*\/>/);
-  assert.match(zid, /<SiteHeader\s+homeLinkMode=["']document["']\s*\/>/);
+  assert.match(zid, /<SiteHeader\s+homeLinkMode=["']document-skip-intro["']\s*\/>/);
   assert.doesNotMatch(home, /<header className=["']nav-wrap["']/);
   assert.doesNotMatch(zid, /<header className=["']nav-wrap["']/);
+});
+
+test("skips the homepage splash once when returning from ZID", () => {
+  const link = read("src/components/HomeLogoLink.tsx");
+  const header = read("src/components/SiteHeader.tsx");
+  const layout = read("src/app/layout.tsx");
+  const zid = read("src/app/zid/page.tsx");
+
+  assert.match(zid, /<SiteHeader\s+homeLinkMode=["']document-skip-intro["']\s*\/>/);
+  assert.match(header, /<HomeLogoLink>/);
+  assert.match(link, /sessionStorage\.setItem\(["']zetrix-skip-intro["'],\s*["']1["']\)/);
+  assert.match(link, /href=["']\/["']/);
+  assert.match(layout, /sessionStorage\.getItem\(["']zetrix-skip-intro["']\)/);
+  assert.match(layout, /sessionStorage\.removeItem\(["']zetrix-skip-intro["']\)/);
 });
 
 test("shares the canonical site footer across homepage and ZID", () => {
