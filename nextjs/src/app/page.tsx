@@ -40,9 +40,9 @@ export default function Home() {
         {/* ============================= HERO ============================= */}
         <section className="hero">
           <div className="hero__aurora" aria-hidden="true"></div>
-          <div className="hero__content">
-            <h1 className="hero__title hero__reveal">From Trusted<br />Infrastructure to<br />Intelligent Machines</h1>
-            <p className="hero__subtitle hero__reveal">Build trust and transparency with a scalable public blockchain designed for Public Sectors, Enterprises and Financial institutions.</p>
+          <div className="hero__content" data-hero-reveal>
+            <h1 className="hero__title hero__reveal" data-hero-reveal-title>From Trusted<br />Infrastructure to<br />Intelligent Machines</h1>
+            <p className="hero__subtitle hero__reveal" data-hero-reveal-subtitle>Build trust and transparency with a scalable public blockchain designed for Public Sectors, Enterprises and Financial institutions.</p>
             <a className="btn btn--red hero__cta hero__reveal" href="https://www.zetrix.com/buidl-zetrix/">Get Started</a>
           </div>
           <div className="hero__globe" id="hero-globe" aria-hidden="true">

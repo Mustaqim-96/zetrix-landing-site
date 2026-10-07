@@ -25,6 +25,9 @@ export default function HomeLogoLink({ children }: HomeLogoLinkProps) {
   }
 
   return (
+    // A full document navigation is intentional so the root layout can consume
+    // the one-time splash bypass before React hydrates the homepage.
+    // eslint-disable-next-line @next/next/no-html-link-for-pages
     <a className="nav__logo" href="/" aria-label="Zetrix home" onClick={skipIntroOnce}>
       {children}
     </a>

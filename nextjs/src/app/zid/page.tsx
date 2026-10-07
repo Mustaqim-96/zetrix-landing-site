@@ -37,9 +37,9 @@ export default function ZidPage() {
         <main id="main">
           <section className="hero" id="hero" aria-labelledby="hero-title">
             <img className="hero-curve" src="/assets/zid/hero-curve.svg" alt="" aria-hidden="true" />
-            <div className="hero-content">
-              <h1 id="hero-title">Blockchain-based Identity Network</h1>
-              <p className="hero-copy">Zidentity (ZID) offers Blockchain-based Identity (BID), Verifiable Credentials (VC) and on-chain signing services to the global market, which facilitates cross-border transactions with China.</p>
+            <div className="hero-content" data-hero-reveal>
+              <h1 id="hero-title" data-hero-reveal-title>Blockchain-based Identity Network</h1>
+              <p className="hero-copy" data-hero-reveal-subtitle>Zidentity (ZID) offers Blockchain-based Identity (BID), Verifiable Credentials (VC) and on-chain signing services to the global market, which facilitates cross-border transactions with China.</p>
               <a className="button" href="#download">Get Started</a>
               <div className="hero-phone" aria-hidden="true"><img src="/assets/zid/hero-myid.webp" alt="" decoding="async" width="1500" height="3248" /></div>
             </div>

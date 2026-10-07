@@ -104,6 +104,24 @@ test("skips the homepage splash once when returning from ZID", () => {
   assert.match(layout, /sessionStorage\.removeItem\(["']zetrix-skip-intro["']\)/);
 });
 
+test("shares the homepage title and subtitle reveal with ZID", () => {
+  const home = read("src/app/page.tsx");
+  const zid = read("src/app/zid/page.tsx");
+  const runtime = read("src/components/ZidRuntime.tsx");
+  const reveal = read("public/js/site-reveal.js");
+
+  for (const page of [home, zid]) {
+    assert.match(page, /data-hero-reveal/);
+    assert.match(page, /data-hero-reveal-title/);
+    assert.match(page, /data-hero-reveal-subtitle/);
+  }
+  assert.match(runtime, /["']\/js\/site-reveal\.js["']/);
+  assert.match(reveal, /querySelector\(["']\[data-hero-reveal\]["']\)/);
+  assert.match(reveal, /querySelector\(["']\[data-hero-reveal-title\]["']\)/);
+  assert.match(reveal, /querySelector\(["']\[data-hero-reveal-subtitle\]["']\)/);
+  assert.doesNotMatch(zid, /hero__cta/);
+});
+
 test("shares the canonical site footer across homepage and ZID", () => {
   const footer = read("src/components/SiteFooter.tsx");
   const home = read("src/app/page.tsx");

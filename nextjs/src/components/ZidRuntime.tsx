@@ -11,6 +11,7 @@ type ZetrixWindow = Window & {
 };
 
 const SHARED_SCRIPTS = [
+  "/js/site-reveal.js",
   "/js/theme-toggle.js",
   "/js/nav-dropdown.js",
   "/js/footer-spotlight.js",

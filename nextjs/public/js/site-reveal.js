@@ -218,10 +218,10 @@
     revealObserver.observe(root);
   }
 
-  var heroContent = document.querySelector('.hero__content');
+  var heroContent = document.querySelector('[data-hero-reveal]');
   setupHeroReveal(heroContent,
-    heroContent && heroContent.querySelector('.hero__title'),
-    heroContent && heroContent.querySelector('.hero__subtitle'),
+    heroContent && heroContent.querySelector('[data-hero-reveal-title]'),
+    heroContent && heroContent.querySelector('[data-hero-reveal-subtitle]'),
     heroContent && heroContent.querySelector('.hero__cta')
   );
 
