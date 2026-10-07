@@ -222,3 +222,16 @@ test("offers a region selector above the unchanged six-step digitisation guide",
   assert.match(page, /How to digitise Malaysian ID<br \/>and more Malaysian nationals\?/);
   assert.equal((page.match(/data-process-step=/g) ?? []).length, 6);
 });
+
+test("styles the ZID region selector as an accessible responsive segmented control", () => {
+  const css = read("src/app/zid/zid.css");
+  const trackRule = css.match(/\.process-region-selector\{([^}]*)\}/)?.[1] ?? "";
+
+  assert.match(css, /\.process-region-selector\{/);
+  assert.match(trackRule, /color:#d4d4d8/);
+  assert.match(css, /\.process-region-selector__option\{/);
+  assert.match(css, /min-height:44px/);
+  assert.match(css, /\.process-region-selector__option\[aria-pressed=["']true["']\]/);
+  assert.match(css, /\.process-region-selector__option:focus-visible/);
+  assert.match(css, /html\[data-theme=["']light["']\] \.process-region-selector/);
+});
