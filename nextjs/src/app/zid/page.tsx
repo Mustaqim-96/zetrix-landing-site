@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import ZidRuntime from "@/components/ZidRuntime";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import CredentialRegionSelector from "@/components/CredentialRegionSelector";
 import "./zid.css";
 
 const TITLE = "ZID — Blockchain-based Identity Network";
@@ -56,7 +57,10 @@ export default function ZidPage() {
           <section className="process" id="digitise" aria-labelledby="digitise-title">
             <div className="shell">
               <header className="process-head reveal">
-                <h2 className="section-title" id="digitise-title">How to digitise Malaysian ID<br />and more Malaysian nationals?</h2>
+                <CredentialRegionSelector />
+                <h2 className="section-title" id="digitise-title">
+                  How to digitise Malaysian ID<br />and more Malaysian nationals?
+                </h2>
               </header>
               <div className="process-grid" data-process-story>
                 <div className="process-steps">

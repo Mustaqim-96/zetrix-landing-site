@@ -200,3 +200,25 @@ test("keeps ZID media resets out of the shared site chrome", () => {
   assert.match(css, /\.zid-page main img\{display:block;max-width:100%\}/);
   assert.doesNotMatch(css, /(?:^|\n)\s*img\{display:block;max-width:100%\}/);
 });
+
+test("offers a region selector above the unchanged six-step digitisation guide", () => {
+  const page = read("src/app/zid/page.tsx");
+  const selector = read("src/components/CredentialRegionSelector.tsx");
+  const processHeader =
+    page.match(/<header className=["']process-head reveal["'][\s\S]*?<\/header>/)?.[0] ?? "";
+
+  assert.match(page, /import CredentialRegionSelector from ["']@\/components\/CredentialRegionSelector["']/);
+  assert.match(processHeader, /<CredentialRegionSelector\s*\/>[\s\S]*?id=["']digitise-title["']/);
+  assert.doesNotMatch(page, /^[\s\S]*?["']use client["']/);
+
+  assert.match(selector, /^["']use client["']/);
+  assert.match(selector, /["']Malaysia["']/);
+  assert.match(selector, /["']International["']/);
+  assert.match(selector, /useState<CredentialRegion>\(["']Malaysia["']\)/);
+  assert.match(selector, /role=["']group["']/);
+  assert.match(selector, /aria-pressed=\{selectedRegion === region\}/);
+  assert.match(selector, /onClick=\{\(\) => setSelectedRegion\(region\)\}/);
+
+  assert.match(page, /How to digitise Malaysian ID<br \/>and more Malaysian nationals\?/);
+  assert.equal((page.match(/data-process-step=/g) ?? []).length, 6);
+});
