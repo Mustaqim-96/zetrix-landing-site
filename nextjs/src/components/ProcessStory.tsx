@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CredentialRegionSelector, {
   type CredentialRegion,
 } from "./CredentialRegionSelector";
@@ -46,7 +46,43 @@ const STORIES: Record<CredentialRegion, RegionStory> = {
 export default function ProcessStory() {
   const [region, setRegion] = useState<CredentialRegion>("Malaysia");
   const [hasSwitched, setHasSwitched] = useState(false);
+  const [warm, setWarm] = useState(false);
+  const gridRef = useRef<HTMLDivElement>(null);
   const story = STORIES[region];
+
+  // Each phone is pinned and only revealed as its card's clip scrolls over it,
+  // so native lazy-loading starts the download at the moment the screenshot
+  // should already be on screen. Instead, once the section is ~1.5 viewports
+  // away, fetch and decode every screenshot for both regions up front.
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setWarm(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "150% 0px" },
+    );
+    observer.observe(grid);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!warm) return;
+    // Warm the HTTP and decode caches for both regions, so the visible <img>
+    // tags (eager once warm) and a later region switch paint instantly.
+    for (const { steps } of Object.values(STORIES)) {
+      for (const step of steps) {
+        const image = new Image();
+        image.fetchPriority = "low"; // never compete with hero assets
+        image.src = step.src;
+        image.decode().catch(() => {});
+      }
+    }
+  }, [warm]);
 
   return (
     <>
@@ -66,7 +102,7 @@ export default function ProcessStory() {
           {story.title[1]}
         </h2>
       </header>
-      <div className="process-grid" data-process-story>
+      <div className="process-grid" data-process-story ref={gridRef}>
         {/* Keyed by region so the list remounts and replays its fade-in after a switch. */}
         <div
           className={`process-steps${hasSwitched ? " is-switching" : ""}`}
@@ -83,7 +119,7 @@ export default function ProcessStory() {
                 <img
                   src={step.src}
                   alt={step.alt}
-                  loading="lazy"
+                  loading={warm ? "eager" : "lazy"}
                   decoding="async"
                   width={step.width}
                   height={1624}
