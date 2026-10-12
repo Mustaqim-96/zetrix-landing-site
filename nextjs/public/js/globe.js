@@ -126,7 +126,29 @@
   var camera = new THREE.PerspectiveCamera(30, 1, 1, 5000);
   camera.position.set(0, 0, 445);
 
-  var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  // WebGL can be unavailable (GPU blocklisted, hardware acceleration off, or
+  // the browser's context limit hit). Probe first so three.js doesn't log an
+  // error, and bail quietly — the globe is decorative.
+  function webglAvailable() {
+    try {
+      var probe = document.createElement("canvas");
+      var gl = probe.getContext("webgl2") || probe.getContext("webgl");
+      if (!gl) return false;
+      var lose = gl.getExtension("WEBGL_lose_context");
+      if (lose) lose.loseContext(); // free the probe context immediately
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+  if (!webglAvailable()) return;
+
+  var renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  } catch (error) {
+    return;
+  }
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setClearColor(0x000000, 0);
   container.appendChild(renderer.domElement);

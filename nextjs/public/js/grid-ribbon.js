@@ -209,6 +209,7 @@
                              // the morph sits BELOW the (top-aligned) copy.
   var cols = 0, rows = 0, cw = 0, ch = 0;
   var noise = new Float32Array(0);
+  var baseLayer = null, baseLayerKey = '';   // cached static grey grid (see render)
   var target = 0, current = 0;
   var morph = 0;             // 0 = wave, 1 = fully-formed cube stack (Section 3)
   var morphA = 0;            // 0 = wave, 1 = fully-formed avatar robot (Section 4)
@@ -373,23 +374,33 @@
     // Separate tiles with a gap around each — not connected lines — so the field
     // reads like a mosaic of squares that the red wave lights up.
     // Desktop/tablet light mode uses a faint grey base grid; phones keep pal.tileAlpha.
+    // The base grid is static between resizes/theme changes, so it is drawn once
+    // into an offscreen layer and blitted here — redrawing ~2.4k tiles every
+    // scroll frame is very slow when the browser falls back to CPU rendering.
     var tileA = (window.innerWidth > TABLET_MAX && pal === PALETTES.light) ? LIGHT_TILE_WIDE : pal.tileAlpha;
-    ctx.fillStyle = 'rgba(' + pal.grey[0] + ',' + pal.grey[1] + ',' + pal.grey[2] + ',' + tileA + ')';
-    for (r = 0; r < rows; r++) {
-      y = Math.round(r * ch) + GAP;
-      hh = Math.ceil(ch) - GAP;
-      for (c = 0; c < cols; c++) {
-        x = Math.round(c * cw) + GAP;
-        w = Math.ceil(cw) - GAP;
-        if (roundable) {
-          ctx.beginPath();
-          ctx.roundRect(x, y, w, hh, rad);
-          ctx.fill();
-        } else {
-          ctx.fillRect(x, y, w, hh);
+    var baseKey = canvas.width + 'x' + canvas.height + ':' + cols + 'x' + rows + ':' + pal.grey.join(',') + ':' + tileA;
+    if (baseKey !== baseLayerKey) {
+      if (!baseLayer) baseLayer = document.createElement('canvas');
+      baseLayer.width = canvas.width;
+      baseLayer.height = canvas.height;
+      var bctx = baseLayer.getContext('2d');
+      bctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      bctx.fillStyle = 'rgba(' + pal.grey[0] + ',' + pal.grey[1] + ',' + pal.grey[2] + ',' + tileA + ')';
+      bctx.beginPath();                        // one path, one fill for every tile
+      for (r = 0; r < rows; r++) {
+        y = Math.round(r * ch) + GAP;
+        hh = Math.ceil(ch) - GAP;
+        for (c = 0; c < cols; c++) {
+          x = Math.round(c * cw) + GAP;
+          w = Math.ceil(cw) - GAP;
+          if (roundable) bctx.roundRect(x, y, w, hh, rad);
+          else bctx.rect(x, y, w, hh);
         }
       }
+      bctx.fill();
+      baseLayerKey = baseKey;
     }
+    ctx.drawImage(baseLayer, 0, 0, cssW, cssH);
 
     // --- ONE red wave, gliding smoothly near the viewport centre ---
     // Linear in scroll -> constant velocity -> no stop-and-go. The small TRAVEL
