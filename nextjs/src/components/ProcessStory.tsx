@@ -1,0 +1,98 @@
+"use client";
+
+import { useState } from "react";
+import CredentialRegionSelector, {
+  type CredentialRegion,
+} from "./CredentialRegionSelector";
+
+type Step = {
+  desc: string;
+  src: string;
+  alt: string;
+  width: number;
+};
+
+type RegionStory = {
+  title: [string, string];
+  steps: Step[];
+};
+
+const STORIES: Record<CredentialRegion, RegionStory> = {
+  Malaysia: {
+    title: ["How to digitise Malaysian ID", "and more Malaysian nationals?"],
+    steps: [
+      { desc: "Download and open the MyID Superapp, enter the homepage by creating a digital identity.", src: "/assets/zid/step-1.webp", alt: "MyID Superapp home screen", width: 750 },
+      { desc: "Select “Malaysian ID” as the certificate type.", src: "/assets/zid/step-2.webp", alt: "Apply credential screen", width: 750 },
+      { desc: "Apply through MyDigital ID.", src: "/assets/zid/step-3.webp", alt: "Malaysian ID selection screen", width: 750 },
+      { desc: "Real person authentication before submission.", src: "/assets/zid/step-4.webp", alt: "Identity details verification screen", width: 753 },
+      { desc: "View the successfully verified Malaysian ID certificate.", src: "/assets/zid/step-5.webp", alt: "Successful credential screen", width: 750 },
+      { desc: "Present the Malaysian ID card as a QR code.", src: "/assets/zid/step-6.webp", alt: "Malaysian ID credential QR code", width: 750 },
+    ],
+  },
+  International: {
+    title: ["How to digitise your passport", "as an international user?"],
+    steps: [
+      { desc: "Scan your passport’s photo page.", src: "/assets/zid/intl-step-1.webp", alt: "Scan passport screen", width: 753 },
+      { desc: "Tap your phone on the passport to read its NFC chip.", src: "/assets/zid/intl-step-2.webp", alt: "Read NFC chip screen", width: 753 },
+      { desc: "Verify you are the passport holder with a face check.", src: "/assets/zid/intl-step-3.webp", alt: "Verify holder screen", width: 753 },
+      { desc: "Review your passport details.", src: "/assets/zid/intl-step-4.webp", alt: "Passport details form", width: 750 },
+      { desc: "Accept the terms and submit your application.", src: "/assets/zid/intl-step-5.webp", alt: "Confirm application sheet", width: 750 },
+      { desc: "Your application is submitted — track it under Activity.", src: "/assets/zid/intl-step-6.webp", alt: "Application successful screen", width: 750 },
+      { desc: "Present your passport credential as a QR code.", src: "/assets/zid/intl-step-7.webp", alt: "Passport credential QR code", width: 750 },
+    ],
+  },
+};
+
+export default function ProcessStory() {
+  const [region, setRegion] = useState<CredentialRegion>("Malaysia");
+  const [hasSwitched, setHasSwitched] = useState(false);
+  const story = STORIES[region];
+
+  return (
+    <>
+      <header className="process-head reveal">
+        <CredentialRegionSelector
+          value={region}
+          onChange={(next) => {
+            if (next === region) return;
+            setRegion(next);
+            setHasSwitched(true);
+          }}
+          controls="digitise-steps"
+        />
+        <h2 className="section-title" id="digitise-title">
+          {story.title[0]}
+          <br />
+          {story.title[1]}
+        </h2>
+      </header>
+      <div className="process-grid" data-process-story>
+        {/* Keyed by region so the list remounts and replays its fade-in after a switch. */}
+        <div
+          className={`process-steps${hasSwitched ? " is-switching" : ""}`}
+          id="digitise-steps"
+          key={region}
+        >
+          {story.steps.map((step, index) => (
+            <article className="step-card" data-process-step={index} key={step.src}>
+              <div className="step-copy">
+                <h3 className="step-title">Step {index + 1}</h3>
+                <p className="step-desc">{step.desc}</p>
+              </div>
+              <div className="step-phone">
+                <img
+                  src={step.src}
+                  alt={step.alt}
+                  loading="lazy"
+                  decoding="async"
+                  width={step.width}
+                  height={1624}
+                />
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}

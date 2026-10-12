@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, type CSSProperties, type ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
-const REGIONS = ["Malaysia", "International"] as const;
-type CredentialRegion = (typeof REGIONS)[number];
+export const REGIONS = ["Malaysia", "International"] as const;
+export type CredentialRegion = (typeof REGIONS)[number];
 
 // Lucide "map-pin" and "globe", inlined so they inherit currentColor.
 const REGION_ICONS: Record<CredentialRegion, ReactNode> = {
@@ -22,20 +22,23 @@ const REGION_ICONS: Record<CredentialRegion, ReactNode> = {
   ),
 };
 
-export default function CredentialRegionSelector() {
-  const [selectedRegion, setSelectedRegion] =
-    useState<CredentialRegion>("Malaysia");
+type CredentialRegionSelectorProps = {
+  value: CredentialRegion;
+  onChange: (region: CredentialRegion) => void;
+  controls?: string;
+};
 
+export default function CredentialRegionSelector({
+  value,
+  onChange,
+  controls,
+}: CredentialRegionSelectorProps) {
   return (
     <div
       className="process-region-selector"
       role="group"
       aria-label="Credential region"
-      style={
-        {
-          "--region-index": REGIONS.indexOf(selectedRegion),
-        } as CSSProperties
-      }
+      style={{ "--region-index": REGIONS.indexOf(value) } as CSSProperties}
     >
       <span className="process-region-selector__thumb" aria-hidden="true" />
       {REGIONS.map((region) => (
@@ -43,8 +46,9 @@ export default function CredentialRegionSelector() {
           className="process-region-selector__option"
           type="button"
           key={region}
-          aria-pressed={selectedRegion === region}
-          onClick={() => setSelectedRegion(region)}
+          aria-pressed={value === region}
+          aria-controls={controls}
+          onClick={() => onChange(region)}
         >
           <svg
             className="process-region-selector__icon"

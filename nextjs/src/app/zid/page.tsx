@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ZidRuntime from "@/components/ZidRuntime";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import CredentialRegionSelector from "@/components/CredentialRegionSelector";
+import ProcessStory from "@/components/ProcessStory";
 import "./zid.css";
 
 const TITLE = "ZID — Blockchain-based Identity Network";
@@ -56,22 +56,7 @@ export default function ZidPage() {
       
           <section className="process" id="digitise" aria-labelledby="digitise-title">
             <div className="shell">
-              <header className="process-head reveal">
-                <CredentialRegionSelector />
-                <h2 className="section-title" id="digitise-title">
-                  How to digitise Malaysian ID<br />and more Malaysian nationals?
-                </h2>
-              </header>
-              <div className="process-grid" data-process-story>
-                <div className="process-steps">
-                  <article className="step-card" data-process-step="0"><div className="step-copy"><h3 className="step-title">Step 1</h3><p className="step-desc">Download and open the MyID Superapp, enter the homepage by creating a digital identity.</p></div><div className="step-phone"><img src="/assets/zid/step-1.webp" alt="MyID Superapp home screen" loading="lazy" decoding="async" width="750" height="1624" /></div></article>
-                  <article className="step-card" data-process-step="1"><div className="step-copy"><h3 className="step-title">Step 2</h3><p className="step-desc">Select “Malaysian ID” as the certificate type.</p></div><div className="step-phone"><img src="/assets/zid/step-2.webp" alt="Apply credential screen" loading="lazy" decoding="async" width="750" height="1624" /></div></article>
-                  <article className="step-card" data-process-step="2"><div className="step-copy"><h3 className="step-title">Step 3</h3><p className="step-desc">Apply through MyDigital ID.</p></div><div className="step-phone"><img src="/assets/zid/step-3.webp" alt="Malaysian ID selection screen" loading="lazy" decoding="async" width="750" height="1624" /></div></article>
-                  <article className="step-card" data-process-step="3"><div className="step-copy"><h3 className="step-title">Step 4</h3><p className="step-desc">Real person authentication before submission.</p></div><div className="step-phone"><img src="/assets/zid/step-4.webp" alt="Identity details verification screen" loading="lazy" decoding="async" width="753" height="1624" /></div></article>
-                  <article className="step-card" data-process-step="4"><div className="step-copy"><h3 className="step-title">Step 5</h3><p className="step-desc">View the successfully verified Malaysian ID certificate.</p></div><div className="step-phone"><img src="/assets/zid/step-5.webp" alt="Successful credential screen" loading="lazy" decoding="async" width="750" height="1624" /></div></article>
-                  <article className="step-card" data-process-step="5"><div className="step-copy"><h3 className="step-title">Step 6</h3><p className="step-desc">Present the Malaysian ID card as a QR code.</p></div><div className="step-phone"><img src="/assets/zid/step-6.webp" alt="Malaysian ID credential QR code" loading="lazy" decoding="async" width="750" height="1624" /></div></article>
-                </div>
-              </div>
+              <ProcessStory />
             </div>
           </section>
       
