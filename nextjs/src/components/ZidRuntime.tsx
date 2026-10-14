@@ -61,8 +61,11 @@ function initializeZidController(doc: Document, win: Window): Cleanup {
       if (downloadSection) downloadSection.style.transform = "";
       return;
     }
-    const runwayHeight = aboutSection.offsetHeight;
-    const pinStart = downloadSection.offsetHeight - runwayHeight;
+    // Pin the download once its bottom meets the viewport bottom, and hold it
+    // for the whole runway below it (the about height plus a short pause, so
+    // the about fade doesn't cover the card the moment it lands).
+    const pinStart = downloadSection.offsetHeight - aboutSection.offsetHeight;
+    const runwayHeight = downloadHandoff.offsetHeight - downloadSection.offsetHeight;
     const progress = Math.min(
       runwayHeight,
       Math.max(0, -downloadHandoff.getBoundingClientRect().top - pinStart),
