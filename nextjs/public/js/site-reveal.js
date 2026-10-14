@@ -17,8 +17,20 @@
     return true;
   }
 
+  // The <head> script (layout.tsx) adds `reveal-pending` before first paint so
+  // reveal targets start hidden instead of flashing in and then vanishing when
+  // this script hides them. Drop it once their own hidden state is in place.
+  function clearRevealPending() {
+    document.documentElement.classList.remove('reveal-pending');
+    if (window.__zetrixRevealFailsafe) {
+      window.clearTimeout(window.__zetrixRevealFailsafe);
+      window.__zetrixRevealFailsafe = 0;
+    }
+  }
+
   // Without motion support, the untouched markup remains fully visible.
   if (reduceMotion || !('IntersectionObserver' in window)) {
+    clearRevealPending();
     signalHeroComplete();
     return;
   }
@@ -261,4 +273,6 @@
     layersCopy && layersCopy.querySelector('.section-heading'),
     layersCopy && layersCopy.querySelector('.section-sub')
   ], layersSurfaces);
+
+  clearRevealPending();
 })();

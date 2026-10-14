@@ -82,6 +82,24 @@ const themeInit = `(function () {
   }
 })();`;
 
+// Hide the copy that /js/site-reveal.js animates in before first paint.
+// That script loads after hydration, so without this the text paints visible,
+// vanishes when the script hides it, then animates back in. site-reveal.js
+// removes the class once its own hidden state is applied; the timeout keeps
+// the page from staying blank if it never loads. Skipped where site-reveal
+// leaves the markup untouched (reduced motion / no IntersectionObserver).
+const revealInit = `(function () {
+  try {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!('IntersectionObserver' in window)) return;
+  } catch (e) { return; }
+  var root = document.documentElement;
+  root.classList.add('reveal-pending');
+  window.__zetrixRevealFailsafe = setTimeout(function () {
+    root.classList.remove('reveal-pending');
+  }, 6000);
+})();`;
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     // suppressHydrationWarning: the theme toggle and intro scripts mutate the
@@ -102,6 +120,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script
           id="zetrix-intro-failsafe"
           dangerouslySetInnerHTML={{ __html: introFailsafe }}
+        />
+        <script
+          id="zetrix-reveal-init"
+          dangerouslySetInnerHTML={{ __html: revealInit }}
         />
         {/* The complete hand-authored design system, served statically. */}
         {/* eslint-disable-next-line @next/next/no-css-tags */}

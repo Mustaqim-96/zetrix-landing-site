@@ -806,6 +806,28 @@ html[data-theme="light"] .hero__aurora::after {
 .hero__word {
   white-space: nowrap;
 }
+/* Before /js/site-reveal.js has prepared the reveal (see revealInit in
+   layout.tsx), keep everything it animates in hidden so it never paints
+   visible first. Opacity only, so layout doesn't shift. */
+html.reveal-pending [data-hero-reveal-title],
+html.reveal-pending [data-hero-reveal-subtitle],
+html.reveal-pending [data-hero-reveal] .hero__cta,
+html.reveal-pending .eco-card__left .section-heading,
+html.reveal-pending .eco-card__sub,
+html.reveal-pending .tools__left .section-heading,
+html.reveal-pending .tools__sub,
+html.reveal-pending .tools__left .tool-card,
+html.reveal-pending .ai-layer__inner .section-heading,
+html.reveal-pending .ai-layer__inner .ai-card,
+html.reveal-pending .robotics__title,
+html.reveal-pending .robotics__subtitle,
+html.reveal-pending .robotics__inner .robot-card,
+html.reveal-pending .layers__inner .section-heading,
+html.reveal-pending .layers__inner .section-sub,
+html.reveal-pending .layers__inner .carousel__stack,
+html.reveal-pending .layers__inner .carousel__foot {
+  opacity: 0;
+}
 .is-reveal-ready .hero__glyph {
   opacity: 0;
   filter: blur(12px);
