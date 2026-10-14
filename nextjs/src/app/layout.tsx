@@ -61,6 +61,10 @@ const introFailsafe = `(function () {
       window.sessionStorage.removeItem('zetrix-skip-intro');
       return;
     }
+    // Play the intro once per browser session; refreshes and later visits in
+    // the same tab go straight to the page.
+    if (window.sessionStorage.getItem('zetrix-intro-seen') === '1') return;
+    window.sessionStorage.setItem('zetrix-intro-seen', '1');
   } catch (e) {}
   document.documentElement.classList.add('site-intro-pending');
   window.__zetrixIntroFailsafe = setTimeout(function () {
