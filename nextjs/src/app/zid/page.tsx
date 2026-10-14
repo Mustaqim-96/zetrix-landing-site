@@ -65,7 +65,7 @@ export default function ZidPage() {
             <div className="download-content">
               <header className="download-head reveal">
                 <h2 className="section-title" id="download-title">Digitise Your Credentials Now</h2>
-                <p className="section-copy">Digitise credentials streamlines processes, reduces clutter, and ensures easy document access anytime, anywhere.</p>
+                <p className="section-copy">Digitised credentials keeps all your important documents in one place, accessible at anywhere, at anytime.</p>
               </header>
               <div className="download-grid">
                 <article className="download-card reveal">

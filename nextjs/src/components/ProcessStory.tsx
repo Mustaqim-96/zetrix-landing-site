@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import CredentialRegionSelector, {
   type CredentialRegion,
 } from "./CredentialRegionSelector";
@@ -13,13 +13,13 @@ type Step = {
 };
 
 type RegionStory = {
-  title: [string, string];
+  title: string[]; // one entry per line
   steps: Step[];
 };
 
 const STORIES: Record<CredentialRegion, RegionStory> = {
   Malaysia: {
-    title: ["How to digitise Malaysian ID", "and more Malaysian nationals?"],
+    title: ["How to digitise your Malaysian ID"],
     steps: [
       { desc: "Download and open the MyID Superapp, enter the homepage by creating a digital identity.", src: "/assets/zid/step-1.webp", alt: "MyID Superapp home screen", width: 750 },
       { desc: "Select “Malaysian ID” as the certificate type.", src: "/assets/zid/step-2.webp", alt: "Apply credential screen", width: 750 },
@@ -30,7 +30,7 @@ const STORIES: Record<CredentialRegion, RegionStory> = {
     ],
   },
   International: {
-    title: ["How to digitise your passport", "as an international user?"],
+    title: ["How to digitise your passport"],
     steps: [
       { desc: "Scan your passport’s photo page.", src: "/assets/zid/intl-step-1.webp", alt: "Scan passport screen", width: 753 },
       { desc: "Tap your phone on the passport to read its NFC chip.", src: "/assets/zid/intl-step-2.webp", alt: "Read NFC chip screen", width: 753 },
@@ -97,9 +97,12 @@ export default function ProcessStory() {
           controls="digitise-steps"
         />
         <h2 className="section-title" id="digitise-title">
-          {story.title[0]}
-          <br />
-          {story.title[1]}
+          {story.title.map((line, index) => (
+            <Fragment key={line}>
+              {index > 0 && <br />}
+              {line}
+            </Fragment>
+          ))}
         </h2>
       </header>
       <div className="process-grid" data-process-story ref={gridRef}>
