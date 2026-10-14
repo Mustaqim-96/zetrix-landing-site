@@ -7,7 +7,7 @@ import "./zid.css";
 
 const TITLE = "ZID — Blockchain-based Identity Network";
 const DESCRIPTION =
-  "Zidentity provides blockchain-based identity, verifiable credentials and on-chain signing services for secure cross-border transactions.";
+  "ZIdentity (ZID) offers Blockchain-based Identity (BID), Verifiable Credentials (VC) and on-chain signing services to the global market, helping you access the products and services you need.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -40,7 +40,7 @@ export default function ZidPage() {
             <img className="hero-curve" src="/assets/zid/hero-curve.svg" alt="" aria-hidden="true" />
             <div className="hero-content" data-hero-reveal>
               <h1 id="hero-title" data-hero-reveal-title>Blockchain-based Identity Network</h1>
-              <p className="hero-copy" data-hero-reveal-subtitle>Zidentity (ZID) offers Blockchain-based Identity (BID), Verifiable Credentials (VC) and on-chain signing services to the global market, which facilitates cross-border transactions with China.</p>
+              <p className="hero-copy" data-hero-reveal-subtitle>ZIdentity (ZID) offers Blockchain-based Identity (BID), Verifiable Credentials (VC) and on-chain signing services to the global market, helping you access the products and services you need.</p>
               <a className="button" href="#download">Get Started</a>
               <div className="hero-phone" aria-hidden="true"><img src="/assets/zid/hero-myid.webp" alt="" decoding="async" width="1500" height="3248" /></div>
             </div>
@@ -88,7 +88,7 @@ export default function ZidPage() {
                 <div className="about-content">
                   <h2 className="section-title" id="about-title">About ZID</h2>
                   <div className="about-copy">
-                    <p><strong>Zidentity (ZID)</strong> offers Blockchain-based Identifiers (BID), Verifiable Credentials (VC) and on-chain agreement signing services to the international market, which facilitates cross-border transactions with Malaysia.</p>
+                    <p><strong>ZIdentity (ZID)</strong> offers Blockchain-based Identity (BID), Verifiable Credentials (VC) and on-chain signing services to the global market, helping you access the products and services you need.</p>
                     <p>Within the network, there are three primary roles involved in the exchange of verifiable credentials: the issuer, verifier and user; to ensure a secure and seamless verification.</p>
                     <p>Our collaboration with Beibu Gulf Investment Group and Xinghuo Blockchain Infrastructure enables seamless cross-border verification of credentials, ensuring secure and efficient identity management across borders.</p>
                   </div>
