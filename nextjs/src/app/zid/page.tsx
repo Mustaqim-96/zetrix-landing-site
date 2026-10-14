@@ -3,6 +3,8 @@ import ZidRuntime from "@/components/ZidRuntime";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import ProcessStory from "@/components/ProcessStory";
+import DownloadAppCard from "@/components/DownloadAppCard";
+import GetStartedModal from "@/components/GetStartedModal";
 import "./zid.css";
 
 const TITLE = "ZID — Blockchain-based Identity Network";
@@ -41,7 +43,7 @@ export default function ZidPage() {
             <div className="hero-content" data-hero-reveal>
               <h1 id="hero-title" data-hero-reveal-title>Blockchain-based Identity Network</h1>
               <p className="hero-copy" data-hero-reveal-subtitle>ZIdentity (ZID) offers Blockchain-based Identity (BID), Verifiable Credentials (VC) and on-chain signing services to the global market, helping you access the products and services you need.</p>
-              <a className="button" href="#download">Get Started</a>
+              <GetStartedModal />
               <div className="hero-phone" aria-hidden="true"><img src="/assets/zid/hero-myid.webp" alt="" decoding="async" width="1500" height="3248" /></div>
             </div>
             <div className="ribbon-icons" aria-hidden="true">
@@ -68,16 +70,7 @@ export default function ZidPage() {
                 <p className="section-copy">Digitised credentials keeps all your important documents in one place, accessible at anywhere, at anytime.</p>
               </header>
               <div className="download-grid">
-                <article className="download-card reveal">
-                  <div className="download-app-meta"><span>Download</span><h3>MyID Superapp</h3></div>
-                  <div className="download-card-body">
-                    <div className="download-stores">
-                      <a className="download-store" href="#" aria-label="Download MyID Superapp on the App Store"><img src="/assets/zid/app-store.svg" alt="" /><span className="download-store-copy"><small>Download on the</small><strong>App Store</strong></span></a>
-                      <a className="download-store" href="#" aria-label="Get MyID Superapp on Google Play"><img src="/assets/zid/google-play.svg" alt="" /><span className="download-store-copy"><small>GET IT ON</small><strong>Google Play</strong></span></a>
-                    </div>
-                    <div className="download-code"><div className="download-qr"><img src="/assets/zid/download-qr.webp" alt="QR code to download MyID Superapp" loading="lazy" decoding="async" width="800" height="800" /><span className="download-qr-badge"><img src="/assets/zid/myid-logo.webp" alt="" loading="lazy" decoding="async" width="152" height="152" /></span></div><p className="download-qr-label">Scan QR code to download</p></div>
-                  </div>
-                </article>
+                <DownloadAppCard className="reveal" />
               </div>
             </div>
           </section>
