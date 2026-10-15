@@ -21,7 +21,7 @@ const STORIES: Record<CredentialRegion, RegionStory> = {
   Malaysia: {
     title: ["How to digitise your Malaysian ID"],
     steps: [
-      { desc: "Download and open the MyID Superapp, enter the homepage by creating a digital identity.", src: "/assets/zid/step-1.webp", alt: "MyID Superapp home screen", width: 750 },
+      { desc: "Download the MyID Superapp and sign up to apply for verifiable credentials.", src: "/assets/zid/step-1.webp", alt: "MyID Superapp home screen", width: 750 },
       { desc: "Select “MyKad” as the certificate type.", src: "/assets/zid/step-2.webp", alt: "Apply credential screen", width: 750 },
       { desc: "Apply through MyDigital ID.", src: "/assets/zid/step-3.webp", alt: "Malaysian ID selection screen", width: 750 },
       { desc: "Real person authentication before submission.", src: "/assets/zid/step-4.webp", alt: "Identity details verification screen", width: 753 },
@@ -32,6 +32,8 @@ const STORIES: Record<CredentialRegion, RegionStory> = {
   International: {
     title: ["How to digitise your passport"],
     steps: [
+      { desc: "Download the MyID Superapp and sign up to apply for verifiable credentials.", src: "/assets/zid/step-1.webp", alt: "MyID Superapp home screen", width: 750 },
+      { desc: "Select “Passport” as the certificate type.", src: "/assets/zid/step-2.webp", alt: "Apply credential screen", width: 750 },
       { desc: "Scan your passport’s photo page.", src: "/assets/zid/intl-step-1.webp", alt: "Scan passport screen", width: 753 },
       { desc: "Tap your phone on the passport to read its NFC chip.", src: "/assets/zid/intl-step-2.webp", alt: "Read NFC chip screen", width: 753 },
       { desc: "Verify you are the passport holder with a face check.", src: "/assets/zid/intl-step-3.webp", alt: "Verify holder screen", width: 753 },
