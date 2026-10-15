@@ -120,3 +120,14 @@ test('tablet sections follow the Zetrix 96px transition rhythm', () => {
   assert.match(tablet, /\.about-card\{height:calc\(100svh - 192px\)/);
   assert.match(tablet, /\.powered\{padding:0 0 112px\}/);
 });
+
+test('short desktop and tablet windows drop the pinned handoff so the download card is never cut off', () => {
+  // The pinned download content needs ~734px; below that the QR sat under the
+  // fold and the About fade covered the card.
+  const short = css.match(/@media \(min-width:768px\) and \(max-height:740px\)\{([^\n]*)\}/)?.[1] ?? '';
+
+  assert.match(short, /\.download-about-handoff\{height:auto\}/);
+  assert.match(short, /\.download\{position:relative;top:auto;height:auto;min-height:auto;/);
+  assert.match(short, /\.about\{position:relative;bottom:auto;height:auto;/);
+  assert.match(short, /\.about::before\{display:none\}/);
+});

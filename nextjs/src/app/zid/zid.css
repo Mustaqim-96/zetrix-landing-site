@@ -162,6 +162,10 @@ html[data-theme="light"] .download-modal__close:hover{background:rgba(24,24,27,.
 /* Short desktop/tablet-landscape screens: keep the pinned download content
    below the fixed nav instead of centring it under it. */
 @media (min-width:768px) and (max-height:860px){.download{align-items:flex-start;padding:104px 0 24px}.download-content{gap:24px}.download .section-title{font-size:32px;line-height:40px}.download-qr{width:168px}}
+/* Shorter still and the pinned download content (~734px) no longer fits:
+   the QR sat below the fold and the About fade covered the card. Let both
+   sections scroll in normal flow instead. */
+@media (min-width:768px) and (max-height:740px){.download-about-handoff{height:auto}.download{position:relative;top:auto;height:auto;min-height:auto;padding:104px 0 72px}.about{position:relative;bottom:auto;height:auto;padding:0 0 72px}.about::before{display:none}}
 /* Portrait tablets: the About card is too narrow for text beside the
    image, so stack them like phones and frame the mascot (≈76% across). */
 @media (min-width:768px) and (max-width:1023px) and (min-height:601px){.about-card{display:flex;flex-direction:column}.about-card::after{background:linear-gradient(180deg,#000 0%,rgba(0,0,0,.96) 42%,rgba(0,0,0,.42) 62%,rgba(0,0,0,0) 78%)}.about-content{padding:48px 48px 0;flex:0 0 auto}.about-visual{position:relative;inset:auto;width:100%;min-height:0;flex:1}.about-backdrop{object-position:78% center;transform:none}}
