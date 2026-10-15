@@ -78,16 +78,16 @@ test('short tablet landscape returns sticky handoff to normal flow', () => {
   assert.match(shortLandscape, /\.step-phone\{[^}]*width:clamp\(180px,24vw,240px\)/);
 });
 
-test('mobile handoff pins Download with CSS sticky, not scroll-driven JS', () => {
+test('mobile drops the Download/About overlay and stacks them in normal flow', () => {
   const mobile = css.match(/@media \(max-width:767px\)\{([\s\S]*?)\n    \}/)?.[1] ?? '';
 
-  // Sticky only travels inside the parent's content box, so the runway must be
-  // height, not padding.
-  assert.match(mobile, /\.download-about-handoff\{height:calc\(var\(--download-height\) \+ 100svh \+ 128px \+ 30svh\);padding-bottom:0\}/);
-  assert.match(mobile, /\.download\{position:sticky;top:calc\(100svh - var\(--download-height\)\)/);
-  assert.match(runtime, /new ResizeObserver\(syncDownloadHandoff\)/);
-  assert.match(runtime, /setProperty\("--download-height", `\$\{downloadSection\.offsetHeight\}px`\)/);
-  assert.doesNotMatch(runtime, /downloadSection\.style\.transform/);
+  assert.match(mobile, /\.download-about-handoff\{height:auto\}/);
+  assert.match(mobile, /\.download\{position:relative;top:auto;height:auto;min-height:auto;padding:var\(--mobile-section-space\) 0\}/);
+  // The gap lives in Download so the card's shadow isn't cut off by About.
+  assert.match(mobile, /\.about\{position:relative;bottom:auto;height:auto;padding:0\}/);
+  assert.match(mobile, /\.about::before\{display:none\}/);
+  assert.doesNotMatch(mobile, /--download-height/);
+  assert.doesNotMatch(runtime, /--download-height/);
   assert.doesNotMatch(runtime, /addEventListener\("scroll"/);
 });
 
@@ -105,7 +105,7 @@ test('mobile sections follow the Zetrix 60px transition rhythm', () => {
 
   assert.match(mobile, /:root\{--gutter:16px;--mobile-section-space:60px\}/);
   assert.match(mobile, /\.process\{padding:var\(--mobile-section-space\) 0 0\}/);
-  assert.match(mobile, /\.download\{[^}]*padding:var\(--mobile-section-space\) 0 0/);
+  assert.match(mobile, /\.download\{[^}]*padding:var\(--mobile-section-space\) 0[;}]/);
   assert.match(mobile, /\.powered\{padding:var\(--mobile-section-space\) 0 80px\}/);
 });
 

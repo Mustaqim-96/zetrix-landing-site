@@ -23,9 +23,6 @@ function initializeZidController(doc: Document, win: Window): Cleanup {
 
   const reduced = win.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const heroSection = root.querySelector<HTMLElement>(".hero");
-  const downloadHandoff = root.querySelector<HTMLElement>(".download-about-handoff");
-  const downloadSection = root.querySelector<HTMLElement>(".download");
-  const compactHandoff = win.matchMedia("(max-width: 767px)");
 
   let heroVisible = true;
   let heroObserver: IntersectionObserver | null = null;
@@ -53,25 +50,6 @@ function initializeZidController(doc: Document, win: Window): Cleanup {
   }
   syncHeroMotion();
 
-  // On mobile the download section is pinned with CSS sticky (compositor-driven,
-  // so it never lags the finger). CSS only needs its rendered height to work out
-  // where to pin it and how long the runway is.
-  function syncDownloadHandoff() {
-    if (!downloadHandoff || !downloadSection) return;
-    if (compactHandoff.matches && !reduced) {
-      downloadHandoff.style.setProperty("--download-height", `${downloadSection.offsetHeight}px`);
-    } else {
-      downloadHandoff.style.removeProperty("--download-height");
-    }
-  }
-
-  const downloadResizeObserver =
-    "ResizeObserver" in win ? new ResizeObserver(syncDownloadHandoff) : null;
-  if (downloadResizeObserver && downloadSection) downloadResizeObserver.observe(downloadSection);
-  win.addEventListener("resize", syncDownloadHandoff, { passive: true });
-  compactHandoff.addEventListener("change", syncDownloadHandoff);
-  syncDownloadHandoff();
-
   const revealItems = Array.from(root.querySelectorAll<HTMLElement>(".reveal"));
   if (reduced || !("IntersectionObserver" in win)) {
     revealItems.forEach((item) => item.classList.add("is-visible"));
@@ -92,11 +70,7 @@ function initializeZidController(doc: Document, win: Window): Cleanup {
   return () => {
     heroObserver?.disconnect();
     revealObserver?.disconnect();
-    downloadResizeObserver?.disconnect();
     doc.removeEventListener("visibilitychange", handleVisibilityChange);
-    win.removeEventListener("resize", syncDownloadHandoff);
-    compactHandoff.removeEventListener("change", syncDownloadHandoff);
-    downloadHandoff?.style.removeProperty("--download-height");
     heroSection?.classList.remove("is-motion-paused");
   };
 }
