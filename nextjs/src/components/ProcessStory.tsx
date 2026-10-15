@@ -22,11 +22,11 @@ const STORIES: Record<CredentialRegion, RegionStory> = {
     title: ["How to digitise your Malaysian ID"],
     steps: [
       { desc: "Download and open the MyID Superapp, enter the homepage by creating a digital identity.", src: "/assets/zid/step-1.webp", alt: "MyID Superapp home screen", width: 750 },
-      { desc: "Select “Malaysian ID” as the certificate type.", src: "/assets/zid/step-2.webp", alt: "Apply credential screen", width: 750 },
+      { desc: "Select “MyKad” as the certificate type.", src: "/assets/zid/step-2.webp", alt: "Apply credential screen", width: 750 },
       { desc: "Apply through MyDigital ID.", src: "/assets/zid/step-3.webp", alt: "Malaysian ID selection screen", width: 750 },
       { desc: "Real person authentication before submission.", src: "/assets/zid/step-4.webp", alt: "Identity details verification screen", width: 753 },
-      { desc: "View the successfully verified Malaysian ID certificate.", src: "/assets/zid/step-5.webp", alt: "Successful credential screen", width: 750 },
-      { desc: "Present the Malaysian ID card as a QR code.", src: "/assets/zid/step-6.webp", alt: "Malaysian ID credential QR code", width: 750 },
+      { desc: "View the successfully verified MyKad certificate.", src: "/assets/zid/step-5.webp", alt: "Successful credential screen", width: 750 },
+      { desc: "Present the MyKad as a QR code.", src: "/assets/zid/step-6.webp", alt: "MyKad credential QR code", width: 750 },
     ],
   },
   International: {
