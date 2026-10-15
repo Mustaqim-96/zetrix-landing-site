@@ -25,10 +25,8 @@ function initializeZidController(doc: Document, win: Window): Cleanup {
   const heroSection = root.querySelector<HTMLElement>(".hero");
   const downloadHandoff = root.querySelector<HTMLElement>(".download-about-handoff");
   const downloadSection = root.querySelector<HTMLElement>(".download");
-  const aboutSection = root.querySelector<HTMLElement>(".about");
   const compactHandoff = win.matchMedia("(max-width: 767px)");
 
-  let downloadHandoffFrame = 0;
   let heroVisible = true;
   let heroObserver: IntersectionObserver | null = null;
   let revealObserver: IntersectionObserver | null = null;
@@ -55,29 +53,9 @@ function initializeZidController(doc: Document, win: Window): Cleanup {
   }
   syncHeroMotion();
 
-  function updateDownloadHandoff() {
-    downloadHandoffFrame = 0;
-    if (!downloadHandoff || !downloadSection || !aboutSection || !compactHandoff.matches || reduced) {
-      if (downloadSection) downloadSection.style.transform = "";
-      return;
-    }
-    // Pin the download once its bottom meets the viewport bottom, and hold it
-    // for the whole runway below it (the about height plus a short pause, so
-    // the about fade doesn't cover the card the moment it lands).
-    const pinStart = downloadSection.offsetHeight - aboutSection.offsetHeight;
-    const runwayHeight = downloadHandoff.offsetHeight - downloadSection.offsetHeight;
-    const progress = Math.min(
-      runwayHeight,
-      Math.max(0, -downloadHandoff.getBoundingClientRect().top - pinStart),
-    );
-    downloadSection.style.transform = `translate3d(0, ${progress}px, 0)`;
-  }
-
-  function requestDownloadHandoffUpdate() {
-    if (downloadHandoffFrame) win.cancelAnimationFrame(downloadHandoffFrame);
-    downloadHandoffFrame = win.requestAnimationFrame(updateDownloadHandoff);
-  }
-
+  // On mobile the download section is pinned with CSS sticky (compositor-driven,
+  // so it never lags the finger). CSS only needs its rendered height to work out
+  // where to pin it and how long the runway is.
   function syncDownloadHandoff() {
     if (!downloadHandoff || !downloadSection) return;
     if (compactHandoff.matches && !reduced) {
@@ -85,14 +63,12 @@ function initializeZidController(doc: Document, win: Window): Cleanup {
     } else {
       downloadHandoff.style.removeProperty("--download-height");
     }
-    requestDownloadHandoffUpdate();
   }
 
   const downloadResizeObserver =
     "ResizeObserver" in win ? new ResizeObserver(syncDownloadHandoff) : null;
   if (downloadResizeObserver && downloadSection) downloadResizeObserver.observe(downloadSection);
   win.addEventListener("resize", syncDownloadHandoff, { passive: true });
-  win.addEventListener("scroll", requestDownloadHandoffUpdate, { passive: true });
   compactHandoff.addEventListener("change", syncDownloadHandoff);
   syncDownloadHandoff();
 
@@ -117,13 +93,10 @@ function initializeZidController(doc: Document, win: Window): Cleanup {
     heroObserver?.disconnect();
     revealObserver?.disconnect();
     downloadResizeObserver?.disconnect();
-    if (downloadHandoffFrame) win.cancelAnimationFrame(downloadHandoffFrame);
     doc.removeEventListener("visibilitychange", handleVisibilityChange);
     win.removeEventListener("resize", syncDownloadHandoff);
-    win.removeEventListener("scroll", requestDownloadHandoffUpdate);
     compactHandoff.removeEventListener("change", syncDownloadHandoff);
     downloadHandoff?.style.removeProperty("--download-height");
-    if (downloadSection) downloadSection.style.transform = "";
     heroSection?.classList.remove("is-motion-paused");
   };
 }

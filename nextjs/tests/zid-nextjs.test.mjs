@@ -32,7 +32,6 @@ test("gives ZID route metadata and an isolated client runtime", () => {
   assert.match(runtime, /return \(\) =>/);
   assert.match(runtime, /disconnect\(\)/);
   assert.match(runtime, /removeEventListener/);
-  assert.match(runtime, /cancelAnimationFrame/);
 });
 
 test("uses absolute public asset paths in the ZID JSX", () => {

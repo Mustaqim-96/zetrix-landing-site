@@ -78,13 +78,17 @@ test('short tablet landscape returns sticky handoff to normal flow', () => {
   assert.match(shortLandscape, /\.step-phone\{[^}]*width:clamp\(180px,24vw,240px\)/);
 });
 
-test('mobile handoff synchronizes Download translation to the About runway', () => {
-  assert.match(runtime, /const downloadHandoff = root\.querySelector<HTMLElement>\("\.download-about-handoff"\)/);
+test('mobile handoff pins Download with CSS sticky, not scroll-driven JS', () => {
+  const mobile = css.match(/@media \(max-width:767px\)\{([\s\S]*?)\n    \}/)?.[1] ?? '';
+
+  // Sticky only travels inside the parent's content box, so the runway must be
+  // height, not padding.
+  assert.match(mobile, /\.download-about-handoff\{height:calc\(var\(--download-height\) \+ 100svh \+ 128px \+ 30svh\);padding-bottom:0\}/);
+  assert.match(mobile, /\.download\{position:sticky;top:calc\(100svh - var\(--download-height\)\)/);
   assert.match(runtime, /new ResizeObserver\(syncDownloadHandoff\)/);
   assert.match(runtime, /setProperty\("--download-height", `\$\{downloadSection\.offsetHeight\}px`\)/);
-  assert.match(runtime, /function updateDownloadHandoff\(\)/);
-  assert.match(runtime, /downloadSection\.style\.transform = `translate3d\(0, \$\{progress\}px, 0\)`/);
-  assert.match(runtime, /requestAnimationFrame\(updateDownloadHandoff\)/);
+  assert.doesNotMatch(runtime, /downloadSection\.style\.transform/);
+  assert.doesNotMatch(runtime, /addEventListener\("scroll"/);
 });
 
 test('mobile About artwork is visibly lowered without cropping its floor', () => {
