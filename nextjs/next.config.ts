@@ -8,6 +8,13 @@ const nextConfig: NextConfig = {
     root: __dirname,
   },
 
+  async rewrites() {
+    // Short link encoded in the download QR (as /MYID, uppercase, which QR stores
+    // more compactly so the code has fewer, larger modules). Routes match
+    // case-insensitively, so /myid works too.
+    return [{ source: "/myid", destination: "/zid/download" }];
+  },
+
   async headers() {
     // Standard security headers on every response. (No strict CSP: the page runs
     // a small inline theme/intro script and vendored globe libs, which a tight
